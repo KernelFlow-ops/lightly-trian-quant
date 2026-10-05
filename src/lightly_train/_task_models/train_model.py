@@ -1,0 +1,191 @@
+#
+# Copyright (c) Lightly AG and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, ClassVar, Protocol
+
+from lightning_fabric import Fabric
+from PIL.Image import Image as PILImage
+from torch import Tensor
+from torch.nn import Module
+from torch.optim.lr_scheduler import LRScheduler
+from torch.optim.optimizer import Optimizer
+
+from lightly_train._configs.config import PydanticConfig
+from lightly_train._data.task_data_args import TaskDataArgs
+from lightly_train._metrics.task_metric import TaskMetric, TaskMetricArgs
+from lightly_train._task_models.task_model import TaskModel
+from lightly_train._torch_compile import TorchCompileArgs
+from lightly_train._transforms.task_transform import TaskTransform
+
+
+class TrainModelArgs(PydanticConfig):
+    # Default values that are used if the user didn't specify the value manually.
+    # We store this in the model args as these values depend on the model. The values
+    # are ClassVar because they have to be accessed before the class is instantiated.
+    default_batch_size: ClassVar[int]
+    default_steps: ClassVar[int]
+
+    def resolve_auto(
+        self,
+        total_steps: int,
+        gradient_accumulation_steps: int,
+        train_num_batches: int,
+        model_name: str,
+        model_init_args: dict[str, Any],
+        data_args: TaskDataArgs,
+    ) -> None:
+        pass
+
+
+class TrainModel(Module):
+    """Base class for task-specific models for training. Not exposed to the user.
+
+    This class stores the model, criterion, and metrics for training and validation.
+    It also implements the train and validation steps.
+    """
+
+    task: ClassVar[str]
+    train_model_args_cls: ClassVar[type[TrainModelArgs]]
+    task_metric_args_cls: ClassVar[type[TaskMetricArgs]]
+    task_model_cls: ClassVar[type[TaskModel]]
+    train_transform_cls: ClassVar[type[TaskTransform]]
+    val_transform_cls: ClassVar[type[TaskTransform]]
+    torch_compile_args_cls: ClassVar[type[TorchCompileArgs]]
+
+    @classmethod
+    def get_train_model_args_cls(cls, model_name: str) -> type[TrainModelArgs]:
+        """Return the TrainModelArgs class for the given model name.
+
+        Subclasses may override this to return different args classes
+        depending on the model.
+        """
+        return cls.train_model_args_cls
+
+    @classmethod
+    def get_train_transform_cls(cls, model_name: str) -> type[TaskTransform]:
+        """Return the train TaskTransform class for the given model name.
+
+        Subclasses may override this to return different transform classes
+        depending on the model.
+        """
+        return cls.train_transform_cls
+
+    @classmethod
+    def get_val_transform_cls(cls, model_name: str) -> type[TaskTransform]:
+        """Return the val TaskTransform class for the given model name.
+
+        Subclasses may override this to return different transform classes
+        depending on the model.
+        """
+        return cls.val_transform_cls
+
+    # NOTE(Guarin, 07/25): We use the same method names as for LightningModule as
+    # those methods are automatically handled by Fabric. Methods with different
+    # names that are called within a Fabric context will raise an error if they have
+    # not been registered with Fabric.
+    # See https://lightning.ai/docs/fabric/2.5.2/api/wrappers.html#using-methods-other-than-forward-for-computation
+    # The following methods are automatically handled:
+    # - forward
+    # - training_step
+    # - validation_step
+    # - test_step
+    # - predict_step
+    # See: https://github.com/Lightning-AI/pytorch-lightning/blob/95f16c12fe23664ffa5198a43266f715717c6f45/src/lightning/fabric/wrappers.py#L47-L48
+
+    def training_step(self, fabric: Fabric, batch, step: int) -> TaskStepResult:  # type: ignore[no-untyped-def]
+        # Forward pass for training step.
+        # Return dictionary with loss and metrics for logging.
+        raise NotImplementedError()
+
+    def validation_step(self, fabric: Fabric, batch, step: int) -> TaskStepResult:  # type: ignore[no-untyped-def]
+        # Forward pass for validation step.
+        # Return dictionary with loss and metrics for logging.
+        raise NotImplementedError()
+
+    def get_optimizer(
+        self,
+        total_steps: int,
+        global_batch_size: int,
+    ) -> tuple[Optimizer, LRScheduler]:
+        raise NotImplementedError()
+
+    def set_train_mode(self) -> None:
+        """Set the model to training mode."""
+        self.train()
+
+    def get_task_model(self) -> TaskModel:
+        """Returns the task model.
+
+        This is the model that users interact with for inference and deployment.
+        """
+        raise NotImplementedError()
+
+    def load_train_state_dict(
+        self, state_dict: dict[str, Any], strict: bool = True, assign: bool = False
+    ) -> Any:
+        """Loads the model state dict.
+
+        This acts as a wrapper around load_state_dict. Subclasses can overload
+        this to implement custom loading logic, e.g. loading EMA weights.
+        """
+        return self.load_state_dict(state_dict, strict=strict, assign=assign)
+
+    def get_export_state_dict(self) -> dict[str, Any]:
+        """Returns the state dict for exporting."""
+        return self.state_dict()
+
+    def clip_gradients(self, fabric: Fabric, optimizer: Optimizer) -> Tensor | None:
+        # Clip the gradients. Returns the total gradient norm before clipping if
+        # the norm-based clipping algorithm is used, otherwise None. Returning None
+        # here means that the gradient norm is not logged for this model.
+        return None
+
+    def on_train_batch_end(self) -> None:
+        pass
+
+
+class TaskStepVisualization(Protocol):
+    """Lazy visualization payload returned by task-specific training steps."""
+
+    def create_label_image(self) -> PILImage | None:
+        """Create a grid of label images for debugging purposes."""
+        ...
+
+    def create_prediction_image(self) -> PILImage | None:
+        """Create a grid of prediction images for debugging purposes."""
+        ...
+
+
+@dataclass
+class TaskStepResult:
+    # Loss value on which backwards will be called.
+    loss: Tensor
+
+    # Metrics that will be computed and logged. Metrics include:
+    # - Logged loss and individual losses
+    # - Metrics like mAP, accuracy, etc.
+    metrics: TaskMetric
+
+    # Dictionary with extra values to log. These values will only be logged to external
+    # loggers like wandb, tensorboard, etc and are currently not shown in the console logs.
+    log_dict: dict[str, float]
+
+    # Lazy visualization payload for task-specific label and prediction images.
+    visualization: TaskStepVisualization | None = None
+
+    def create_label_image(self) -> PILImage | None:
+        if self.visualization is None:
+            return None
+        return self.visualization.create_label_image()
+
+    def create_prediction_image(self) -> PILImage | None:
+        if self.visualization is None:
+            return None
+        return self.visualization.create_prediction_image()

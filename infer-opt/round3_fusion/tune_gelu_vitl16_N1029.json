@@ -1,0 +1,1396 @@
+{
+  "rows": [
+    {
+      "us": 109.76000130176544,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 114.56000059843063,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 120.06399780511856,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 120.12799829244614,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 122.8799968957901,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 123.90399724245071,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 125.40799379348755,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 127.80800461769104,
+      "cfg": {
+        "bm": 256,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 128.76799702644348,
+      "cfg": {
+        "bm": 128,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 130.46400249004364,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 131.99999928474426,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 132.54399597644806,
+      "cfg": {
+        "bm": 256,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 132.79999792575836,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 132.9600065946579,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 133.7279975414276,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 133.7919980287552,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 133.95200669765472,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 134.39999520778656,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 134.49600338935852,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 134.62400436401367,
+      "cfg": {
+        "bm": 128,
+        "bn": 256,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 134.75200533866882,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 134.8479986190796,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 135.3600025177002,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 135.6160044670105,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 137.1839940547943,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 137.2160017490387,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 137.2479945421219,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 137.40800321102142,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 137.69599795341492,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 137.7280056476593,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 137.95199990272522,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 138.2399946451187,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 138.40000331401825,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 138.49599659442902,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 138.62399756908417,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 138.65600526332855,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 139.3599957227707,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 139.74399864673615,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 140.6719982624054,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 141.24800264835358,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 141.4719969034195,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 141.53599739074707,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 141.92000031471252,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 145.02400159835815,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 145.82400023937225,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 145.9520012140274,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 146.2399959564209,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 146.5280055999756,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 146.91199362277985,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 147.5200057029724,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 147.61599898338318,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 147.74399995803833,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 147.93600142002106,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 148.12800288200378,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 148.44800531864166,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 148.44800531864166,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 148.83199334144592,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 148.8959938287735,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 148.99200201034546,
+      "cfg": {
+        "bm": 128,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 149.21599626541138,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 149.3760049343109,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 149.4079977273941,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 149.63200688362122,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 149.63200688362122,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 149.85600113868713,
+      "cfg": {
+        "bm": 256,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 150.27199685573578,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 150.33599734306335,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 150.56000649929047,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 150.62400698661804,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 150.62400698661804,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 150.78400075435638,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 151.8079936504364,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 152.22400426864624,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 152.3520052433014,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 152.8960019350052,
+      "cfg": {
+        "bm": 256,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 153.02400290966034,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 153.08800339698792,
+      "cfg": {
+        "bm": 128,
+        "bn": 256,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 153.98399531841278,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 154.30399775505066,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 154.62400019168854,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 155.16799688339233,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 155.2319973707199,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 155.42399883270264,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 155.45600652694702,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 156.51200711727142,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 156.5759927034378,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 156.95999562740326,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 158.1439971923828,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 158.65600109100342,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 158.75199437141418,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 159.39199924468994,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 159.42400693893433,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 159.55199301242828,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 161.21600568294525,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 162.59199380874634,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 163.2000058889389,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 163.64799439907074,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 163.87200355529785,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 163.87200355529785,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 168.09600591659546,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 168.38400065898895,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 170.59199512004852,
+      "cfg": {
+        "bm": 64,
+        "bn": 256,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 174.55999553203583,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 175.74399709701538,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 176.2239933013916,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 176.256000995636,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 178.847998380661,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 181.2800019979477,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 182.11199343204498,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 182.94399976730347,
+      "cfg": {
+        "bm": 256,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 183.61599743366241,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 188.28800320625305,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 189.88800048828125,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 220.92799842357635,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 228.41599583625793,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 231.83999955654144,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 16,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1481 @@
+{
+ "torch_us": 68.17600131034851,
+ "rows": [
+  {
+   "us": 69.58079934120178,
+   "tf": 186.08318056980184,
+   "cfg": {
+    "bm": 64,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 70.5407977104187,
+   "tf": 183.550751738772,
+   "cfg": {
+    "bm": 64,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 70.84800004959106,
+   "tf": 182.75486166069604,
+   "cfg": {
+    "bm": 64,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 71.69920206069946,
+   "tf": 180.58522376634784,
+   "cfg": {
+    "bm": 64,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 4,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 73.2640027999878,
+   "tf": 176.72821512834616,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 4,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 73.50080013275146,
+   "tf": 176.1588503065906,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 73.50080013275146,
+   "tf": 176.1588503065906,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 74.5311975479126,
+   "tf": 173.72344567087438,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 74.86400008201599,
+   "tf": 172.9511705735098,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 75.05279779434204,
+   "tf": 172.51610637459925,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 75.34080147743225,
+   "tf": 171.85663271552025,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 4,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 75.35679936408997,
+   "tf": 171.82014837761366,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 4,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 75.36320090293884,
+   "tf": 171.80555354430402,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 75.74399709701538,
+   "tf": 170.94181643749295,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 75.88480114936829,
+   "tf": 170.62463433901723,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 76.23040080070496,
+   "tf": 169.85108712533835,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 76.25600099563599,
+   "tf": 169.7940657646207,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 4,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 76.47039890289307,
+   "tf": 169.31801891660004,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 76.94399952888489,
+   "tf": 168.2758438250844,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 4,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 77.16799974441528,
+   "tf": 167.7873793655905,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 77.5488018989563,
+   "tf": 166.96346211603122,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 78.56640219688416,
+   "tf": 164.8009338082366,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 4,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 78.66560220718384,
+   "tf": 164.59311420382912,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 78.8640022277832,
+   "tf": 164.17904344497722,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 4,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 78.87359857559204,
+   "tf": 164.15906820316917,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 79.04000282287598,
+   "tf": 163.8134613559579,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 79.06879782676697,
+   "tf": 163.7538043308508,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 79.36319708824158,
+   "tf": 163.14635653606177,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 79.37920093536377,
+   "tf": 163.11346417486664,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 4,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 79.67680096626282,
+   "tf": 162.50422068881048,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 4,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 79.70880270004272,
+   "tf": 162.4389779975087,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 79.85919713973999,
+   "tf": 162.13306559222636,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 4,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 80.72320222854614,
+   "tf": 160.39770587075725,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 4,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 80.77759742736816,
+   "tf": 160.28969491995767,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 81.77599906921387,
+   "tf": 158.3327210351925,
+   "cfg": {
+    "bm": 96,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 83.74080061912537,
+   "tf": 154.61777714414254,
+   "cfg": {
+    "bm": 96,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 85.0271999835968,
+   "tf": 152.27852323136426,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 85.06240248680115,
+   "tf": 152.21550378863412,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 85.37920117378235,
+   "tf": 151.65070965756382,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 85.53280234336853,
+   "tf": 151.37837289630045,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 86.09279990196228,
+   "tf": 150.39372006421277,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 86.54720187187195,
+   "tf": 149.60410236218246,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 86.74560189247131,
+   "tf": 149.26193565467375,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 87.1616005897522,
+   "tf": 148.5495488884162,
+   "cfg": {
+    "bm": 32,
+    "bn": 128,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 87.62879967689514,
+   "tf": 147.75754655708147,
+   "cfg": {
+    "bm": 64,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 87.70560026168823,
+   "tf": 147.62816068036074,
+   "cfg": {
+    "bm": 32,
+    "bn": 128,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 87.94879913330078,
+   "tf": 147.21993450274937,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 88.57600092887878,
+   "tf": 146.1774782358522,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 89.14240002632141,
+   "tf": 145.2486857452441,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 89.29280042648315,
+   "tf": 145.00403600467476,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 89.52000141143799,
+   "tf": 144.6360170225115,
+   "cfg": {
+    "bm": 96,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 89.86560106277466,
+   "tf": 144.07978464368628,
+   "cfg": {
+    "bm": 128,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 89.9616003036499,
+   "tf": 143.92603515607632,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 92.39680171012878,
+   "tf": 140.13273412450405,
+   "cfg": {
+    "bm": 32,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 92.5279974937439,
+   "tf": 139.93403941196763,
+   "cfg": {
+    "bm": 32,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 96.32959961891174,
+   "tf": 134.41160867711156,
+   "cfg": {
+    "bm": 32,
+    "bn": 128,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 98.16640019416809,
+   "tf": 131.8966206603266,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 2,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 98.6847996711731,
+   "tf": 131.20375671981222,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 98.7999975681305,
+   "tf": 131.05077699087437,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 100.3775954246521,
+   "tf": 128.99109998823602,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 100.97600221633911,
+   "tf": 128.2266693452525,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 101.41760110855103,
+   "tf": 127.66833672334126,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 101.47199630737305,
+   "tf": 127.59989868317196,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 101.60959959030151,
+   "tf": 127.42709842580514,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 102.23679542541504,
+   "tf": 126.64536671091027,
+   "cfg": {
+    "bm": 32,
+    "bn": 128,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 102.2495985031128,
+   "tf": 126.62950894233417,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 102.43200063705444,
+   "tf": 126.40401795799905,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 103.18399667739868,
+   "tf": 125.48279641154932,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 4,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 104.8799991607666,
+   "tf": 123.4536284478109,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 105.05599975585938,
+   "tf": 123.24680625656366,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 105.57440519332886,
+   "tf": 122.64162345305034,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 7
+  },
+  {
+   "us": 105.68000078201294,
+   "tf": 122.519079789823,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 105.71199655532837,
+   "tf": 122.4819970288166,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 7
+  },
+  {
+   "us": 106.37760162353516,
+   "tf": 121.71562669575552,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 2,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 106.61760568618774,
+   "tf": 121.44163587869224,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 2,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 108.14720392227173,
+   "tf": 119.72400559986683,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 110.22080183029175,
+   "tf": 117.47162271542811,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 111.46880388259888,
+   "tf": 116.15641324757456,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 4
+  },
+  {
+   "us": 112.45759725570679,
+   "tf": 115.13509770762018,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 2,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 7
+  },
+  {
+   "us": 114.52800035476685,
+   "tf": 113.05371968332886,
+   "cfg": {
+    "bm": 32,
+    "bn": 64,
+    "bk": 32,
+    "st": 3,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 5
+  },
+  {
+   "us": 128.00639867782593,
+   "tf": 101.14975955684709,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 32,
+    "st": 4,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  },
+  {
+   "us": 132.27839469909668,
+   "tf": 97.88307816596462,
+   "cfg": {
+    "bm": 64,
+    "bn": 64,
+    "bk": 64,
+    "st": 2,
+    "wm": 1,
+    "wn": 1,
+    "minb": 3,
+    "epi": 2,
+    "rf32": 1,
+    "splitk": 1,
+    "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+   },
+   "occ": 3
+  }
+ ]
+}

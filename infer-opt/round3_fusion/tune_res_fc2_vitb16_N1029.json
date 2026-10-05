@@ -1,0 +1,364 @@
+{
+  "rows": [
+    {
+      "us": 69.43999975919724,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 69.85600292682648,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 80.28800040483475,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 82.49600231647491,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 84.09599959850311,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 86.11200004816055,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 93.12000125646591,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 99.93600100278854,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 100.35199671983719,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 105.12000322341919,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 106.62399977445602,
+      "cfg": {
+        "bm": 128,
+        "bn": 32,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 107.07200318574905,
+      "cfg": {
+        "bm": 128,
+        "bn": 32,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 107.42399841547012,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 108.12799632549286,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 109.63200032711029,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 110.59200018644333,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 110.6560006737709,
+      "cfg": {
+        "bm": 128,
+        "bn": 32,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 111.13599687814713,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 111.7440015077591,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 112.03200370073318,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 112.19199746847153,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 113.40799927711487,
+      "cfg": {
+        "bm": 128,
+        "bn": 32,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 125.56800246238708,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 127.42400169372559,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 129.15199995040894,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 129.56799566745758,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    },
+    {
+      "us": 131.9040060043335,
+      "cfg": {
+        "bm": 128,
+        "bn": 32,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 132.1599930524826,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 133.15199315547943,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false
+      }
+    },
+    {
+      "us": 133.91999900341034,
+      "cfg": {
+        "bm": 128,
+        "bn": 32,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true
+      }
+    }
+  ]
+}

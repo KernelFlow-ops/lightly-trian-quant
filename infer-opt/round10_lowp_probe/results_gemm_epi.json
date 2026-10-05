@@ -1,0 +1,390 @@
+{
+ "vitl16|qkv|2058": {
+  "epi_bf16": {
+   "us": 14.733341160942526,
+   "tflops": 878.8106042317219,
+   "rounds_us": [
+    14.561200141906738,
+    14.734470143037683,
+    14.733341160942526
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 14.982361391366247,
+   "tflops": 864.203986927009,
+   "rounds_us": [
+    14.956999974078443,
+    14.982361391366247,
+    15.177458165639854
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 22:04:01"
+ },
+ "vitl16|qkv|2258": {
+  "epi_bf16": {
+   "us": 16.20274412220922,
+   "tflops": 876.7717085976557,
+   "rounds_us": [
+    15.983999186548694,
+    16.210013422472723,
+    16.20274412220922
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 16.49506727854411,
+   "tflops": 861.2336893271442,
+   "rounds_us": [
+    16.407880783081055,
+    16.49506727854411,
+    16.5720272064209
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|proj|2058": {
+  "epi_bf16": {
+   "us": 5.125037762297302,
+   "tflops": 842.128198108218,
+   "rounds_us": [
+    5.129260676247733,
+    5.125037762297302,
+    5.124230845635679
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 5.505717388717583,
+   "tflops": 783.9012632294388,
+   "rounds_us": [
+    5.505869741397054,
+    5.505717388717583,
+    5.504331781190607
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|proj|2258": {
+  "epi_bf16": {
+   "us": 5.56717103597515,
+   "tflops": 850.5880608660964,
+   "rounds_us": [
+    5.629348320407042,
+    5.558769903856421,
+    5.56717103597515
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 5.892442396053901,
+   "tflops": 803.6343671634738,
+   "rounds_us": [
+    5.8978652724852925,
+    5.892230914189265,
+    5.892442396053901
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc1|2058": {
+  "epi_bf16": {
+   "us": 18.178918935956744,
+   "tflops": 949.6579705767537,
+   "rounds_us": [
+    17.972481511805178,
+    18.178918935956744,
+    18.32261398760942
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 19.696593284606934,
+   "tflops": 876.4843247025759,
+   "rounds_us": [
+    19.351594150066376,
+    19.696593284606934,
+    19.96718719601631
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc1|2258": {
+  "epi_bf16": {
+   "us": 19.848447799682617,
+   "tflops": 954.3051958099657,
+   "rounds_us": [
+    19.610736846923828,
+    19.848447799682617,
+    20.050031661987305
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 21.55725430634062,
+   "tflops": 878.6590627373522,
+   "rounds_us": [
+    21.123136504221772,
+    21.55725430634062,
+    21.791763224844207
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc2|2058": {
+  "epi_bf16": {
+   "us": 5.123966644894902,
+   "tflops": 3369.216948592002,
+   "rounds_us": [
+    5.12649878016058,
+    5.123966644894902,
+    5.12378620651533
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 5.504973199632433,
+   "tflops": 3136.028939278524,
+   "rounds_us": [
+    5.505190955268012,
+    5.504973199632433,
+    5.5036534203423395
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc2|2258": {
+  "epi_bf16": {
+   "us": 5.611098165664152,
+   "tflops": 3375.7165361868183,
+   "rounds_us": [
+    5.629918026761205,
+    5.58553089585011,
+    5.611098165664152
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 5.895146978906839,
+   "tflops": 3213.0626991614713,
+   "rounds_us": [
+    5.897069839109857,
+    5.8923807488866595,
+    5.895146978906839
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|qkv|2058": {
+  "epi_bf16": {
+   "us": 11.41757435268826,
+   "tflops": 637.8891458924626,
+   "rounds_us": [
+    11.316639405709726,
+    11.41757435268826,
+    11.47426830397712
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 11.650038215349305,
+   "tflops": 625.1607606234472,
+   "rounds_us": [
+    11.558424751713591,
+    11.650038215349305,
+    11.692500339364106
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|qkv|2258": {
+  "epi_bf16": {
+   "us": 12.417377257833676,
+   "tflops": 643.5284509825783,
+   "rounds_us": [
+    12.263571729465406,
+    12.427203509272362,
+    12.417377257833676
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 12.68234352270762,
+   "tflops": 630.0835123802083,
+   "rounds_us": [
+    12.642833093802134,
+    12.68234352270762,
+    12.687280774116516
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|proj|2058": {
+  "epi_bf16": {
+   "us": 4.354078150304611,
+   "tflops": 557.5728087999884,
+   "rounds_us": [
+    4.354078150304611,
+    4.354210086564576,
+    4.353665372230829
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 4.607381892114989,
+   "tflops": 526.9186798157017,
+   "rounds_us": [
+    4.610475529445691,
+    4.606584484657545,
+    4.607381892114989
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|proj|2258": {
+  "epi_bf16": {
+   "us": 4.611256869604172,
+   "tflops": 577.6397323597039,
+   "rounds_us": [
+    4.611185746613407,
+    4.611872374228644,
+    4.611256869604172
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 4.864759801879642,
+   "tflops": 547.53889040335,
+   "rounds_us": [
+    4.864637776622622,
+    4.864846627543292,
+    4.864759801879642
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc1|2058": {
+  "epi_bf16": {
+   "us": 13.972202043854788,
+   "tflops": 695.0130198175171,
+   "rounds_us": [
+    13.834134916241249,
+    13.972202043854788,
+    13.983078217238523
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 14.867053229427903,
+   "tflops": 653.1800341427635,
+   "rounds_us": [
+    14.66312493092915,
+    14.867053229427903,
+    15.112106616680439
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc1|2258": {
+  "epi_bf16": {
+   "us": 15.240098223274137,
+   "tflops": 699.1149650025683,
+   "rounds_us": [
+    15.10211126303967,
+    15.240098223274137,
+    15.267592889291269
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 16.22328103757372,
+   "tflops": 656.7463579853912,
+   "rounds_us": [
+    16.02887639812395,
+    16.22328103757372,
+    16.49430063035753
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc2|2058": {
+  "epi_bf16": {
+   "us": 4.353051498982241,
+   "tflops": 2230.8172412548843,
+   "rounds_us": [
+    4.355793947860149,
+    4.353051498982241,
+    4.352813503881966
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 4.606715532449575,
+   "tflops": 2107.9795936165274,
+   "rounds_us": [
+    4.607223088924702,
+    4.606715532449575,
+    4.606503706711989
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc2|2258": {
+  "epi_bf16": {
+   "us": 4.611377197179741,
+   "tflops": 2310.4986385664147,
+   "rounds_us": [
+    4.611771281172589,
+    4.611377197179741,
+    4.61085160275114
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "epi_i32": {
+   "us": 4.863484168615867,
+   "tflops": 2190.7300130129265,
+   "rounds_us": [
+    4.863767642674484,
+    4.863358388735554,
+    4.863484168615867
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ }
+}

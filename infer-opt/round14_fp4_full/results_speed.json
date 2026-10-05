@@ -1,0 +1,1138 @@
+{
+  "speed": {
+    "vitb16|r5_v1,r12,r14_nv4a,r14_mx4a|smoke_a2": {
+      "results": {
+        "r5_v1": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 31.77770233154297
+          },
+          "model_ms": 3.6670095825195315,
+          "frame_ms": 3.8288792419433593,
+          "fps_gpu": 261.17303179623053,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              3.6715512084960937,
+              3.6624679565429688
+            ],
+            "frame_ms": [
+              3.8327294921875,
+              3.825028991699219
+            ],
+            "fps_video": []
+          }
+        },
+        "r12": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9999920497925837,
+            "ml_mean_abs_diff_vs_first": 0.0861494243144989,
+            "ml_mean_abs": 31.845434188842773
+          },
+          "model_ms": 2.712105255126953,
+          "frame_ms": 2.784369812011719,
+          "fps_gpu": 359.1476949958367,
+          "model_speedup_vs_first": 1.352089700643967,
+          "frame_speedup_vs_first": 1.375133154161364,
+          "rounds": {
+            "model_ms": [
+              2.712119140625,
+              2.712091369628906
+            ],
+            "frame_ms": [
+              2.784449157714844,
+              2.784290466308594
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9972026123049764,
+            "ml_mean_abs_diff_vs_first": 3.060222625732422,
+            "ml_mean_abs": 28.825693130493164
+          },
+          "model_ms": 1.7705158233642577,
+          "frame_ms": 1.8433506774902342,
+          "fps_gpu": 542.4903748436644,
+          "model_speedup_vs_first": 2.071153239145662,
+          "frame_speedup_vs_first": 2.077130135192979,
+          "rounds": {
+            "model_ms": [
+              1.7689785766601562,
+              1.7720530700683594
+            ],
+            "frame_ms": [
+              1.8426226806640624,
+              1.8440786743164062
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9882810332915208,
+            "ml_mean_abs_diff_vs_first": 9.418143272399902,
+            "ml_mean_abs": 22.435853958129883
+          },
+          "model_ms": 1.7905254364013672,
+          "frame_ms": 1.864583969116211,
+          "fps_gpu": 536.3126662909085,
+          "model_speedup_vs_first": 2.048007533414079,
+          "frame_speedup_vs_first": 2.053476435152555,
+          "rounds": {
+            "model_ms": [
+              1.7894668579101562,
+              1.7915840148925781
+            ],
+            "frame_ms": [
+              1.864272003173828,
+              1.8648959350585939
+            ],
+            "fps_video": []
+          }
+        }
+      },
+      "rounds": 2,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "10 %, 8777 MiB, 2737 MHz, 13801 MHz, 422.06 W, 41"
+        },
+        "time": "2026-10-05 01:01:38"
+      }
+    },
+    "vitl16|r5_v1,r12+head16,r14_nv4a,r14_mx4a|step1_L": {
+      "results": {
+        "r5_v1": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 75.40216064453125
+          },
+          "model_ms": 9.677698974609376,
+          "frame_ms": 9.855069580078125,
+          "fps_gpu": 101.47061792658319,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              9.669589233398437,
+              9.707116088867188,
+              9.677698974609376
+            ],
+            "frame_ms": [
+              9.855069580078125,
+              9.8597021484375,
+              9.850925903320313
+            ],
+            "fps_video": [
+              96.6052065259143,
+              96.38793902565875,
+              96.40139852472936
+            ]
+          },
+          "fps_video": 96.40139852472936
+        },
+        "r12+head16": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9999963143630465,
+            "ml_mean_abs_diff_vs_first": 0.10591231286525726,
+            "ml_mean_abs": 75.32843780517578
+          },
+          "model_ms": 7.06935791015625,
+          "frame_ms": 7.445386352539063,
+          "fps_gpu": 134.31136446787278,
+          "model_speedup_vs_first": 1.3689643525766084,
+          "frame_speedup_vs_first": 1.3236478422261189,
+          "rounds": {
+            "model_ms": [
+              7.050690307617187,
+              7.06935791015625,
+              7.079453735351563
+            ],
+            "frame_ms": [
+              7.364500122070313,
+              7.445386352539063,
+              7.51766845703125
+            ],
+            "fps_video": [
+              125.46258610007905,
+              124.35947588231656,
+              123.32057063011574
+            ]
+          },
+          "fps_video": 124.35947588231656
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9989970846476037,
+            "ml_mean_abs_diff_vs_first": 3.7240006923675537,
+            "ml_mean_abs": 72.36903381347656
+          },
+          "model_ms": 4.001111145019531,
+          "frame_ms": 4.06885498046875,
+          "fps_gpu": 245.76938839063655,
+          "model_speedup_vs_first": 2.418752847357389,
+          "frame_speedup_vs_first": 2.422074423242968,
+          "rounds": {
+            "model_ms": [
+              4.001111145019531,
+              3.995880432128906,
+              4.022414855957031
+            ],
+            "frame_ms": [
+              4.06885498046875,
+              4.066231079101563,
+              4.080136413574219
+            ],
+            "fps_video": [
+              213.67157041116567,
+              213.5176253885611,
+              214.68089581179083
+            ]
+          },
+          "fps_video": 213.67157041116567
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9959517361226351,
+            "ml_mean_abs_diff_vs_first": 17.780664443969727,
+            "ml_mean_abs": 57.645877838134766
+          },
+          "model_ms": 4.039159545898437,
+          "frame_ms": 4.103091125488281,
+          "fps_gpu": 243.71869144899793,
+          "model_speedup_vs_first": 2.39596848419533,
+          "frame_speedup_vs_first": 2.401864662195466,
+          "rounds": {
+            "model_ms": [
+              4.039159545898437,
+              4.03607666015625,
+              4.0465914916992185
+            ],
+            "frame_ms": [
+              4.103091125488281,
+              4.101853942871093,
+              4.11108154296875
+            ],
+            "fps_video": [
+              213.30925783011696,
+              212.81772916396733,
+              213.24891735676647
+            ]
+          },
+          "fps_video": 213.24891735676647
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "86 %, 14481 MiB, 2730 MHz, 13801 MHz, 426.00 W, 55"
+        },
+        "time": "2026-10-05 01:03:16"
+      }
+    },
+    "vitb16|r5_v1,r12,r14_nv4a,r14_mx4a|step1_B": {
+      "results": {
+        "r5_v1": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 31.77770233154297
+          },
+          "model_ms": 3.672977294921875,
+          "frame_ms": 3.8352871704101563,
+          "fps_gpu": 260.73666861640953,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              3.6670770263671875,
+              3.675015563964844,
+              3.672977294921875
+            ],
+            "frame_ms": [
+              3.8321774291992186,
+              3.8386944580078124,
+              3.8352871704101563
+            ],
+            "fps_video": [
+              226.27563157754307,
+              225.3866385646188,
+              223.5071657484714
+            ]
+          },
+          "fps_video": 225.3866385646188
+        },
+        "r12": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9999920497925837,
+            "ml_mean_abs_diff_vs_first": 0.0861494243144989,
+            "ml_mean_abs": 31.845434188842773
+          },
+          "model_ms": 2.721314697265625,
+          "frame_ms": 2.7925991821289062,
+          "fps_gpu": 358.0893407114949,
+          "model_speedup_vs_first": 1.3497069260723429,
+          "frame_speedup_vs_first": 1.3733754542914278,
+          "rounds": {
+            "model_ms": [
+              2.7157196044921874,
+              2.721314697265625,
+              2.7234539794921875
+            ],
+            "frame_ms": [
+              2.789932861328125,
+              2.7926931762695313,
+              2.7925991821289062
+            ],
+            "fps_video": [
+              270.6330785424418,
+              276.1794145517593,
+              275.7255009311224
+            ]
+          },
+          "fps_video": 275.7255009311224
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9972026123049764,
+            "ml_mean_abs_diff_vs_first": 3.060222625732422,
+            "ml_mean_abs": 28.825693130493164
+          },
+          "model_ms": 1.7731910705566407,
+          "frame_ms": 1.8430284118652345,
+          "fps_gpu": 542.5852328494227,
+          "model_speedup_vs_first": 2.0713939720939676,
+          "frame_speedup_vs_first": 2.080970182401398,
+          "rounds": {
+            "model_ms": [
+              1.7731910705566407,
+              1.7727040100097655,
+              1.7749664306640625
+            ],
+            "frame_ms": [
+              1.8422227478027344,
+              1.8430284118652345,
+              1.8460357666015625
+            ],
+            "fps_video": [
+              275.4171085255492,
+              295.4894130184179,
+              287.4837477212704
+            ]
+          },
+          "fps_video": 287.4837477212704
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9882810332915208,
+            "ml_mean_abs_diff_vs_first": 9.418143272399902,
+            "ml_mean_abs": 22.435853958129883
+          },
+          "model_ms": 1.7982911682128906,
+          "frame_ms": 1.8666726684570312,
+          "fps_gpu": 535.712563267232,
+          "model_speedup_vs_first": 2.042481973913053,
+          "frame_speedup_vs_first": 2.054611520926354,
+          "rounds": {
+            "model_ms": [
+              1.7953184509277345,
+              1.7984979248046875,
+              1.7982911682128906
+            ],
+            "frame_ms": [
+              1.8639424133300782,
+              1.8666726684570312,
+              1.869974365234375
+            ],
+            "fps_video": [
+              280.98856881593906,
+              254.4848000122919,
+              293.3316694111706
+            ]
+          },
+          "fps_video": 280.98856881593906
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "0 %, 9522 MiB, 2797 MHz, 13801 MHz, 243.98 W, 46"
+        },
+        "time": "2026-10-05 01:04:55"
+      }
+    },
+    "vitb16|r12,r14_nv4a,r14_mx4a,r14_nv4,r14_mx4|step2_first_B": {
+      "results": {
+        "r12": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 31.845434188842773
+          },
+          "model_ms": 2.715010681152344,
+          "frame_ms": 2.784409484863281,
+          "fps_gpu": 359.14257778399343,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              2.7119937133789063,
+              2.7158074951171876,
+              2.715010681152344
+            ],
+            "frame_ms": [
+              2.788272705078125,
+              2.7837588500976564,
+              2.784409484863281
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9971421060308825,
+            "ml_mean_abs_diff_vs_first": 3.1225242614746094,
+            "ml_mean_abs": 28.825693130493164
+          },
+          "model_ms": 1.7598374938964845,
+          "frame_ms": 1.8358023071289062,
+          "fps_gpu": 544.7209626639727,
+          "model_speedup_vs_first": 1.5427621530786886,
+          "frame_speedup_vs_first": 1.516726215045423,
+          "rounds": {
+            "model_ms": [
+              1.7604864501953126,
+              1.7592633056640625,
+              1.7598374938964845
+            ],
+            "frame_ms": [
+              1.8381484985351562,
+              1.8358023071289062,
+              1.8354386901855468
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9882239593906224,
+            "ml_mean_abs_diff_vs_first": 9.483369827270508,
+            "ml_mean_abs": 22.435853958129883
+          },
+          "model_ms": 1.7937965393066406,
+          "frame_ms": 1.8646759033203124,
+          "fps_gpu": 536.2862244422005,
+          "model_speedup_vs_first": 1.5135555352346604,
+          "frame_speedup_vs_first": 1.4932404499383816,
+          "rounds": {
+            "model_ms": [
+              1.7955194091796876,
+              1.7937965393066406,
+              1.7930924987792969
+            ],
+            "frame_ms": [
+              1.8673703002929687,
+              1.8646194458007812,
+              1.8646759033203124
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9981226063356337,
+            "ml_mean_abs_diff_vs_first": 2.209643840789795,
+            "ml_mean_abs": 29.89232063293457
+          },
+          "model_ms": 1.9802899169921875,
+          "frame_ms": 2.0497445678710937,
+          "fps_gpu": 487.8656666174851,
+          "model_speedup_vs_first": 1.3710167677246496,
+          "frame_speedup_vs_first": 1.358417789468873,
+          "rounds": {
+            "model_ms": [
+              1.9736473083496093,
+              1.9819679260253906,
+              1.9802899169921875
+            ],
+            "frame_ms": [
+              2.0503276062011717,
+              2.0497445678710937,
+              2.0485964965820314
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9873482421876894,
+            "ml_mean_abs_diff_vs_first": 9.583344459533691,
+            "ml_mean_abs": 22.36280059814453
+          },
+          "model_ms": 1.8758840942382813,
+          "frame_ms": 1.9466943359375,
+          "fps_gpu": 513.691328699744,
+          "model_speedup_vs_first": 1.4473232591989096,
+          "frame_speedup_vs_first": 1.4303270079235884,
+          "rounds": {
+            "model_ms": [
+              1.8758840942382813,
+              1.8768601989746094,
+              1.8751808166503907
+            ],
+            "frame_ms": [
+              1.9466943359375,
+              1.9476351928710938,
+              1.945603790283203
+            ],
+            "fps_video": []
+          }
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "5 %, 9397 MiB, 2790 MHz, 13801 MHz, 430.22 W, 38"
+        },
+        "time": "2026-10-05 01:27:28"
+      }
+    },
+    "vitb16|r12,r14_nv4a,r14_nv4,r14_mx4a,r14_mx4|step2_tuned1_vitb16": {
+      "results": {
+        "r12": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 31.845434188842773
+          },
+          "model_ms": 2.7150567626953124,
+          "frame_ms": 2.784991455078125,
+          "fps_gpu": 359.0675289780908,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              2.7128671264648436,
+              2.7150567626953124,
+              2.715712585449219
+            ],
+            "frame_ms": [
+              2.787739562988281,
+              2.7835955810546875,
+              2.784991455078125
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9971421060308825,
+            "ml_mean_abs_diff_vs_first": 3.1225242614746094,
+            "ml_mean_abs": 28.825693130493164
+          },
+          "model_ms": 1.7586131286621094,
+          "frame_ms": 1.835292205810547,
+          "fps_gpu": 544.8723624684906,
+          "model_speedup_vs_first": 1.5438624439025037,
+          "frame_speedup_vs_first": 1.5174648735829772,
+          "rounds": {
+            "model_ms": [
+              1.7582931518554688,
+              1.758970947265625,
+              1.7586131286621094
+            ],
+            "frame_ms": [
+              1.8377235412597657,
+              1.835292205810547,
+              1.8347903442382814
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9981226063356337,
+            "ml_mean_abs_diff_vs_first": 2.209643840789795,
+            "ml_mean_abs": 29.89232063293457
+          },
+          "model_ms": 1.9772166442871093,
+          "frame_ms": 2.0489266967773436,
+          "fps_gpu": 488.0604081994983,
+          "model_speedup_vs_first": 1.3731711042085797,
+          "frame_speedup_vs_first": 1.3592440663975445,
+          "rounds": {
+            "model_ms": [
+              1.97147705078125,
+              1.9772166442871093,
+              1.9779866027832032
+            ],
+            "frame_ms": [
+              2.050181121826172,
+              2.047701110839844,
+              2.0489266967773436
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9882239593906224,
+            "ml_mean_abs_diff_vs_first": 9.483369827270508,
+            "ml_mean_abs": 22.435853958129883
+          },
+          "model_ms": 1.7924819946289063,
+          "frame_ms": 1.8630003356933593,
+          "fps_gpu": 536.7685559905316,
+          "model_speedup_vs_first": 1.5146912330672557,
+          "frame_speedup_vs_first": 1.4948958417882545,
+          "rounds": {
+            "model_ms": [
+              1.7921395874023438,
+              1.7924819946289063,
+              1.7926527404785155
+            ],
+            "frame_ms": [
+              1.8630003356933593,
+              1.8620985412597657,
+              1.8631117248535156
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9873482421876894,
+            "ml_mean_abs_diff_vs_first": 9.583344459533691,
+            "ml_mean_abs": 22.36280059814453
+          },
+          "model_ms": 1.8731423950195312,
+          "frame_ms": 1.9453875732421875,
+          "fps_gpu": 514.0363872754659,
+          "model_speedup_vs_first": 1.449466292532983,
+          "frame_speedup_vs_first": 1.4315869461614026,
+          "rounds": {
+            "model_ms": [
+              1.873651885986328,
+              1.8731423950195312,
+              1.8729228210449218
+            ],
+            "frame_ms": [
+              1.9453875732421875,
+              1.94542724609375,
+              1.9442694091796875
+            ],
+            "fps_video": []
+          }
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "22 %, 9397 MiB, 2790 MHz, 13801 MHz, 396.66 W, 39"
+        },
+        "time": "2026-10-05 01:43:10"
+      }
+    },
+    "vitl16|r12+head16,r14_nv4a,r14_nv4,r14_mx4a,r14_mx4|step2_tuned1_vitl16": {
+      "results": {
+        "r12+head16": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 75.32843780517578
+          },
+          "model_ms": 7.242161254882813,
+          "frame_ms": 7.465884399414063,
+          "fps_gpu": 133.942604318717,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              7.160127563476562,
+              7.242161254882813,
+              7.371199340820312
+            ],
+            "frame_ms": [
+              7.364743041992187,
+              7.465884399414063,
+              7.477626342773437
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.998997497074912,
+            "ml_mean_abs_diff_vs_first": 3.677751064300537,
+            "ml_mean_abs": 72.36903381347656
+          },
+          "model_ms": 3.964225158691406,
+          "frame_ms": 4.047986450195313,
+          "fps_gpu": 247.0364000234612,
+          "model_speedup_vs_first": 1.826879393821681,
+          "frame_speedup_vs_first": 1.8443452050225708,
+          "rounds": {
+            "model_ms": [
+              3.9710955810546875,
+              3.95034423828125,
+              3.964225158691406
+            ],
+            "frame_ms": [
+              4.053404846191406,
+              4.046345520019531,
+              4.047986450195313
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_nv4": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9987469514445895,
+            "ml_mean_abs_diff_vs_first": 4.16724967956543,
+            "ml_mean_abs": 71.68693542480469
+          },
+          "model_ms": 4.470972900390625,
+          "frame_ms": 4.548887023925781,
+          "fps_gpu": 219.83399340108912,
+          "model_speedup_vs_first": 1.6198177480006806,
+          "frame_speedup_vs_first": 1.6412551817940852,
+          "rounds": {
+            "model_ms": [
+              4.440935668945312,
+              4.470972900390625,
+              4.476952819824219
+            ],
+            "frame_ms": [
+              4.548887023925781,
+              4.542697448730468,
+              4.553049011230469
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9959626889130537,
+            "ml_mean_abs_diff_vs_first": 17.706815719604492,
+            "ml_mean_abs": 57.645877838134766
+          },
+          "model_ms": 3.980715026855469,
+          "frame_ms": 4.085817565917969,
+          "fps_gpu": 244.74905789762738,
+          "model_speedup_vs_first": 1.8193116578364301,
+          "frame_speedup_vs_first": 1.8272681731291855,
+          "rounds": {
+            "model_ms": [
+              3.980715026855469,
+              3.97873779296875,
+              3.9808697509765625
+            ],
+            "frame_ms": [
+              4.08716796875,
+              4.085817565917969,
+              4.085810546875
+            ],
+            "fps_video": []
+          }
+        },
+        "r14_mx4": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9969969062068003,
+            "ml_mean_abs_diff_vs_first": 15.277719497680664,
+            "ml_mean_abs": 60.06680679321289
+          },
+          "model_ms": 4.13489990234375,
+          "frame_ms": 4.201607666015625,
+          "fps_gpu": 238.00413543806619,
+          "model_speedup_vs_first": 1.7514719644791887,
+          "frame_speedup_vs_first": 1.77691136176309,
+          "rounds": {
+            "model_ms": [
+              4.13489990234375,
+              4.129114990234375,
+              4.141770935058593
+            ],
+            "frame_ms": [
+              4.201607666015625,
+              4.198318176269531,
+              4.211045227050781
+            ],
+            "fps_video": []
+          }
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "0 %, 15643 MiB, 2782 MHz, 13801 MHz, 456.26 W, 46"
+        },
+        "time": "2026-10-05 01:45:42"
+      }
+    },
+    "vitl16|r5_v1,r12+head16,r14_nv4a,r14_mx4a|final_L": {
+      "results": {
+        "r5_v1": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 75.40216064453125
+          },
+          "model_ms": 9.765349731445312,
+          "frame_ms": 9.930115356445313,
+          "fps_gpu": 100.7037646698568,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              9.554411010742188,
+              9.765349731445312,
+              9.849949340820313
+            ],
+            "frame_ms": [
+              9.868602294921875,
+              9.930115356445313,
+              9.999253540039062
+            ],
+            "fps_video": [
+              95.69887727962995,
+              94.6382632361797,
+              94.53407143297852
+            ]
+          },
+          "fps_video": 94.6382632361797
+        },
+        "r12+head16": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9999963143630465,
+            "ml_mean_abs_diff_vs_first": 0.10591231286525726,
+            "ml_mean_abs": 75.32843780517578
+          },
+          "model_ms": 7.08436279296875,
+          "frame_ms": 7.75540771484375,
+          "fps_gpu": 128.9422860497731,
+          "model_speedup_vs_first": 1.3784372733052928,
+          "frame_speedup_vs_first": 1.2804117747980162,
+          "rounds": {
+            "model_ms": [
+              7.043050537109375,
+              7.08436279296875,
+              7.113528442382813
+            ],
+            "frame_ms": [
+              7.680532836914063,
+              7.75540771484375,
+              7.807770385742187
+            ],
+            "fps_video": [
+              120.97400461950696,
+              120.41997747555735,
+              119.5887677890785
+            ]
+          },
+          "fps_video": 120.41997747555735
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9989970846476037,
+            "ml_mean_abs_diff_vs_first": 3.7240006923675537,
+            "ml_mean_abs": 72.36903381347656
+          },
+          "model_ms": 4.019455261230469,
+          "frame_ms": 4.100469665527344,
+          "fps_gpu": 243.8745025739373,
+          "model_speedup_vs_first": 2.429520692924907,
+          "frame_speedup_vs_first": 2.421701943054917,
+          "rounds": {
+            "model_ms": [
+              4.019455261230469,
+              4.004574584960937,
+              4.064703369140625
+            ],
+            "frame_ms": [
+              4.100469665527344,
+              4.087628784179688,
+              4.1196902465820315
+            ],
+            "fps_video": [
+              208.57678804665073,
+              207.54557931498016,
+              207.1211144133125
+            ]
+          },
+          "fps_video": 207.54557931498016
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9959517361226351,
+            "ml_mean_abs_diff_vs_first": 17.780664443969727,
+            "ml_mean_abs": 57.645877838134766
+          },
+          "model_ms": 4.037944946289063,
+          "frame_ms": 4.117576293945312,
+          "fps_gpu": 242.86131661250562,
+          "model_speedup_vs_first": 2.4183959566907487,
+          "frame_speedup_vs_first": 2.411640889580369,
+          "rounds": {
+            "model_ms": [
+              4.034869079589844,
+              4.037944946289063,
+              4.053338928222656
+            ],
+            "frame_ms": [
+              4.115398254394531,
+              4.117576293945312,
+              4.128877563476562
+            ],
+            "fps_video": [
+              207.98403008805593,
+              207.5593861925371,
+              206.98101481016198
+            ]
+          },
+          "fps_video": 207.5593861925371
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "21 %, 14515 MiB, 2752 MHz, 13801 MHz, 480.45 W, 56"
+        },
+        "time": "2026-10-05 10:37:57"
+      }
+    },
+    "vitb16|r5_v1,r12,r14_nv4a,r14_mx4a|final_B": {
+      "results": {
+        "r5_v1": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 31.77770233154297
+          },
+          "model_ms": 3.618970947265625,
+          "frame_ms": 3.7800582885742187,
+          "fps_gpu": 264.54618517990764,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              3.5689068603515626,
+              3.6250091552734376,
+              3.618970947265625
+            ],
+            "frame_ms": [
+              3.746441650390625,
+              3.780462646484375,
+              3.7800582885742187
+            ],
+            "fps_video": [
+              216.80827699704201,
+              215.4287812423061,
+              214.75566135888474
+            ]
+          },
+          "fps_video": 215.4287812423061
+        },
+        "r12": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9999920497925837,
+            "ml_mean_abs_diff_vs_first": 0.0861494243144989,
+            "ml_mean_abs": 31.845434188842773
+          },
+          "model_ms": 2.7012762451171874,
+          "frame_ms": 2.8363885498046875,
+          "fps_gpu": 352.56100581454524,
+          "model_speedup_vs_first": 1.3397263437263247,
+          "frame_speedup_vs_first": 1.332701152257335,
+          "rounds": {
+            "model_ms": [
+              2.7012762451171874,
+              2.693916015625,
+              2.7235467529296873
+            ],
+            "frame_ms": [
+              2.8334405517578123,
+              2.8363885498046875,
+              2.847925720214844
+            ],
+            "fps_video": [
+              238.59874306682718,
+              242.14554444798426,
+              241.67264986238166
+            ]
+          },
+          "fps_video": 241.67264986238166
+        },
+        "r14_nv4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9972026123049764,
+            "ml_mean_abs_diff_vs_first": 3.060222625732422,
+            "ml_mean_abs": 28.825693130493164
+          },
+          "model_ms": 1.7390534973144531,
+          "frame_ms": 1.8067538452148437,
+          "fps_gpu": 553.4788275937437,
+          "model_speedup_vs_first": 2.081000356144448,
+          "frame_speedup_vs_first": 2.0921822297960717,
+          "rounds": {
+            "model_ms": [
+              1.7390534973144531,
+              1.7343046569824219,
+              1.7566610717773437
+            ],
+            "frame_ms": [
+              1.8045433044433594,
+              1.8067538452148437,
+              1.8248281860351563
+            ],
+            "fps_video": [
+              240.8677194340144,
+              243.89774004012637,
+              247.83148946070534
+            ]
+          },
+          "fps_video": 243.89774004012637
+        },
+        "r14_mx4a": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9882810332915208,
+            "ml_mean_abs_diff_vs_first": 9.418143272399902,
+            "ml_mean_abs": 22.435853958129883
+          },
+          "model_ms": 1.7506291198730468,
+          "frame_ms": 1.8233670043945311,
+          "fps_gpu": 548.4359416342849,
+          "model_speedup_vs_first": 2.067240231630597,
+          "frame_speedup_vs_first": 2.073119826926685,
+          "rounds": {
+            "model_ms": [
+              1.7505030822753906,
+              1.7506291198730468,
+              1.7511109924316406
+            ],
+            "frame_ms": [
+              1.8248582458496094,
+              1.8222291564941406,
+              1.8233670043945311
+            ],
+            "fps_video": [
+              239.8100489335325,
+              236.8442191271275,
+              246.29286582768404
+            ]
+          },
+          "fps_video": 239.8100489335325
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "19 %, 8791 MiB, 2872 MHz, 13801 MHz, 298.95 W, 51"
+        },
+        "time": "2026-10-05 10:38:51"
+      }
+    }
+  }
+}

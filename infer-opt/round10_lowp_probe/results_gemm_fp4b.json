@@ -1,0 +1,390 @@
+{
+ "vitl16|qkv|2058": {
+  "quack_nv4": {
+   "us": 15.610551222776754,
+   "tflops": 829.4272420763938,
+   "rounds_us": [
+    15.64870583705413,
+    15.610551222776754,
+    15.604025278335962
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 13.986861568757858,
+   "tflops": 925.7127758325178,
+   "rounds_us": [
+    14.004092106873962,
+    13.986861568757858,
+    13.981816412388593
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 22:26:19"
+ },
+ "vitl16|qkv|2258": {
+  "quack_nv4": {
+   "us": 16.563064012772,
+   "tflops": 857.698046511532,
+   "rounds_us": [
+    16.563064012772,
+    16.548358477078953,
+    16.573756169050167
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 14.282023622876121,
+   "tflops": 994.6845085205906,
+   "rounds_us": [
+    14.244833162852697,
+    14.282023622876121,
+    14.437512272880191
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitl16|proj|2058": {
+  "quack_nv4": {
+   "us": 12.946041921774546,
+   "tflops": 333.37902364898287,
+   "rounds_us": [
+    12.946041921774546,
+    12.945041060447693,
+    12.958135455846786
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 11.60952363695417,
+   "tflops": 371.75847614125826,
+   "rounds_us": [
+    11.60952363695417,
+    11.608742532275972,
+    11.611094928923107
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitl16|proj|2258": {
+  "quack_nv4": {
+   "us": 13.19489299610097,
+   "tflops": 358.8789403142019,
+   "rounds_us": [
+    13.187214892397645,
+    13.19489299610097,
+    13.200011304629747
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 11.970147198321772,
+   "tflops": 395.5982443276808,
+   "rounds_us": [
+    11.964097911236333,
+    11.970147198321772,
+    11.97365686005237
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitl16|fc1|2058": {
+  "quack_nv4": {
+   "us": 23.784155939139573,
+   "tflops": 725.8510795243525,
+   "rounds_us": [
+    23.534038487602682,
+    23.784155939139573,
+    24.037412568634632
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 22.366093264685738,
+   "tflops": 771.8717372630329,
+   "rounds_us": [
+    21.660074039741797,
+    22.366093264685738,
+    22.421536622224032
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitl16|fc1|2258": {
+  "quack_nv4": {
+   "us": 24.899855256080627,
+   "tflops": 760.706304080801,
+   "rounds_us": [
+    24.405228594938915,
+    24.993792176246643,
+    24.899855256080627
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 23.346499160484033,
+   "tflops": 811.3197929075418,
+   "rounds_us": [
+    22.745814588334824,
+    23.397628907804137,
+    23.346499160484033
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitl16|fc2|2058": {
+  "quack_nv4": {
+   "us": 29.855948228102463,
+   "tflops": 578.2350348447541,
+   "rounds_us": [
+    29.855948228102463,
+    29.877436466706104,
+    29.835025469462078
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 28.020214466821578,
+   "tflops": 616.117884623682,
+   "rounds_us": [
+    28.020214466821578,
+    28.02057209469023,
+    28.011285123370943
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitl16|fc2|2258": {
+  "quack_nv4": {
+   "us": 30.402999657850998,
+   "tflops": 623.0134222663363,
+   "rounds_us": [
+    30.337229753151917,
+    30.405588639088165,
+    30.402999657850998
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 28.40100015912737,
+   "tflops": 666.9299235193549,
+   "rounds_us": [
+    28.315737133934384,
+    28.407715615772066,
+    28.40100015912737
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|qkv|2058": {
+  "quack_nv4": {
+   "us": 11.06454982413902,
+   "tflops": 658.2415794369414,
+   "rounds_us": [
+    11.065738695161837,
+    11.062224706013998,
+    11.06454982413902
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 8.612333072556389,
+   "tflops": 845.664779873423,
+   "rounds_us": [
+    8.619159460067749,
+    8.610326382848951,
+    8.612333072556389
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|qkv|2258": {
+  "quack_nv4": {
+   "us": 11.185089747111002,
+   "tflops": 714.4274862938832,
+   "rounds_us": [
+    11.201017611735576,
+    11.185089747111002,
+    11.181234239457964
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 8.812202923539756,
+   "tflops": 906.8033976673494,
+   "rounds_us": [
+    8.820384308911752,
+    8.812202923539756,
+    8.80760127219601
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|proj|2058": {
+  "quack_nv4": {
+   "us": 10.532076542194073,
+   "tflops": 230.5068306590802,
+   "rounds_us": [
+    10.533392938793215,
+    10.520692564483381,
+    10.532076542194073
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 9.55930975980537,
+   "tflops": 253.96348115090575,
+   "rounds_us": [
+    9.560720865116563,
+    9.554782579111498,
+    9.55930975980537
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|proj|2258": {
+  "quack_nv4": {
+   "us": 10.778192888226425,
+   "tflops": 247.13281823984028,
+   "rounds_us": [
+    10.779745746077152,
+    10.778192888226425,
+    10.774421064477218
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 9.676658917987158,
+   "tflops": 275.2649655811228,
+   "rounds_us": [
+    9.685063172900488,
+    9.675745926206075,
+    9.676658917987158
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|fc1|2058": {
+  "quack_nv4": {
+   "us": 17.575841019119043,
+   "tflops": 552.5119580585931,
+   "rounds_us": [
+    17.57047832876012,
+    17.582115919693656,
+    17.575841019119043
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 15.051743923089443,
+   "tflops": 645.1652636146363,
+   "rounds_us": [
+    15.063409621898945,
+    15.051743923089443,
+    15.03307697100517
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|fc1|2258": {
+  "quack_nv4": {
+   "us": 17.82198566378969,
+   "tflops": 597.8335375753184,
+   "rounds_us": [
+    17.82198566378969,
+    17.817954222361248,
+    17.833241910645455
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 15.325448451898037,
+   "tflops": 695.2214657496985,
+   "rounds_us": [
+    15.328922332861485,
+    15.325448451898037,
+    15.296462254646498
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|fc2|2058": {
+  "quack_nv4": {
+   "us": 23.33664660360299,
+   "tflops": 416.12072638151545,
+   "rounds_us": [
+    23.334430713279573,
+    23.33664660360299,
+    23.353922600839653
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 22.083185337207937,
+   "tflops": 439.74010939618296,
+   "rounds_us": [
+    22.065129544999863,
+    22.083185337207937,
+    22.091797104588263
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ },
+ "vitb16|fc2|2258": {
+  "quack_nv4": {
+   "us": 22.89745153165331,
+   "tflops": 465.3173180111842,
+   "rounds_us": [
+    22.889039095710306,
+    22.89745153165331,
+    22.902491045933143
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK nv4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  },
+  "quack_mx4": {
+   "us": 22.155000103844536,
+   "tflops": 480.9108863037704,
+   "rounds_us": [
+    22.161519085919416,
+    22.155000103844536,
+    22.153223002398455
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK mx4 WITH epilogue (qkv: bias only; fc1: bias+GELU+z; proj/fc2: bias+gamma+residual+y), NO quantization"
+  }
+ }
+}

@@ -1,0 +1,1478 @@
+{
+ "vitl16|qkv|2058": {
+  "epi_bf16": {
+   "error": "TypeError: epi_rope(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor, arg7: typing.SupportsInt, arg8: typing.SupportsInt, arg9: typin",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 70.09782510645249,
+   "tflops": 184.71067295364855,
+   "rounds_us": [
+    69.9921776266659,
+    70.13764802147361,
+    70.09782510645249
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 69.78893981260411,
+   "tflops": 185.52820092649668,
+   "rounds_us": [
+    69.67735290527344,
+    69.80629528270049,
+    69.78893981260411
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 45.37259207831489,
+   "tflops": 285.3664702614203,
+   "rounds_us": [
+    45.207186981483744,
+    45.37259207831489,
+    45.46007403620967
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 26.365194631659467,
+   "tflops": 491.09504514911464,
+   "rounds_us": [
+    26.296607826067053,
+    26.506413584170133,
+    26.365194631659467
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 49.10158117612203,
+   "tflops": 263.6944908465899,
+   "rounds_us": [
+    49.41566785176595,
+    49.040247996648155,
+    49.10158117612203
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 44.72621423857553,
+   "tflops": 289.49055198221424,
+   "rounds_us": [
+    44.71617937088013,
+    44.72621423857553,
+    44.75114175251552
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 30.119773745536804,
+   "tflops": 429.8776132048013,
+   "rounds_us": [
+    30.056700110435486,
+    30.119773745536804,
+    30.14880120754242
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 16.409480571746826,
+   "tflops": 789.0448689943923,
+   "rounds_us": [
+    16.396600008010864,
+    16.409480571746826,
+    16.424360275268555
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 21:19:21"
+ },
+ "vitl16|qkv|2258": {
+  "epi_bf16": {
+   "error": "TypeError: epi_rope(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor, arg7: typing.SupportsInt, arg8: typing.SupportsInt, arg9: typin",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 75.48662275075912,
+   "tflops": 188.19371075727636,
+   "rounds_us": [
+    75.42506605386734,
+    75.49168914556503,
+    75.48662275075912
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 79.35199737548828,
+   "tflops": 179.02646584657043,
+   "rounds_us": [
+    79.35093243916829,
+    79.38740253448486,
+    79.35199737548828
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 47.09588564359225,
+   "tflops": 301.6422231765133,
+   "rounds_us": [
+    47.09588564359225,
+    47.124385833740234,
+    47.051846981048584
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 26.957413424616274,
+   "tflops": 526.9833356870818,
+   "rounds_us": [
+    26.884957500126053,
+    26.957413424616274,
+    27.09419571835062
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 54.809364405545324,
+   "tflops": 259.19124956250545,
+   "rounds_us": [
+    54.59109219637784,
+    54.92040785876188,
+    54.809364405545324
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 32.265763533742806,
+   "tflops": 440.2842546448211,
+   "rounds_us": [
+    32.33410496460764,
+    32.250078100907174,
+    32.265763533742806
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 31.512737274169922,
+   "tflops": 450.8052577090577,
+   "rounds_us": [
+    31.54494887904117,
+    31.512737274169922,
+    31.512709040390817
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 18.43783974647522,
+   "tflops": 770.4865560899451,
+   "rounds_us": [
+    18.43835949897766,
+    18.43783974647522,
+    18.430919647216797
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|proj|2058": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[-1.3984,  0.8125,  0.2715,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 29.219976493290492,
+   "tflops": 147.70507488228228,
+   "rounds_us": [
+    29.234094279153005,
+    29.219976493290492,
+    29.199739297231037
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 26.921955744425457,
+   "tflops": 160.31297491801544,
+   "rounds_us": [
+    26.94682280222575,
+    26.921955744425457,
+    26.91928810543484
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 15.952626864115397,
+   "tflops": 270.5472178822461,
+   "rounds_us": [
+    15.952626864115397,
+    15.947880744934082,
+    15.975693066914877
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 10.53696616083129,
+   "tflops": 409.5997605120433,
+   "rounds_us": [
+    10.594855006943401,
+    10.50864121852777,
+    10.53696616083129
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 14.393619128635951,
+   "tflops": 299.85084205913756,
+   "rounds_us": [
+    14.393619128635951,
+    14.38257098197937,
+    14.402071634928385
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 11.167738888714764,
+   "tflops": 386.46487520955094,
+   "rounds_us": [
+    11.167738888714764,
+    11.142134666442871,
+    11.16878384942407
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 6.3840800523757935,
+   "tflops": 676.0471016327327,
+   "rounds_us": [
+    6.393439769744873,
+    6.376399993896484,
+    6.3840800523757935
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|proj|2258": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[-0.8906, -1.4297,  2.4844,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 29.491785026731947,
+   "tflops": 160.56570369368168,
+   "rounds_us": [
+    29.491785026731947,
+    29.471022742135183,
+    29.4960964293707
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 27.058066262139214,
+   "tflops": 175.00767313242662,
+   "rounds_us": [
+    27.070000436570908,
+    27.058066262139214,
+    27.05553372701009
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 16.358307202657063,
+   "tflops": 289.47794886935725,
+   "rounds_us": [
+    16.358307202657063,
+    16.37883981068929,
+    16.34002685546875
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 10.768578763593707,
+   "tflops": 439.7394790860688,
+   "rounds_us": [
+    10.683955853445488,
+    10.769578448513098,
+    10.768578763593707
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 15.1886792830479,
+   "tflops": 311.76964947078386,
+   "rounds_us": [
+    15.1886792830479,
+    15.166284125528218,
+    15.189900810335889
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 11.321528090371025,
+   "tflops": 418.2623739658817,
+   "rounds_us": [
+    11.321620808707344,
+    11.321528090371025,
+    11.309731889654088
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 8.195520043373108,
+   "tflops": 577.7997236220557,
+   "rounds_us": [
+    8.194680213928223,
+    8.195520043373108,
+    8.198400139808655
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc1|2058": {
+  "epi_bf16": {
+   "error": "TypeError: epi_gelu(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor) -> None\n\nInvoked with: tensor([[ 2.6094e+00, -1.6895e-01,  4.1504e-03,  ..., -5.4688e-01,\n          2.1",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 85.7698959216737,
+   "tflops": 201.27989055467097,
+   "rounds_us": [
+    85.30779052198979,
+    85.7698959216737,
+    85.79852288229424
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 102.50583291053772,
+   "tflops": 168.4172965948874,
+   "rounds_us": [
+    102.27741797765096,
+    102.50583291053772,
+    102.8338372707367
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 63.80609976939666,
+   "tflops": 270.5659071216295,
+   "rounds_us": [
+    63.80609976939666,
+    63.61041313562638,
+    63.83815178504357
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 34.426834848192,
+   "tflops": 501.462168686897,
+   "rounds_us": [
+    34.295055601331924,
+    34.426834848192,
+    34.548862112893
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 39.91369767622514,
+   "tflops": 432.52708391092693,
+   "rounds_us": [
+    39.23727165568959,
+    39.91369767622514,
+    40.028210842248164
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 50.80908536911011,
+   "tflops": 339.7769343530768,
+   "rounds_us": [
+    50.72095990180969,
+    50.80908536911011,
+    50.871377189954124
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 37.53315318714488,
+   "tflops": 459.9601631635053,
+   "rounds_us": [
+    37.53315318714488,
+    37.49924356287176,
+    37.67784797784054
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 20.4994797706604,
+   "tflops": 842.1557745435332,
+   "rounds_us": [
+    20.495519638061523,
+    20.4994797706604,
+    20.4996395111084
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc1|2258": {
+  "epi_bf16": {
+   "error": "TypeError: epi_gelu(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor) -> None\n\nInvoked with: tensor([[-1.3125, -0.7188,  1.2656,  ...,  0.0084, -0.7227, -0.0977],\n        [-",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 93.7975715188419,
+   "tflops": 201.93994958808784,
+   "rounds_us": [
+    92.56203969319661,
+    93.7975715188419,
+    93.91607957727769
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 103.20774714152019,
+   "tflops": 183.52766520547272,
+   "rounds_us": [
+    102.6187539100647,
+    103.22033365567525,
+    103.20774714152019
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 65.3709348042806,
+   "tflops": 289.75380145182936,
+   "rounds_us": [
+    64.72538630167644,
+    65.3709348042806,
+    65.6810696919759
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 35.916056897905136,
+   "tflops": 527.3818592570722,
+   "rounds_us": [
+    35.208056370417275,
+    35.916056897905136,
+    35.92205709881253
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 42.111650345817445,
+   "tflops": 449.7918440254451,
+   "rounds_us": [
+    41.799079804193404,
+    42.193556588793555,
+    42.111650345817445
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 53.535731633504234,
+   "tflops": 353.80999355103364,
+   "rounds_us": [
+    53.5316891140408,
+    53.54128943549262,
+    53.535731633504234
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 40.17256498336792,
+   "tflops": 471.50279977995115,
+   "rounds_us": [
+    40.10936816533407,
+    40.17256498336792,
+    40.197765827178955
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 22.54431962966919,
+   "tflops": 840.1884454775159,
+   "rounds_us": [
+    22.536680698394775,
+    22.54431962966919,
+    22.547318935394287
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc2|2058": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[ 2.2188,  0.1768, -1.3750,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 93.76792554502134,
+   "tflops": 184.11151962310453,
+   "rounds_us": [
+    92.2711072144685,
+    93.76792554502134,
+    93.87592916135435
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 105.9618631998698,
+   "tflops": 162.92423276321944,
+   "rounds_us": [
+    104.9931526184082,
+    106.08470704820421,
+    105.9618631998698
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 54.41688961452908,
+   "tflops": 317.24994549101626,
+   "rounds_us": [
+    53.89249059889052,
+    54.41688961452908,
+    54.57355711195204
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 32.03010253417186,
+   "tflops": 538.9853262437068,
+   "rounds_us": [
+    31.593744571392353,
+    32.03010253417186,
+    32.12453768803523
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 53.93420656522115,
+   "tflops": 320.0891672175323,
+   "rounds_us": [
+    53.607543309529625,
+    53.953126072883606,
+    53.93420656522115
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 31.169455728413148,
+   "tflops": 553.8677163445903,
+   "rounds_us": [
+    31.092025615550853,
+    31.18970364700129,
+    31.169455728413148
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 6.424360275268555,
+   "tflops": 2687.233362434415,
+   "rounds_us": [
+    6.486080288887024,
+    6.424360275268555,
+    6.412479877471924
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc2|2258": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[-0.4316,  0.7656,  2.0938,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 99.66683387756348,
+   "tflops": 190.04794400581454,
+   "rounds_us": [
+    98.79633784294128,
+    99.70574577649434,
+    99.66683387756348
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 105.92604743109808,
+   "tflops": 178.81793310867093,
+   "rounds_us": [
+    105.50951427883572,
+    106.03173573811848,
+    105.92604743109808
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 55.143467585245766,
+   "tflops": 343.49448254625173,
+   "rounds_us": [
+    55.01889122856988,
+    55.143467585245766,
+    55.25093078613281
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 33.45730781555176,
+   "tflops": 566.1387033416821,
+   "rounds_us": [
+    32.921199798583984,
+    33.45730781555176,
+    33.592799504597984
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 57.032622231377495,
+   "tflops": 332.1165347641865,
+   "rounds_us": [
+    56.2899112701416,
+    57.032622231377495,
+    57.071023517184784
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 32.110470312613025,
+   "tflops": 589.8847534649709,
+   "rounds_us": [
+    32.08775284849567,
+    32.11602458247432,
+    32.110470312613025
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 8.190839886665344,
+   "tflops": 2312.5194883661015,
+   "rounds_us": [
+    8.193960189819336,
+    8.190839886665344,
+    8.189520239830017
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|qkv|2058": {
+  "epi_bf16": {
+   "error": "TypeError: epi_rope(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor, arg7: typing.SupportsInt, arg8: typing.SupportsInt, arg9: typin",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 43.1177532463743,
+   "tflops": 168.91294660888732,
+   "rounds_us": [
+    43.1177532463743,
+    43.10491210535953,
+    43.14178751226057
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 41.74098215605083,
+   "tflops": 174.4843167506595,
+   "rounds_us": [
+    41.62164738303736,
+    41.74098215605083,
+    41.779790008277224
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 26.790088648416415,
+   "tflops": 271.8597481173514,
+   "rounds_us": [
+    26.643454465467116,
+    26.790088648416415,
+    26.856830406446367
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 16.139225959777832,
+   "tflops": 451.26989176253267,
+   "rounds_us": [
+    16.035173734029133,
+    16.139225959777832,
+    16.154106458028156
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 22.28568520462304,
+   "tflops": 326.80829353585017,
+   "rounds_us": [
+    22.107632536637155,
+    22.28568520462304,
+    22.299526030557196
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 19.562286043923997,
+   "tflops": 372.30550333671914,
+   "rounds_us": [
+    19.527064429389107,
+    19.562286043923997,
+    19.566475398956783
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 18.942174457368395,
+   "tflops": 384.4937004667328,
+   "rounds_us": [
+    18.942174457368395,
+    18.94574695163303,
+    18.933570574200342
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 12.562799453735352,
+   "tflops": 579.7391559756587,
+   "rounds_us": [
+    12.562799453735352,
+    12.564079761505127,
+    12.556320428848267
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|qkv|2258": {
+  "epi_bf16": {
+   "error": "TypeError: epi_rope(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor, arg7: typing.SupportsInt, arg8: typing.SupportsInt, arg9: typin",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 43.45463033308063,
+   "tflops": 183.89146313636354,
+   "rounds_us": [
+    43.39452793723658,
+    43.45463033308063,
+    43.567122074595666
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 42.064913532190154,
+   "tflops": 189.96676519696018,
+   "rounds_us": [
+    42.064913532190154,
+    42.070840534410976,
+    42.05694533230965
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 28.325120357044955,
+   "tflops": 282.1147960281311,
+   "rounds_us": [
+    27.22892359683388,
+    28.325120357044955,
+    28.450087162486295
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 16.821707089742024,
+   "tflops": 475.03713561110095,
+   "rounds_us": [
+    16.622759501139324,
+    16.863759358723957,
+    16.821707089742024
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 23.476907500514276,
+   "tflops": 340.37428276381604,
+   "rounds_us": [
+    23.21601797033239,
+    23.476907500514276,
+    23.63388847421717
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 20.075867573420208,
+   "tflops": 398.0368730156269,
+   "rounds_us": [
+    20.0211505095164,
+    20.075867573420208,
+    20.12204925219218
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 19.524016077556308,
+   "tflops": 409.28749086546406,
+   "rounds_us": [
+    19.53114214397612,
+    19.515682780553423,
+    19.524016077556308
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 14.346840381622314,
+   "tflops": 556.9822580751679,
+   "rounds_us": [
+    14.351160526275635,
+    14.344600439071655,
+    14.346840381622314
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|proj|2058": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[ 0.2207,  0.1240,  0.5703,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 17.777232156283613,
+   "tflops": 136.56319288950107,
+   "rounds_us": [
+    17.9081740586654,
+    17.769927563874617,
+    17.777232156283613
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 20.66858410835266,
+   "tflops": 117.45921110381735,
+   "rounds_us": [
+    20.665132999420166,
+    20.66858410835266,
+    20.720632870992024
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 12.174555749604195,
+   "tflops": 199.4089668593392,
+   "rounds_us": [
+    12.16319233480126,
+    12.174555749604195,
+    12.174595486034047
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 7.946858803431193,
+   "tflops": 305.49373583330714,
+   "rounds_us": [
+    7.924538392287034,
+    7.9514040396763725,
+    7.946858803431193
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 16.05429557653574,
+   "tflops": 151.21906610142668,
+   "rounds_us": [
+    16.057231487371983,
+    16.03402541233943,
+    16.05429557653574
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 8.742063603502638,
+   "tflops": 277.70509276863413,
+   "rounds_us": [
+    8.737291004640836,
+    8.742063603502638,
+    8.742071212606227
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 6.161680221557617,
+   "tflops": 394.00220340975363,
+   "rounds_us": [
+    6.166639924049377,
+    6.1554402112960815,
+    6.161680221557617
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|proj|2258": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[ 0.2559,  0.7734, -1.1641,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 18.106379292228006,
+   "tflops": 147.11086855135883,
+   "rounds_us": [
+    18.14387964479851,
+    18.106379292228006,
+    18.080015977223713
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 20.813016096750896,
+   "tflops": 127.97977821272237,
+   "rounds_us": [
+    20.78084945678711,
+    20.813016096750896,
+    20.827166239420574
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 12.29722210855195,
+   "tflops": 216.6054382434551,
+   "rounds_us": [
+    12.28775761344216,
+    12.298747746631353,
+    12.29722210855195
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 8.000764971465067,
+   "tflops": 332.92381334784346,
+   "rounds_us": [
+    7.999477043650509,
+    8.003235642426933,
+    8.000764971465067
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 17.420957053917043,
+   "tflops": 152.89890077543637,
+   "rounds_us": [
+    17.408507457677867,
+    17.497826313626938,
+    17.420957053917043
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 8.95563070324884,
+   "tflops": 297.42686721480237,
+   "rounds_us": [
+    8.946080138717873,
+    8.958630803702533,
+    8.95563070324884
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 6.377279758453369,
+   "tflops": 417.6773302863528,
+   "rounds_us": [
+    6.348279714584351,
+    6.381360292434692,
+    6.377279758453369
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc1|2058": {
+  "epi_bf16": {
+   "error": "TypeError: epi_gelu(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor) -> None\n\nInvoked with: tensor([[ 1.2734, -0.6641,  0.7305,  ..., -0.2676,  0.1260, -0.3848],\n        [ ",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 52.38763415210061,
+   "tflops": 185.3655446208124,
+   "rounds_us": [
+    52.3313791089769,
+    52.39271171768126,
+    52.38763415210061
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.69818020606226,
+   "tflops": 157.39301067822814,
+   "rounds_us": [
+    61.6726838341055,
+    61.72462877377059,
+    61.69818020606226
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 35.98919535792151,
+   "tflops": 269.82715894098374,
+   "rounds_us": [
+    35.971899697946945,
+    35.98919535792151,
+    35.99544436432595
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 21.28937342106174,
+   "tflops": 456.13659659860963,
+   "rounds_us": [
+    21.328584960396768,
+    21.25923393308654,
+    21.28937342106174
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 45.330606504928234,
+   "tflops": 214.22308424098097,
+   "rounds_us": [
+    45.330606504928234,
+    45.30425847962845,
+    45.38187869759493
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 40.82966455697509,
+   "tflops": 237.8384060062295,
+   "rounds_us": [
+    40.841503828826966,
+    40.82966455697509,
+    40.7974291553457
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 25.917987327732238,
+   "tflops": 374.6765600741452,
+   "rounds_us": [
+    25.942127942712787,
+    25.917987327732238,
+    25.90671283601899
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 16.397039890289307,
+   "tflops": 592.2326469273878,
+   "rounds_us": [
+    16.393680572509766,
+    16.397039890289307,
+    16.40380024909973
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc1|2258": {
+  "epi_bf16": {
+   "error": "TypeError: epi_gelu(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor) -> None\n\nInvoked with: tensor([[ 0.8516,  1.4062,  0.4785,  ...,  0.1162, -0.4043,  0.0728],\n        [-",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 54.4855372850285,
+   "tflops": 195.54878719949153,
+   "rounds_us": [
+    54.4855372850285,
+    54.62455749511719,
+    54.46264910143475
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.97487291439559,
+   "tflops": 171.91775045213757,
+   "rounds_us": [
+    61.96827260098716,
+    62.02046593954397,
+    61.97487291439559
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 37.299109170603195,
+   "tflops": 285.65241832631403,
+   "rounds_us": [
+    37.25660102311955,
+    37.30592594590298,
+    37.299109170603195
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 21.89558288979768,
+   "tflops": 486.60868219975714,
+   "rounds_us": [
+    21.817816716359964,
+    21.89558288979768,
+    21.939861682034277
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 52.07078955894293,
+   "tflops": 204.61723024075258,
+   "rounds_us": [
+    52.089813143707985,
+    51.969672358313275,
+    52.07078955894293
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v2": {
+   "us": 27.768697849539823,
+   "tflops": 383.69032619858933,
+   "rounds_us": [
+    27.819580810014592,
+    27.768697849539823,
+    27.76083835335665
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 26.992022909641918,
+   "tflops": 394.73072365369245,
+   "rounds_us": [
+    26.992022909641918,
+    26.994013753700518,
+    26.976811086756424
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 18.435200452804565,
+   "tflops": 577.9476476687352,
+   "rounds_us": [
+    18.437800407409668,
+    18.435200452804565,
+    18.047480583190918
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc2|2058": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[-0.3906, -1.0391, -0.0415,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 56.557256121968116,
+   "tflops": 171.69967218809407,
+   "rounds_us": [
+    56.4465134642845,
+    56.560510812803756,
+    56.557256121968116
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.006637691527374,
+   "tflops": 159.17714372494666,
+   "rounds_us": [
+    60.99229561266049,
+    61.03819026503452,
+    61.006637691527374
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 39.76257216219232,
+   "tflops": 244.22118107423233,
+   "rounds_us": [
+    39.76257216219232,
+    39.84330180199973,
+    39.75001721820889
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 22.402696831281794,
+   "tflops": 433.46845288913295,
+   "rounds_us": [
+    22.398660349291426,
+    22.461656082508174,
+    22.402696831281794
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 35.377058871956756,
+   "tflops": 274.49603346471974,
+   "rounds_us": [
+    35.34958145059712,
+    35.39832632102352,
+    35.377058871956756
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 22.528967746468478,
+   "tflops": 431.0389381920183,
+   "rounds_us": [
+    22.528446552365324,
+    22.585210134816723,
+    22.528967746468478
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 6.150959730148315,
+   "tflops": 1578.755635222773,
+   "rounds_us": [
+    6.150959730148315,
+    6.174439787864685,
+    6.149359941482544
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc2|2258": {
+  "spark_mx8_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v2 (TMA, warp-specialised; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "epi_bf16": {
+   "error": "TypeError: epi_res(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: torch.Tensor) -> None\n\nInvoked with: tensor([[ 0.7227,  0.6016,  0.4980,  ...,",
+   "foreign_gpu_procs": [],
+   "note": "stand-alone epilogue pass over a bf16 GEMM output (qkv: bias+RoPE+layout, fc1: bias+GELU, proj/fc2: bias+gamma+fp32 residual)"
+  },
+  "r5_v1": {
+   "us": 58.309108527131784,
+   "tflops": 182.72583829749897,
+   "rounds_us": [
+    58.17064388777859,
+    58.309108527131784,
+    58.432545033536215
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.318153558775435,
+   "tflops": 173.7589949734419,
+   "rounds_us": [
+    61.324055989583336,
+    61.318100330441496,
+    61.318153558775435
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 39.90296382151913,
+   "tflops": 267.01226464421495,
+   "rounds_us": [
+    39.9574534355449,
+    39.90296382151913,
+    39.81146122977756
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "cublaslt_mx8": {
+   "us": 22.620354142299917,
+   "tflops": 471.0174150667254,
+   "rounds_us": [
+    22.620354142299917,
+    22.58600855982581,
+    22.66000037969545
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx8_v1": {
+   "us": 37.82161076863607,
+   "tflops": 281.7061600357701,
+   "rounds_us": [
+    37.808621576590134,
+    37.82161076863607,
+    37.823998650839165
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp8gemm_mx v1 (cp.async), bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 22.75893854540448,
+   "tflops": 468.14928186320844,
+   "rounds_us": [
+    22.71174053813136,
+    22.75893854540448,
+    22.787515507187955
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 6.153280138969421,
+   "tflops": 1731.5286311317652,
+   "rounds_us": [
+    6.151080131530762,
+    6.153280138969421,
+    6.164439916610718
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ }
+}

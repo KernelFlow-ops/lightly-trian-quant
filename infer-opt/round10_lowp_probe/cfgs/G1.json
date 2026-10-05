@@ -1,0 +1,1879 @@
+[
+{
+"name": "G1|int8|qkv|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|qkv|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|proj|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc1|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|fc2|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|mlp|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|attn|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|int8|all4|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "int8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|qkv|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|proj|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc1|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|fc2|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|mlp|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|attn|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|nofirst|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|nofirst|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|nofirst_nojoint|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|mx8|all4|nofirst_nojoint|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "nofirst_nojoint",
+"spec": {
+"fmt": "mx8",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G1|p0",
+"entries": [],
+"mode": "full"
+}
+]

@@ -1,0 +1,85 @@
+{
+  "speed": {
+    "vitl16|r5_v1,r12+head16|base": {
+      "results": {
+        "r5_v1": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 1.0,
+            "ml_mean_abs_diff_vs_first": 0.0,
+            "ml_mean_abs": 75.40216064453125
+          },
+          "model_ms": 9.675570068359375,
+          "frame_ms": 9.845748901367188,
+          "fps_gpu": 101.5666771535418,
+          "model_speedup_vs_first": 1.0,
+          "frame_speedup_vs_first": 1.0,
+          "rounds": {
+            "model_ms": [
+              9.64589111328125,
+              9.689144897460938,
+              9.675570068359375
+            ],
+            "frame_ms": [
+              9.826998901367187,
+              9.850224609375,
+              9.845748901367188
+            ],
+            "fps_video": [
+              96.68005431444293,
+              96.49526100269551,
+              96.51336003994741
+            ]
+          },
+          "fps_video": 96.51336003994741
+        },
+        "r12+head16": {
+          "sanity": {
+            "finite": true,
+            "ml_cos_vs_first": 0.9999963143630465,
+            "ml_mean_abs_diff_vs_first": 0.10591231286525726,
+            "ml_mean_abs": 75.32843780517578
+          },
+          "model_ms": 7.352705078125,
+          "frame_ms": 7.497628173828125,
+          "fps_gpu": 133.37551247082206,
+          "model_speedup_vs_first": 1.3159197826586464,
+          "frame_speedup_vs_first": 1.313181805378882,
+          "rounds": {
+            "model_ms": [
+              7.286333618164062,
+              7.420863647460937,
+              7.352705078125
+            ],
+            "frame_ms": [
+              7.471713256835938,
+              7.497628173828125,
+              7.54724853515625
+            ],
+            "fps_video": [
+              125.73928810794948,
+              125.68215793744783,
+              124.56329199271609
+            ]
+          },
+          "fps_video": 125.68215793744783
+        }
+      },
+      "rounds": 3,
+      "reps": 50,
+      "loops": 3,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "0 %, 10555 MiB, 2700 MHz, 13801 MHz, 431.72 W, 49"
+        },
+        "time": "2026-10-05 00:37:45"
+      }
+    }
+  }
+}

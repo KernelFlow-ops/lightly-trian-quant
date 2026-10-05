@@ -1,0 +1,427 @@
+{
+  "bench11": {
+    "vitb16|r5_v1,r11,r12,r12+head16|paired1": {
+      "results": {
+        "r5_v1": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9942613636363636,
+            "min_frame_head_iou": 0.9875377643504532,
+            "max_conf_rel_diff": 0.0020801196804647536,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9930968768689623,
+            "min_frame_iou": 0.9803260258572232,
+            "conf_rel_max": 0.004333342320896288,
+            "conf_rel_p99": 0.0026237324749963597,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 1.4501377509510521e-05,
+            "score_max_abs": 0.19094577431678772
+          },
+          "service_ms_p50_inflight1": 4.110917448997498,
+          "service_ms_p90_inflight1": 4.1451118886470795,
+          "fps_rounds": [
+            226.86295429675405,
+            227.06373053789446
+          ],
+          "fps_median": 226.96334241732427,
+          "fps_vs_first_pct": 0.0,
+          "latency_ms_p50_inflight2": 12.559495866298676
+        },
+        "r11": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9934699903469423,
+            "min_frame_head_iou": 0.9890234670704012,
+            "max_conf_rel_diff": 0.00305342286294968,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9925055305064424,
+            "min_frame_iou": 0.9735152487961477,
+            "conf_rel_max": 0.0061798401240810595,
+            "conf_rel_p99": 0.004622947291785086,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 1.4650021306633357e-05,
+            "score_max_abs": 0.23805290460586548
+          },
+          "service_ms_p50_inflight1": 3.837086260318756,
+          "service_ms_p90_inflight1": 3.913678228855133,
+          "fps_rounds": [
+            243.59569970484839,
+            240.7560813491305
+          ],
+          "fps_median": 242.17589052698946,
+          "fps_vs_first_pct": 6.702645435003074,
+          "latency_ms_p50_inflight2": 11.636348441243172
+        },
+        "r12": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9967558338076267,
+            "min_frame_head_iou": 0.993583415597236,
+            "max_conf_rel_diff": 0.0017814075567350366,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.995404974673222,
+            "min_frame_iou": 0.9853836784409257,
+            "conf_rel_max": 0.0034423153922920596,
+            "conf_rel_p99": 0.0020821201570549314,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 1.0536466853799148e-05,
+            "score_max_abs": 0.14112019538879395
+          },
+          "service_ms_p50_inflight1": 3.063622862100601,
+          "service_ms_p90_inflight1": 3.0766278505325317,
+          "fps_rounds": [
+            272.3060665037512,
+            274.1865606193059
+          ],
+          "fps_median": 273.24631356152855,
+          "fps_vs_first_pct": 20.392267161409006,
+          "latency_ms_p50_inflight2": 6.223535165190697
+        },
+        "r12+head16": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9965854768950603,
+            "min_frame_head_iou": 0.9930898321816387,
+            "max_conf_rel_diff": 0.0016123247001275745,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9953473892932431,
+            "min_frame_iou": 0.9857839155158408,
+            "conf_rel_max": 0.0034043427983779066,
+            "conf_rel_p99": 0.0018086827157277022,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 1.0526370744397383e-05,
+            "score_max_abs": 0.14025551080703735
+          },
+          "service_ms_p50_inflight1": 3.0229799449443817,
+          "service_ms_p90_inflight1": 3.0892640352249146,
+          "fps_rounds": [
+            274.54716912675894,
+            269.09215557218835
+          ],
+          "fps_median": 271.8196623494737,
+          "fps_vs_first_pct": 19.763684943302763,
+          "latency_ms_p50_inflight2": 5.365293473005295
+        }
+      },
+      "loops": 3,
+      "rounds": 2,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "0 %, 8785 MiB, 2775 MHz, 13801 MHz, 389.87 W, 46"
+        },
+        "time": "2026-10-04 23:58:59"
+      }
+    },
+    "vitl16|r5_v1,r11+head+tail+post,r12+nopatch,r12,r12+head16|paired1": {
+      "results": {
+        "r5_v1": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.994585660549413,
+            "min_frame_head_iou": 0.9896567936060179,
+            "max_conf_rel_diff": 0.0013095751974230537,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9946898143559099,
+            "min_frame_iou": 0.9845634346357935,
+            "conf_rel_max": 0.010391855788490976,
+            "conf_rel_p99": 0.003719195885293319,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 6.369951887473502e-06,
+            "score_max_abs": 0.18964079022407532
+          },
+          "service_ms_p50_inflight1": 10.17327606678009,
+          "service_ms_p90_inflight1": 10.188017040491104,
+          "fps_rounds": [
+            96.51077471898536,
+            96.16749693553372
+          ],
+          "fps_median": 96.33913582725954,
+          "fps_vs_first_pct": 0.0,
+          "latency_ms_p50_inflight2": 36.618420854210854
+        },
+        "r11+head+tail+post": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.994585660549413,
+            "min_frame_head_iou": 0.9896567936060179,
+            "max_conf_rel_diff": 0.0013095986533745653,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.994693373265788,
+            "min_frame_iou": 0.9845634346357935,
+            "conf_rel_max": 0.010391843407290307,
+            "conf_rel_p99": 0.0037192706684550086,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 6.3688296052980205e-06,
+            "score_max_abs": 0.18964090943336487
+          },
+          "service_ms_p50_inflight1": 10.012991726398468,
+          "service_ms_p90_inflight1": 10.105680674314499,
+          "fps_rounds": [
+            98.73185405586293,
+            100.54831464577657
+          ],
+          "fps_median": 99.64008435081975,
+          "fps_vs_first_pct": 3.4263837797745555,
+          "latency_ms_p50_inflight2": 35.73334589600563
+        },
+        "r12+nopatch": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9958957988941458,
+            "min_frame_head_iou": 0.9718430034129693,
+            "max_conf_rel_diff": 0.03699976086650617,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9963738834538495,
+            "min_frame_iou": 0.9718430034129693,
+            "conf_rel_max": 0.03703783614612248,
+            "conf_rel_p99": 0.024320418180661288,
+            "frames_conf_gt3pct": 1,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 4.720091460007501e-06,
+            "score_max_abs": 0.09880924224853516
+          },
+          "service_ms_p50_inflight1": 7.994014769792557,
+          "service_ms_p90_inflight1": 8.043341338634491,
+          "fps_rounds": [
+            121.9183178694461,
+            122.56798816377275
+          ],
+          "fps_median": 122.24315301660943,
+          "fps_vs_first_pct": 26.888363661261174,
+          "latency_ms_p50_inflight2": 28.47280725836754
+        },
+        "r12": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9964638110990703,
+            "min_frame_head_iou": 0.9810508182601206,
+            "max_conf_rel_diff": 0.025172358932873447,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9964092402689703,
+            "min_frame_iou": 0.9792260692464358,
+            "conf_rel_max": 0.025209999948517133,
+            "conf_rel_p99": 0.022073438916260082,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 4.7359994787545895e-06,
+            "score_max_abs": 0.11401331424713135
+          },
+          "service_ms_p50_inflight1": 7.88184255361557,
+          "service_ms_p90_inflight1": 8.00497829914093,
+          "fps_rounds": [
+            122.60344146696396,
+            122.39033823208095
+          ],
+          "fps_median": 122.49688984952246,
+          "fps_vs_first_pct": 27.151742433277537,
+          "latency_ms_p50_inflight2": 27.92440354824066
+        },
+        "r12+head16": {
+          "G_model_fn_graph_vs_eager": {
+            "mask_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            },
+            "class_logits": {
+              "max_abs": 0.0,
+              "identical": true
+            }
+          },
+          "G_pipeline_graph_vs_nograph": {
+            "identical_masks": 126,
+            "frames": 126,
+            "max_conf_diff": 0.0
+          },
+          "M_8frame": {
+            "pooled_head_iou": 0.9964067757942167,
+            "min_frame_head_iou": 0.9810508182601206,
+            "max_conf_rel_diff": 0.025167527583978354,
+            "pass": true
+          },
+          "H_126frame": {
+            "pooled_iou": 0.9964339392564444,
+            "min_frame_iou": 0.9796251018744906,
+            "conf_rel_max": 0.02520516842223053,
+            "conf_rel_p99": 0.022252668435130296,
+            "frames_conf_gt3pct": 0,
+            "frames_conf_gt5pct": 0,
+            "pass": true,
+            "score_mae": 4.733706269068953e-06,
+            "score_max_abs": 0.11439383029937744
+          },
+          "service_ms_p50_inflight1": 7.88990780711174,
+          "service_ms_p90_inflight1": 7.917333394289017,
+          "fps_rounds": [
+            125.68913740062882,
+            122.91796314421859
+          ],
+          "fps_median": 124.3035502724237,
+          "fps_vs_first_pct": 29.027055521139022,
+          "latency_ms_p50_inflight2": 27.78625302016735
+        }
+      },
+      "loops": 3,
+      "rounds": 2,
+      "env": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 5090",
+        "sm": "120",
+        "num_sms": 170,
+        "gpu_snapshot": {
+          "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+          "value": "49 %, 18299 MiB, 2580 MHz, 13801 MHz, 535.64 W, 57"
+        },
+        "time": "2026-10-05 00:03:07"
+      }
+    }
+  }
+}

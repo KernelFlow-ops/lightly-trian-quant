@@ -1,0 +1,1446 @@
+{
+ "vitl16|qkv|4116": {
+  "r5_v1": {
+   "us": 133.65100489722357,
+   "tflops": 193.7556168463792,
+   "rounds_us": [
+    133.65100489722357,
+    133.60510932074652,
+    134.97089015112982
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 153.884619474411,
+   "tflops": 168.2795394656456,
+   "rounds_us": [
+    153.85037660598755,
+    153.884619474411,
+    155.05875647068024
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 98.26183319091797,
+   "tflops": 263.5370423599369,
+   "rounds_us": [
+    103.88141870498657,
+    98.26183319091797,
+    97.9700783888499
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 118.53190985592929,
+   "tflops": 218.46971779561378,
+   "rounds_us": [
+    129.816087809476,
+    118.53190985592929,
+    117.73300170898438
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 63.06813521818681,
+   "tflops": 410.597725878734,
+   "rounds_us": [
+    63.587410883470014,
+    62.734365463256836,
+    63.06813521818681
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 45.54332154137747,
+   "tflops": 568.5934187402876,
+   "rounds_us": [
+    45.68946361541748,
+    45.54332154137747,
+    45.501640864780974
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 56.34549756844839,
+   "tflops": 459.5865510734384,
+   "rounds_us": [
+    56.96795880794525,
+    55.58591584364573,
+    56.34549756844839
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 29.256451697576615,
+   "tflops": 885.1255498678605,
+   "rounds_us": [
+    29.874094894954137,
+    29.256451697576615,
+    29.249072074890137
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 22:25:36"
+ },
+ "vitl16|qkv|4516": {
+  "r5_v1": {
+   "us": 145.98174393177032,
+   "tflops": 194.6285510144299,
+   "rounds_us": [
+    152.22124755382538,
+    145.16550302505493,
+    145.98174393177032
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 153.83237600326538,
+   "tflops": 184.69594004968693,
+   "rounds_us": [
+    153.57962250709534,
+    153.83237600326538,
+    153.9018750190735
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 97.7127452691396,
+   "tflops": 290.7728691660592,
+   "rounds_us": [
+    97.7127452691396,
+    97.01375166575114,
+    98.408838113149
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 122.74090051651001,
+   "tflops": 231.48123548415913,
+   "rounds_us": [
+    121.52999639511108,
+    123.0510950088501,
+    122.74090051651001
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 70.656332704756,
+   "tflops": 402.11845433194304,
+   "rounds_us": [
+    69.40599944856432,
+    70.656332704756,
+    71.45877679189046
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 50.602917869885765,
+   "tflops": 561.4738535247265,
+   "rounds_us": [
+    51.11650129159292,
+    50.602917869885765,
+    50.24633308251699
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 61.02445450696078,
+   "tflops": 465.587370269064,
+   "rounds_us": [
+    61.02445450696078,
+    61.68968027288263,
+    60.27136607603593
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 33.30664145640838,
+   "tflops": 853.0495436829262,
+   "rounds_us": [
+    34.337386106833435,
+    32.662358039464706,
+    33.30664145640838
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|proj|4116": {
+  "r5_v1": {
+   "us": 57.67818859645298,
+   "tflops": 149.65583771004265,
+   "rounds_us": [
+    57.91328634534563,
+    57.67818859645298,
+    57.60828653971354
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 53.014000256856285,
+   "tflops": 162.82260516425833,
+   "rounds_us": [
+    53.049808456784206,
+    53.014000256856285,
+    52.99428531101772
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 31.6468202150785,
+   "tflops": 272.7565541604474,
+   "rounds_us": [
+    31.653590691395294,
+    31.615642400888298,
+    31.6468202150785
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 44.185369103043165,
+   "tflops": 195.3560150616802,
+   "rounds_us": [
+    44.54703684206362,
+    44.180075327555336,
+    44.185369103043165
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 28.94454626809983,
+   "tflops": 298.22121072643336,
+   "rounds_us": [
+    29.12552299953642,
+    28.929548604147776,
+    28.94454626809983
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 18.513197248632256,
+   "tflops": 466.25536994360704,
+   "rounds_us": [
+    18.513197248632256,
+    18.42212135141546,
+    18.51515155850035
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 21.010087247480428,
+   "tflops": 410.84444487659863,
+   "rounds_us": [
+    21.039736898321856,
+    20.99540359095523,
+    21.010087247480428
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 9.380873135679984,
+   "tflops": 920.1571652396415,
+   "rounds_us": [
+    9.356544392319018,
+    9.380873135679984,
+    9.384345277515864
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|proj|4516": {
+  "r5_v1": {
+   "us": 58.08718999226888,
+   "tflops": 163.04349432741554,
+   "rounds_us": [
+    58.296141170320055,
+    58.07528609321231,
+    58.08718999226888
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 53.13852287474133,
+   "tflops": 178.22735596780743,
+   "rounds_us": [
+    53.174620582943874,
+    53.11971619015648,
+    53.13852287474133
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 32.4322779973348,
+   "tflops": 292.0158254926861,
+   "rounds_us": [
+    32.633278104994034,
+    32.3855545785692,
+    32.4322779973348
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 44.57207520802816,
+   "tflops": 212.4814334490346,
+   "rounds_us": [
+    45.87125778198242,
+    44.57207520802816,
+    44.537407380563245
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 29.668844663179836,
+   "tflops": 319.2149387520151,
+   "rounds_us": [
+    29.688486686119667,
+    29.668844663179836,
+    29.658947235498673
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 19.085273598179672,
+   "tflops": 496.23278300308505,
+   "rounds_us": [
+    18.937802675998572,
+    19.085273598179672,
+    19.106030464172363
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 21.863871150546604,
+   "tflops": 433.1684159126243,
+   "rounds_us": [
+    21.863871150546604,
+    21.882110171847874,
+    21.84725911528976
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 10.527092869542226,
+   "tflops": 899.6537362562319,
+   "rounds_us": [
+    10.511344220457959,
+    10.527092869542226,
+    10.56236178935075
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc1|4116": {
+  "r5_v1": {
+   "us": 167.00771119859485,
+   "tflops": 206.7420137681074,
+   "rounds_us": [
+    171.3993990862811,
+    167.00771119859485,
+    166.79214548181605
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 206.1846653620402,
+   "tflops": 167.45915835871233,
+   "rounds_us": [
+    206.27166827519736,
+    206.1596711476644,
+    206.1846653620402
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 132.90100627475314,
+   "tflops": 259.7987140640567,
+   "rounds_us": [
+    133.12300046284994,
+    132.90100627475314,
+    132.55678282843695
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 140.92967245313855,
+   "tflops": 244.99816062143316,
+   "rounds_us": [
+    141.053663359748,
+    140.04622565375433,
+    140.92967245313855
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 77.35617955525716,
+   "tflops": 446.344567770908,
+   "rounds_us": [
+    77.59612256830388,
+    76.16763403921416,
+    77.35617955525716
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 64.87833318256196,
+   "tflops": 532.1886188235231,
+   "rounds_us": [
+    64.91571380978539,
+    64.87833318256196,
+    64.40504959651402
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 74.98644457923041,
+   "tflops": 460.4500282916915,
+   "rounds_us": [
+    76.1125021510654,
+    74.98644457923041,
+    74.40411382251315
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 71.23148781912667,
+   "tflops": 484.7225796500754,
+   "rounds_us": [
+    70.93708855765206,
+    71.23148781912667,
+    71.3667460850307
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc1|4516": {
+  "r5_v1": {
+   "us": 180.35554885864258,
+   "tflops": 210.04595626659403,
+   "rounds_us": [
+    186.41185760498047,
+    180.32593197292752,
+    180.35554885864258
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 205.27350902557373,
+   "tflops": 184.5486731718529,
+   "rounds_us": [
+    204.98967170715332,
+    205.27350902557373,
+    205.7914932568868
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 132.37199518415662,
+   "tflops": 286.185561192887,
+   "rounds_us": [
+    131.9399939643012,
+    137.39433553483752,
+    132.37199518415662
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 145.953549279107,
+   "tflops": 259.55486464776834,
+   "rounds_us": [
+    145.52610450320773,
+    154.30511368645563,
+    145.953549279107
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 85.3408654530843,
+   "tflops": 443.9016821176481,
+   "rounds_us": [
+    89.04533386230469,
+    85.3408654530843,
+    82.43186473846436
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 67.18010168809157,
+   "tflops": 563.9014049708588,
+   "rounds_us": [
+    67.18010168809157,
+    67.43010496481871,
+    67.0003096262614
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 138.51035724986684,
+   "tflops": 273.50267864561744,
+   "rounds_us": [
+    138.51035724986684,
+    144.20818560051197,
+    81.34872985608649
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 95.54515435145451,
+   "tflops": 396.49267391050375,
+   "rounds_us": [
+    95.54515435145451,
+    95.51592056567853,
+    110.93246019803561
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc2|4116": {
+  "r5_v1": {
+   "us": 193.73732805252075,
+   "tflops": 178.2181620603328,
+   "rounds_us": [
+    192.14200973510742,
+    193.9246654510498,
+    193.73732805252075
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 190.06566206614175,
+   "tflops": 181.66095944245114,
+   "rounds_us": [
+    189.65200583140054,
+    190.06566206614175,
+    190.35083055496216
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 112.05190703982399,
+   "tflops": 308.1385354354451,
+   "rounds_us": [
+    111.9811421348935,
+    112.05190703982399,
+    112.14885257539295
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 144.6213288740678,
+   "tflops": 238.74424883805062,
+   "rounds_us": [
+    144.83042919274533,
+    144.6213288740678,
+    144.61575132427794
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 73.93072590683445,
+   "tflops": 467.0251793754962,
+   "rounds_us": [
+    73.94678664929938,
+    73.92308928749777,
+    73.93072590683445
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 61.816050456120415,
+   "tflops": 558.552516267746,
+   "rounds_us": [
+    61.86164342440092,
+    61.816050456120415,
+    61.72040792611929
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 60.30842803773426,
+   "tflops": 572.5155115367384,
+   "rounds_us": [
+    59.90766911279587,
+    60.30842803773426,
+    60.31014238085066
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 9.71222478289937,
+   "tflops": 3555.0567763622726,
+   "rounds_us": [
+    9.70707752907923,
+    9.71222478289937,
+    9.718317394108736
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitl16|fc2|4516": {
+  "r5_v1": {
+   "us": 191.71450535456339,
+   "tflops": 197.60087353817056,
+   "rounds_us": [
+    190.9343401590983,
+    191.71450535456339,
+    192.23650296529135
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 191.69984261194864,
+   "tflops": 197.61598763899434,
+   "rounds_us": [
+    191.16783142089844,
+    191.69984261194864,
+    192.2498345375061
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 114.41848542955186,
+   "tflops": 331.09120074242514,
+   "rounds_us": [
+    111.73600090874567,
+    114.41848542955186,
+    115.03537495930989
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 147.89854396473277,
+   "tflops": 256.1414920827984,
+   "rounds_us": [
+    147.37769329186642,
+    147.9573394313003,
+    147.89854396473277
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 75.96860509930235,
+   "tflops": 498.6659117734399,
+   "rounds_us": [
+    75.3349679889101,
+    76.0090278856682,
+    75.96860509930235
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 70.76394863617726,
+   "tflops": 535.3425643722878,
+   "rounds_us": [
+    69.86307486509665,
+    70.76394863617726,
+    71.69051048083183
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 64.95290710812523,
+   "tflops": 583.2372316290223,
+   "rounds_us": [
+    66.41347635359992,
+    64.95290710812523,
+    64.68009381067185
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 10.621671917057839,
+   "tflops": 3566.57163051346,
+   "rounds_us": [
+    10.495328101791253,
+    10.627369920746618,
+    10.621671917057839
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|qkv|4116": {
+  "r5_v1": {
+   "us": 73.6044945075498,
+   "tflops": 197.89951145586494,
+   "rounds_us": [
+    72.62135109706232,
+    73.6044945075498,
+    73.95068757947658
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 79.85894721851014,
+   "tflops": 182.40026961717504,
+   "rounds_us": [
+    79.89929433454547,
+    79.85333392494603,
+    79.85894721851014
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 52.872121092761574,
+   "tflops": 275.50045662900766,
+   "rounds_us": [
+    52.179431786582214,
+    52.872121092761574,
+    52.9437612103708
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 75.6919741862931,
+   "tflops": 192.44171737613075,
+   "rounds_us": [
+    75.85110580712033,
+    75.58930454663134,
+    75.6919741862931
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 39.027865727742515,
+   "tflops": 373.2280316226904,
+   "rounds_us": [
+    38.94606828689575,
+    39.027865727742515,
+    39.02813196182251
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 28.719109959072536,
+   "tflops": 507.1986396778436,
+   "rounds_us": [
+    28.25195524427626,
+    28.719109959072536,
+    28.739555676778156
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 35.355546257712625,
+   "tflops": 411.99458206143373,
+   "rounds_us": [
+    35.42200001803312,
+    35.355546257712625,
+    35.22933251930006
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 22.554767983300344,
+   "tflops": 645.8188137774217,
+   "rounds_us": [
+    22.456286208970205,
+    22.573517901556833,
+    22.554767983300344
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|qkv|4516": {
+  "r5_v1": {
+   "us": 82.16400313795658,
+   "tflops": 194.51183600640553,
+   "rounds_us": [
+    81.39670522589432,
+    82.16400313795658,
+    82.61277382833916
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 80.51754298963044,
+   "tflops": 198.4893044495688,
+   "rounds_us": [
+    80.46898088957134,
+    80.53613963880036,
+    80.51754298963044
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 54.84830416165865,
+   "tflops": 291.3831402497951,
+   "rounds_us": [
+    54.84830416165865,
+    54.76046316375938,
+    55.35339376060908
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 76.73637583474202,
+   "tflops": 208.26981897631248,
+   "rounds_us": [
+    80.10960182948419,
+    76.46421614678515,
+    76.73637583474202
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 42.24069913228353,
+   "tflops": 378.3524286364249,
+   "rounds_us": [
+    41.82469844818115,
+    42.24069913228353,
+    42.30839808781942
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 30.588975974491664,
+   "tflops": 522.4715962158192,
+   "rounds_us": [
+    29.429214341299875,
+    30.588975974491664,
+    30.714355763934908
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 37.02072663740678,
+   "tflops": 431.7006324735795,
+   "rounds_us": [
+    37.133000113747336,
+    36.85039462465228,
+    37.02072663740678
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 24.69211643181958,
+   "tflops": 647.2458992379004,
+   "rounds_us": [
+    24.339203695649083,
+    24.69211643181958,
+    24.6957274316584
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|proj|4116": {
+  "r5_v1": {
+   "us": 29.41284729884221,
+   "tflops": 165.07858347298213,
+   "rounds_us": [
+    29.723717616154598,
+    29.410077975346493,
+    29.41284729884221
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 27.88471324103219,
+   "tflops": 174.12519634074135,
+   "rounds_us": [
+    28.546690940856934,
+    27.88471324103219,
+    27.870547203790572
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 24.93118743101756,
+   "tflops": 194.75330573140806,
+   "rounds_us": [
+    24.956146876017254,
+    24.929227928320568,
+    24.93118743101756
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 29.683947563171387,
+   "tflops": 163.5709387259561,
+   "rounds_us": [
+    29.717512619801056,
+    29.680845064994617,
+    29.683947563171387
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 19.64623776693193,
+   "tflops": 247.1430523035074,
+   "rounds_us": [
+    19.67044482155452,
+    19.64623776693193,
+    19.62973011864556
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 14.79551821579168,
+   "tflops": 328.1690507344082,
+   "rounds_us": [
+    14.797777305414646,
+    14.79551821579168,
+    14.785506107189038
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 17.114152510960896,
+   "tflops": 283.70853683174204,
+   "rounds_us": [
+    17.1090563138326,
+    17.114152510960896,
+    17.124027013778687
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 7.55009811588019,
+   "tflops": 643.0951086301154,
+   "rounds_us": [
+    7.55009811588019,
+    7.550152799040535,
+    7.527051715675844
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|proj|4516": {
+  "r5_v1": {
+   "us": 32.88455473052131,
+   "tflops": 161.99977197974812,
+   "rounds_us": [
+    33.03122189309862,
+    32.852527168062,
+    32.88455473052131
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 33.44100051456027,
+   "tflops": 159.30415615646692,
+   "rounds_us": [
+    33.33580493927002,
+    33.44197074572245,
+    33.44100051456027
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 25.25420735279719,
+   "tflops": 210.94664716966227,
+   "rounds_us": [
+    25.186188519001007,
+    25.261292854944866,
+    25.25420735279719
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 30.53848865704659,
+   "tflops": 174.44512162427387,
+   "rounds_us": [
+    30.687873180095966,
+    30.52961520659618,
+    30.53848865704659
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 20.356265703837078,
+   "tflops": 261.70273298190574,
+   "rounds_us": [
+    20.368250211079914,
+    20.349782705307007,
+    20.356265703837078
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 14.907901669725959,
+   "tflops": 357.3467605315864,
+   "rounds_us": [
+    14.907901669725959,
+    14.90312299610656,
+    14.913345560615445
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 17.40240532418956,
+   "tflops": 306.1237954614815,
+   "rounds_us": [
+    17.401057740916375,
+    17.40240532418956,
+    17.420941504879274
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 8.191251596867643,
+   "tflops": 650.3634157736249,
+   "rounds_us": [
+    8.191251596867643,
+    8.19019213417508,
+    8.193364206528821
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc1|4116": {
+  "r5_v1": {
+   "us": 98.7294219260992,
+   "tflops": 196.7166857974467,
+   "rounds_us": [
+    96.41434425531432,
+    98.7294219260992,
+    98.91662794798228
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 119.1129335929389,
+   "tflops": 163.0530294751412,
+   "rounds_us": [
+    118.5119476825296,
+    119.13142410227627,
+    119.1129335929389
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 75.32973622166833,
+   "tflops": 257.8228153467689,
+   "rounds_us": [
+    75.21010554114054,
+    75.32973622166833,
+    75.44459113778994
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 86.6622279612761,
+   "tflops": 224.10830103142916,
+   "rounds_us": [
+    85.75756403658909,
+    87.45795929406712,
+    86.6622279612761
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 48.62106234528298,
+   "tflops": 399.4508497999575,
+   "rounds_us": [
+    48.62106234528298,
+    49.21216742936955,
+    48.607183057208395
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 37.10085164242439,
+   "tflops": 523.4846051294275,
+   "rounds_us": [
+    36.77833229569928,
+    37.10085164242439,
+    37.5055746443583
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 46.136669779932774,
+   "tflops": 420.9606970906148,
+   "rounds_us": [
+    46.136669779932774,
+    46.060353656147804,
+    46.15743326586346
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 28.773618548103933,
+   "tflops": 674.9837403846384,
+   "rounds_us": [
+    28.772830963134766,
+    28.824270441291038,
+    28.773618548103933
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc1|4516": {
+  "r5_v1": {
+   "us": 106.68176828428756,
+   "tflops": 199.74510935378342,
+   "rounds_us": [
+    111.7091178894043,
+    105.85637425267419,
+    106.68176828428756
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 118.58817826077788,
+   "tflops": 179.69043613386748,
+   "rounds_us": [
+    118.58817826077788,
+    118.6264392941497,
+    118.5697764653304
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 76.08800340992536,
+   "tflops": 280.0594116945946,
+   "rounds_us": [
+    76.01581248202065,
+    78.08936658755754,
+    76.08800340992536
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 91.3994456446448,
+   "tflops": 233.14322446602856,
+   "rounds_us": [
+    91.3994456446448,
+    94.12286447924237,
+    90.74939461641533
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 52.47962813660772,
+   "tflops": 406.0463503386673,
+   "rounds_us": [
+    51.81668402304637,
+    52.47962813660772,
+    53.38207511014716
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 41.12544473079496,
+   "tflops": 518.1502987138175,
+   "rounds_us": [
+    41.34613262926549,
+    41.12544473079496,
+    41.119625906107544
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 51.311133135812845,
+   "tflops": 415.2931375652504,
+   "rounds_us": [
+    50.76125980347626,
+    51.311133135812845,
+    52.41095372872759
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 32.32311025077914,
+   "tflops": 659.2546727920885,
+   "rounds_us": [
+    32.32311025077914,
+    48.580987953845366,
+    31.738148795233833
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc2|4116": {
+  "r5_v1": {
+   "us": 116.00408997646598,
+   "tflops": 167.42275790396815,
+   "rounds_us": [
+    116.27451209134834,
+    115.84920661393986,
+    116.00408997646598
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 108.2763671875,
+   "tflops": 179.37177960882076,
+   "rounds_us": [
+    108.29776941343795,
+    108.20241307103356,
+    108.2763671875
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 71.91470697228938,
+   "tflops": 270.06610316139785,
+   "rounds_us": [
+    72.26063654972957,
+    71.78607183193691,
+    71.91470697228938
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 85.7881324235783,
+   "tflops": 226.39174118053265,
+   "rounds_us": [
+    91.43888784009357,
+    85.29666634493096,
+    85.7881324235783
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 49.087874341072656,
+   "tflops": 395.6521836136937,
+   "rounds_us": [
+    49.27818042055273,
+    49.087874341072656,
+    49.06666679283753
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 46.720455475247796,
+   "tflops": 415.7006706043246,
+   "rounds_us": [
+    46.81302349080719,
+    46.650253217041644,
+    46.720455475247796
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 45.238175503043244,
+   "tflops": 429.3215731190015,
+   "rounds_us": [
+    45.238175503043244,
+    45.19467908282613,
+    45.33994364184002
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 7.573127008444016,
+   "tflops": 2564.5581607630284,
+   "rounds_us": [
+    7.573127008444016,
+    7.611690290941174,
+    7.5595910335103795
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ },
+ "vitb16|fc2|4516": {
+  "r5_v1": {
+   "us": 115.92288349950036,
+   "tflops": 183.82187216807668,
+   "rounds_us": [
+    115.78046443850495,
+    115.92288349950036,
+    115.95609576203103
+   ],
+   "foreign_gpu_procs": [],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 114.63851706926212,
+   "tflops": 185.88134264791182,
+   "rounds_us": [
+    114.42799900853356,
+    114.65600479480833,
+    114.63851706926212
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16acc": {
+   "us": 73.54487189950869,
+   "tflops": 289.74367514184706,
+   "rounds_us": [
+    73.54487189950869,
+    73.56012329574703,
+    73.5060447870299
+   ],
+   "foreign_gpu_procs": [],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  },
+  "mg16_tuned": {
+   "us": 87.97217080759448,
+   "tflops": 242.22616398321753,
+   "rounds_us": [
+    87.97217080759448,
+    88.72513881949492,
+    87.23609392033067
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_f16acc prototype WITH R5 epilogue (tuned16.json tile per shape), fp16 operands/outputs; operand pre-scale = free (oscale in epilogue)"
+  },
+  "mg8_tuned": {
+   "us": 49.66420905534611,
+   "tflops": 429.06475059842256,
+   "rounds_us": [
+    49.74892096310007,
+    49.66420905534611,
+    49.623814664145776
+   ],
+   "foreign_gpu_procs": [],
+   "note": "mg_i8 prototype WITH R5 epilogue + per-token/per-channel dequant (tuned8.json tile), int8 operands; activation quantisation NOT included"
+  },
+  "cublaslt_mx8": {
+   "us": 46.89856339486686,
+   "tflops": 454.36704089601875,
+   "rounds_us": [
+    46.89856339486686,
+    46.87466485863816,
+    46.94586268383095
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt MXFP8 _scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "int8_mm": {
+   "us": 45.72387074315271,
+   "tflops": 466.0401913849587,
+   "rounds_us": [
+    45.681452196697855,
+    45.72387074315271,
+    45.7741005476131
+   ],
+   "foreign_gpu_procs": [],
+   "note": "torch._int_mm s8xs8->s32 (int32 out, no dequant/bias epilogue), NO quantization"
+  },
+  "epi_i32": {
+   "us": 8.143880509382841,
+   "tflops": 2616.5857231634227,
+   "rounds_us": [
+    8.166118962875265,
+    8.126039378690404,
+    8.143880509382841
+   ],
+   "foreign_gpu_procs": [],
+   "note": "stand-alone dequant+epilogue pass over an int32 GEMM output (row/col scales + the same epilogues)"
+  }
+ }
+}

@@ -1,0 +1,4 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+81.3,2979139,40,74478.5,85322.0,29758,99672,28160.1,main_kernel
+16.3,597236,10,59723.6,59515.0,59291,61756,722.1,"void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<(int)64, (int)128, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)64, (int)128, (int)128, (int)4, cutlass::bfloat16_t>>, (bool)0, (bool)0, (bool)0, (bool)0, (bool)0, (bool)1, (bool)0, (bool)0>(pytorch_flash::Flash_fwd_params)"
+2.4,88121,20,4406.1,4655.5,3807,4896,422.1,"void add_ln_kernel<(int)4, float, float, (bool)0>(const T2 *, const T3 *, const float *, const float *, T2 *, __nv_bfloat16 *, int, float)"

@@ -1,0 +1,1585 @@
+#
+# Copyright (c) Lightly AG and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+from __future__ import annotations
+
+import contextlib
+import hashlib
+import json
+import logging
+from dataclasses import dataclass
+from json import JSONEncoder
+from pathlib import Path
+from typing import Any, Generator, Iterable, Literal, Mapping, cast
+
+import torch
+from filelock import FileLock
+from lightning_fabric import Fabric
+from lightning_fabric import utilities as fabric_utilities
+from lightning_fabric.loggers.logger import Logger as FabricLogger
+from PIL.Image import Image as PILImage
+from pydantic import TypeAdapter
+from torch.nn import Module
+from torch.optim import Optimizer  # type: ignore[attr-defined]
+from torch.optim.lr_scheduler import LRScheduler
+from torch.utils.data import DataLoader
+
+from lightly_train._configs import validate
+from lightly_train._data import cache
+from lightly_train._data._serialize import memory_mapped_sequence
+from lightly_train._data._serialize.memory_mapped_sequence import (
+    MemoryMappedSequence,
+    Primitive,
+)
+from lightly_train._data.task_data_args import TaskDataArgs
+from lightly_train._data.task_dataset import TaskDataset, TaskDatasetArgs
+from lightly_train._env import Env
+from lightly_train._loggers import logger_helpers
+from lightly_train._loggers.mlflow import MLFlowLogger, MLFlowLoggerArgs
+from lightly_train._loggers.task_logger_args import TaskLoggerArgs
+from lightly_train._loggers.tensorboard import TensorBoardLogger
+from lightly_train._loggers.wandb import WandbLogger
+from lightly_train._metrics.task_metric import (
+    AggregatedMetricValues,
+    TaskMetricArgs,
+)
+from lightly_train._task_checkpoint import TaskSaveCheckpointArgs
+from lightly_train._task_models import task_model_helpers
+from lightly_train._task_models.dinov2_eomt_instance_segmentation.train_model import (
+    DINOv2EoMTInstanceSegmentationTrain,
+)
+from lightly_train._task_models.dinov2_eomt_panoptic_segmentation.train_model import (
+    DINOv2EoMTPanopticSegmentationTrain,
+)
+from lightly_train._task_models.dinov2_eomt_semantic_segmentation.train_model import (
+    DINOv2EoMTSemanticSegmentationTrain,
+)
+from lightly_train._task_models.dinov3_eomt_instance_segmentation.train_model import (
+    DINOv3EoMTInstanceSegmentationTrain,
+)
+from lightly_train._task_models.dinov3_eomt_panoptic_segmentation.train_model import (
+    DINOv3EoMTPanopticSegmentationTrain,
+)
+from lightly_train._task_models.dinov3_eomt_semantic_segmentation.train_model import (
+    DINOv3EoMTSemanticSegmentationTrain,
+)
+from lightly_train._task_models.image_classification.train_model import (
+    ImageClassificationTrain,
+)
+from lightly_train._task_models.image_classification_multihead.train_model import (
+    ImageClassificationMultiheadTrain,
+)
+from lightly_train._task_models.linear_semantic_segmentation.train_model import (
+    LinearSemanticSegmentationTrain,
+)
+from lightly_train._task_models.ltdetr_instance_segmentation.train_model import (
+    LTDETRInstanceSegmentationTrain,
+)
+from lightly_train._task_models.ltdetr_object_detection.train_model import (
+    LTDETRObjectDetectionTrain,
+)
+from lightly_train._task_models.picodet_object_detection.train_model import (
+    PicoDetObjectDetectionTrain,
+)
+from lightly_train._task_models.semantic_segmentation_multihead.train_model import (
+    SemanticSegmentationMultiheadTrain,
+)
+from lightly_train._task_models.train_model import (
+    TaskStepResult,
+    TrainModel,
+    TrainModelArgs,
+)
+from lightly_train._torch_compile import TorchCompileArgs
+from lightly_train._torch_helpers import _torch_weights_only_false
+from lightly_train._train_task_state import (
+    CheckpointDict,
+    TrainTaskState,
+)
+from lightly_train._training_step_timer import TimerAggregateMetrics
+from lightly_train._transforms.task_transform import (
+    TaskCollateFunction,
+    TaskTransform,
+    TaskTransformArgs,
+)
+from lightly_train.types import (
+    PathLike,
+    TaskDatasetItem,
+)
+
+try:
+    import mlflow
+except ImportError:
+    mlflow = None  # type: ignore[assignment]
+
+logger = logging.getLogger(__name__)
+
+
+TASK_TRAIN_MODEL_CLASSES: list[type[TrainModel]] = [
+    ImageClassificationTrain,
+    ImageClassificationMultiheadTrain,
+    DINOv2EoMTInstanceSegmentationTrain,
+    DINOv2EoMTPanopticSegmentationTrain,
+    DINOv3EoMTInstanceSegmentationTrain,
+    DINOv3EoMTPanopticSegmentationTrain,
+    DINOv2EoMTSemanticSegmentationTrain,
+    LinearSemanticSegmentationTrain,
+    DINOv3EoMTSemanticSegmentationTrain,
+    SemanticSegmentationMultiheadTrain,
+    LTDETRObjectDetectionTrain,
+    LTDETRInstanceSegmentationTrain,
+    PicoDetObjectDetectionTrain,
+]
+
+
+# TODO(Thomas, 10/25): Create a type for the metrics.
+TASK_TO_METRICS: dict[str, dict[str, str]] = {
+    "instance_segmentation": {
+        "val_metric/map": "Val mAP@0.5:0.95",
+        "val_metric/map_50": "Val mAP@0.5",
+        "val_metric/map_75": "Val mAP@0.75",
+        "val_metric/map_small": "Val mAP (small)",
+        "val_metric/map_medium": "Val mAP (medium)",
+        "val_metric/map_large": "Val mAP (large)",
+    },
+    "panoptic_segmentation": {
+        "val_metric/pq": "Val PQ",
+        "val_metric/pc": "Val PC",
+        "val_metric/ps": "Val PS",
+    },
+    "semantic_segmentation": {
+        "train_metric/miou": "Train mIoU",
+        "val_metric/miou": "Val mIoU",
+    },
+    "object_detection": {
+        "val_metric/map": "Val mAP@0.5:0.95",
+        "val_metric/map_50": "Val mAP@0.5",
+        "val_metric/map_75": "Val mAP@0.75",
+        "val_metric/map_small": "Val mAP (small)",
+        "val_metric/map_medium": "Val mAP (medium)",
+        "val_metric/map_large": "Val mAP (large)",
+    },
+}
+
+_IMAGE_EXAMPLES_DIR = "image_examples"
+
+
+def get_out_dir(
+    fabric: Fabric,
+    out: PathLike,
+    resume_interrupted: bool,
+    overwrite: bool,
+) -> Path:
+    # Use the same output directory on all ranks. This avoids issues where users
+    # accidentally create different directories on each rank, for example with:
+    #   out=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    out_global_rank_zero = fabric.broadcast(str(out))
+    out_dir = Path(out_global_rank_zero)
+
+    def check_and_create_out_dir() -> None:
+        if out_dir.exists():
+            if not out_dir.is_dir():
+                raise ValueError(f"Output '{out_dir}' is not a directory!")
+
+            dir_not_empty = any(out_dir.iterdir())
+
+            if dir_not_empty and (not (resume_interrupted or overwrite)):
+                raise ValueError(
+                    f"Output '{out_dir}' is not empty! Set overwrite=True to overwrite "
+                    "the directory or resume_interrupted=True to resume training from "
+                    "an interrupted or crashed run. "
+                    "See https://docs.lightly.ai/lightly-train/usage/cli.html#resume-training "
+                    "for more information on how to resume training."
+                )
+        else:
+            out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Create the output directory if it doesn't exist.
+    with fabric.rank_zero_first():
+        if fabric.global_rank == 0:
+            check_and_create_out_dir()
+
+    # Check if the output directory is on a shared filesystem. We can only check this
+    # after global rank zero has created the directory.
+    try:
+        is_shared_filesystem = fabric_utilities.is_shared_filesystem(
+            strategy=fabric.strategy, path=out_dir
+        )
+    except FileNotFoundError:
+        # Clearly not a shared filesystem because we just created the directory.
+        is_shared_filesystem = False
+
+    # If the filesystem is not shared we have to create the output directory on every
+    # node individually.
+    if not is_shared_filesystem:
+        with fabric.rank_zero_first(local=True):
+            if fabric.local_rank == 0 and fabric.global_rank != 0:
+                check_and_create_out_dir()
+
+    return out_dir
+
+
+def get_logger_args(
+    steps: int,
+    val_steps: int,
+    logger_args: dict[str, Any] | TaskLoggerArgs | None = None,
+) -> TaskLoggerArgs:
+    if isinstance(logger_args, TaskLoggerArgs):
+        return logger_args
+    logger_args = {} if logger_args is None else logger_args
+    args = validate.pydantic_model_validate(TaskLoggerArgs, logger_args)
+    args.resolve_auto(steps=steps, val_steps=val_steps)
+    return args
+
+
+def _resolve_mlflow_run_id_for_resume(
+    mlflow_args: MLFlowLoggerArgs,
+) -> str | None:
+    """Return the MLflow run id to resume from when resuming an interrupted run."""
+    if mlflow_args.tracking_uri is not None:
+        mlflow.set_tracking_uri(mlflow_args.tracking_uri)
+    else:
+        logger.warning(
+            "No tracking_uri specified in the MLFlow logger configuration. This way we could not find the run to resume."
+            "Starting a new run instead."
+        )
+        return None
+
+    experiment_name = mlflow_args.experiment_name
+    run_name = mlflow_args.run_name
+
+    if not run_name:
+        logger.warning(
+            "Cannot resume MLflow run because no run name was specified. Please specify a `run_name` in the MLFlow logger configuration so that the metrics will continue to be logged in the same run. Starting a new run instead."
+        )
+        return None
+    safe_run_name = run_name.replace('"', r"\"")
+    filter_string = f"""
+        attributes.run_name LIKE "{safe_run_name}"
+        """
+    runs = mlflow.search_runs(
+        experiment_names=[experiment_name],
+        filter_string=filter_string,
+        order_by=["attributes.start_time DESC"],
+        output_format="list",
+    )
+
+    if not runs:
+        logger.warning(
+            f"No MLflow runs found for experiment {experiment_name} and run name {run_name} when trying to resume. Starting a new run instead."
+        )
+        return None
+    if len(runs) > 1:
+        logger.warning(
+            f"Multiple MLflow runs found for experiment {experiment_name} and run name {run_name} when trying to resume. Resuming the most recent run."
+        )
+
+    resume_run_id: str = runs[0].info.run_id
+
+    return resume_run_id
+
+
+def get_loggers(
+    logger_args: TaskLoggerArgs, out: Path, resume_interrupted: bool
+) -> list[FabricLogger]:
+    """Get logger instances based on the provided configuration.
+
+    All loggers are configured with the same output directory 'out'.
+
+    Args:
+        logger_args:
+            Configuration for the loggers.
+        out:
+            Path to the output directory.
+        resume_interrupted:
+            Whether to resume an interrupted run. If True and an MLflow logger is
+            configured, the run_id will be looked up based on the experiment_name
+            and run_name and used to resume the run.
+    Returns:
+        List of loggers.
+    """
+    loggers: list[FabricLogger] = []
+
+    mlflow_args = logger_args.mlflow
+    if mlflow_args is not None:
+        if resume_interrupted and (
+            resume_run_id := _resolve_mlflow_run_id_for_resume(mlflow_args)
+        ):
+            if (new_run_id := mlflow_args.run_id) and new_run_id != resume_run_id:
+                logger.warning(
+                    f"The run_id '{new_run_id}' specified in the MLFlow logger does not match the run_id '{resume_run_id}' found when trying to resume. Using the run_id '{resume_run_id}' found with the matching `experiment_name` and `run_name` instead."
+                )
+            logger.debug("Resuming MLflow run with id '%s'.", resume_run_id)
+            mlflow_args.run_id = resume_run_id
+
+        logger.debug(f"Using mlflow logger with args {mlflow_args}")
+        loggers.append(MLFlowLogger(save_dir=out, **mlflow_args.model_dump()))
+    if logger_args.tensorboard is not None:
+        logger.debug(f"Using tensorboard logger with args {logger_args.tensorboard}")
+        loggers.append(
+            TensorBoardLogger(save_dir=out, **logger_args.tensorboard.model_dump())
+        )
+    if logger_args.wandb is not None:
+        logger.debug(f"Using wandb logger with args {logger_args.wandb}")
+        loggers.append(WandbLogger(save_dir=out, **logger_args.wandb.model_dump()))
+
+    logger.debug(f"Using loggers {[log.__class__.__name__ for log in loggers]}.")
+    return loggers
+
+
+class PrettyFormatArgsJSONEncoder(JSONEncoder):
+    """Custom JSON encoder to pretty format the output."""
+
+    def default(self, obj: Any) -> Any:
+        if isinstance(obj, Path):
+            return str(obj)
+        if isinstance(obj, set):
+            return sorted(list(obj))
+        try:
+            return super().default(obj)
+        except TypeError:
+            # Return class name for objects that cannot be serialized
+            return obj.__class__.__name__
+
+
+def pretty_format_args(args: dict[str, Any], indent: int = 4) -> str:
+    return json.dumps(
+        args, indent=indent, sort_keys=True, cls=PrettyFormatArgsJSONEncoder
+    )
+
+
+def pretty_format_args_dict(args: dict[str, Any]) -> dict[str, Any]:
+    args_str = json.dumps(args, cls=PrettyFormatArgsJSONEncoder)
+    args_dict: dict[str, Any] = json.loads(args_str)
+    return args_dict
+
+
+def get_transform_args(
+    train_model_cls: type[TrainModel],
+    model_name: str,
+    transform_args: dict[str, Any] | None,
+    ignore_index: int | None,
+    model_init_args: dict[str, Any],
+    total_steps: int,
+    train_num_batches: int,
+    gradient_accumulation_steps: int,
+) -> tuple[TaskTransformArgs, TaskTransformArgs]:
+    if (
+        train_model_cls.task
+        not in ("semantic_segmentation", "semantic_segmentation_multihead")
+        and ignore_index is not None
+    ):
+        raise ValueError(
+            "`ignore_index` is only supported for semantic segmentation tasks."
+        )
+    transform_args = {} if transform_args is None else transform_args.copy()
+    if ignore_index is not None:
+        transform_args["ignore_index"] = ignore_index
+    # Allows passing validation specific args via transform_args:
+    # transform_args={
+    #   "image_size": ..., # train only
+    #   "normalize": ..., # train and val
+    #   "val": {
+    #       "image_size": ..., # val only
+    # }
+    val_args = transform_args.pop("val", {})
+
+    train_transform_args_cls = train_model_cls.get_train_transform_cls(
+        model_name
+    ).transform_args_cls
+    val_transform_args_cls = train_model_cls.get_val_transform_cls(
+        model_name
+    ).transform_args_cls
+    train_transform_args: TaskTransformArgs
+    val_transform_args: TaskTransformArgs
+
+    train_transform_args = validate.pydantic_model_validate(
+        train_transform_args_cls, transform_args
+    )
+    train_transform_args.resolve_auto(model_init_args=model_init_args)
+    train_transform_args.resolve_step_schedule(
+        total_steps=total_steps,
+        train_num_batches=train_num_batches,
+        gradient_accumulation_steps=gradient_accumulation_steps,
+    )
+    train_transform_args.resolve_incompatible()
+
+    # Take defaults from train transform.
+    val_args_dict = train_transform_args.model_dump(
+        include={
+            "image_size": True,
+            "normalize": True,
+            "ignore_index": True,
+            "num_channels": True,
+        }
+    )
+    # Overwrite with user provided val args.
+    val_args_dict.update(val_args)
+    val_transform_args = validate.pydantic_model_validate(
+        val_transform_args_cls, val_args_dict
+    )
+    val_transform_args.resolve_auto(model_init_args=model_init_args)
+    val_transform_args.resolve_step_schedule(
+        total_steps=total_steps,
+        train_num_batches=train_num_batches,
+        gradient_accumulation_steps=gradient_accumulation_steps,
+    )
+    val_transform_args.resolve_incompatible()
+
+    logger.debug(
+        f"Resolved train transform args {pretty_format_args(train_transform_args.model_dump())}"
+    )
+    logger.debug(
+        f"Resolved val transform args {pretty_format_args(val_transform_args.model_dump())}"
+    )
+    return train_transform_args, val_transform_args
+
+
+def get_train_transform(
+    train_model_cls: type[TrainModel],
+    model_name: str,
+    train_transform_args: TaskTransformArgs,
+) -> TaskTransform:
+    return train_model_cls.get_train_transform_cls(model_name)(
+        transform_args=train_transform_args
+    )
+
+
+def get_metric_args(
+    train_model_cls: type[TrainModel],
+    metric_args: dict[str, Any] | TaskMetricArgs | None,
+    data_args: TaskDataArgs,
+) -> TaskMetricArgs:
+    if isinstance(metric_args, TaskMetricArgs):
+        return metric_args
+    metric_args_dict: dict[str, Any] = {} if metric_args is None else dict(metric_args)
+
+    # TODO(Guarin, 02/26): This is a bit hacky, we should find a better way. We have to
+    # inject the classification_task here for Pydantic to be able to select the correct
+    # metrics class depending on the classification task (e.g. multiclass vs multilabel).
+    classification_task = getattr(data_args, "classification_task", None)
+    if classification_task is not None:
+        metric_args_dict.setdefault("classification_task", classification_task)
+    # Needs type adapter because TaskMetricArgs can be a union type. For example:
+    # task_metric_args_cls = Union[ClassificationTaskMetricArgs, ClassificationMultiheadTaskMetricArgs]
+    adapter: TypeAdapter[TaskMetricArgs] = TypeAdapter(
+        train_model_cls.task_metric_args_cls  # type: ignore[type-abstract]
+    )
+    return validate.pydantic_model_validate(adapter, metric_args_dict)
+
+
+def get_val_transform(
+    train_model_cls: type[TrainModel],
+    model_name: str,
+    val_transform_args: TaskTransformArgs,
+) -> TaskTransform:
+    return train_model_cls.get_val_transform_cls(model_name)(
+        transform_args=val_transform_args
+    )
+
+
+def get_sha256(value: Any) -> str:
+    """Get the SHA256 hash of a value."""
+    return hashlib.sha256(str(value).encode()).hexdigest()
+
+
+def _unlink_and_ignore(path: Path) -> None:
+    """Unlink a file and ignore the error if it fails.
+
+    Errors can happen if we do not have permission to access the file.
+    """
+    try:
+        path.unlink(missing_ok=True)
+    except OSError:
+        pass
+
+
+@contextlib.contextmanager
+def get_dataset_temp_mmap_path(
+    fabric: Fabric,
+    data_hash: str,
+    out: PathLike,
+) -> Generator[Path, Any, Any]:
+    """Generate file in temporary directory to be used for memory-mapping the dataset.
+
+    Creates a unique filename for the memory-mapped file based on ``out`` and
+    ``data_hash``. The caller is responsible for producing a ``data_hash`` that
+    uniquely identifies the dataset configuration. The same file is used on all
+    ranks across all nodes, unless the filesystem is not shared.
+    """
+    if Env.LIGHTLY_TRAIN_MMAP_REUSE_FILE.value:
+        # Use data_hash as identifier to share the mmap file across multiple runs.
+        identifier = data_hash
+    else:
+        # Use out as identifier to create a unique mmap file for each run. We assume
+        # that only one run is using a specific out directory at a time.
+        identifier = str((str(Path(out).resolve()), data_hash))
+
+    mmap_filepath = (cache.get_data_cache_dir() / get_sha256(identifier)).with_suffix(
+        ".mmap"
+    )
+    mmap_filepath_broadcasted = Path(fabric.broadcast(str(mmap_filepath)))
+    mmap_dirpath_broadcasted = mmap_filepath_broadcasted.parent
+    ref_count_filepath_broadcasted = mmap_filepath.with_suffix(".ref_count")
+
+    # Create the output directory if it doesn't exist.
+    with fabric.rank_zero_first():
+        if fabric.global_rank == 0:
+            mmap_dirpath_broadcasted.mkdir(parents=True, exist_ok=True)
+
+    # Check if the mmap directory is on a shared filesystem. We can only check this
+    # after global rank zero has created the directory.
+    try:
+        is_shared_filesystem = fabric_utilities.is_shared_filesystem(
+            strategy=fabric.strategy, path=mmap_dirpath_broadcasted
+        )
+    except FileNotFoundError:
+        # Clearly not a shared filesystem because we just created the directory.
+        is_shared_filesystem = False
+
+    # If the filesystem is not shared we have to create the mmap file on every
+    # node individually.
+    if not is_shared_filesystem:
+        with fabric.rank_zero_first(local=True):
+            if fabric.local_rank == 0 and fabric.global_rank != 0:
+                mmap_dirpath_broadcasted.mkdir(parents=True, exist_ok=True)
+
+    try:
+        # Increment reference count atomically
+        _increment_ref_count(ref_count_filepath_broadcasted)
+
+        yield mmap_filepath_broadcasted
+    finally:
+        # Decrement reference count and cleanup if zero
+        _decrement_and_cleanup_if_zero(
+            mmap_filepath_broadcasted, ref_count_filepath_broadcasted
+        )
+
+
+def _increment_ref_count(ref_file: Path) -> None:
+    lock_file = ref_file.with_suffix(".lock")
+
+    with FileLock(lock_file, timeout=300):
+        # Ensure file exists within the lock to avoid race conditions
+        ref_file.touch()
+        with open(ref_file, "r+") as f:
+            count = int(f.read() or "0")
+            f.seek(0)
+            f.write(str(count + 1))
+            f.truncate()
+
+
+def _decrement_and_cleanup_if_zero(mmap_file: Path, ref_file: Path) -> None:
+    try:
+        lock_file = ref_file.with_suffix(".lock")
+
+        with FileLock(lock_file, timeout=300):
+            with open(ref_file, "r+") as f:
+                count = max(0, int(f.read() or "1") - 1)
+                f.seek(0)
+                f.write(str(count))
+                f.truncate()
+
+                if count <= 0 and not Env.LIGHTLY_TRAIN_MMAP_REUSE_FILE.value:
+                    # Remove mmap file only if we are not reusing it and count is zero
+                    _unlink_and_ignore(mmap_file)
+
+    except (FileNotFoundError, OSError):
+        pass  # Another process already cleaned up
+
+
+def get_dataset_mmap_file(
+    fabric: Fabric,
+    items: Iterable[Mapping[str, Primitive]],
+    mmap_filepath: Path,
+) -> MemoryMappedSequence[Primitive]:
+    """Returns memory-mapped filepaths shared across all ranks.
+
+    Filenames are written to mmap_filepath by rank zero and read by all ranks.
+    """
+
+    # If the file already exists and we are allowed to reuse it, return it.
+    if Env.LIGHTLY_TRAIN_MMAP_REUSE_FILE.value and mmap_filepath.exists():
+        logger.warning(f"Reusing existing memory-mapped file '{mmap_filepath}'.")
+        return MemoryMappedSequence.from_file(mmap_filepath=mmap_filepath)
+
+    # Check if the mmap file is on a shared filesystem.
+    try:
+        is_shared_filesystem = fabric_utilities.is_shared_filesystem(
+            strategy=fabric.strategy, path=mmap_filepath.parent
+        )
+    except FileNotFoundError:
+        # Clearly not a shared filesystem because we just created the parent directory.
+        is_shared_filesystem = False
+
+    # If the filesystem is not shared we have to create the mmap file on every
+    # node individually.
+    with fabric.rank_zero_first(local=True):
+        if (fabric.global_rank == 0) or (
+            not is_shared_filesystem and fabric.local_rank == 0
+        ):
+            memory_mapped_sequence.write_items_to_file(
+                items=items,
+                mmap_filepath=mmap_filepath,
+            )
+
+    return MemoryMappedSequence.from_file(mmap_filepath=mmap_filepath)
+
+
+def get_dataset(
+    fabric: Fabric,
+    dataset_args: TaskDatasetArgs,
+    mmap_filepath: Path,
+    transform: TaskTransform | None = None,
+) -> TaskDataset:
+    image_info = dataset_args.list_image_info()
+
+    dataset_cls = dataset_args.get_dataset_cls()
+    return dataset_cls(
+        dataset_args=dataset_args,  # type: ignore
+        image_info=get_dataset_mmap_file(
+            fabric=fabric,
+            items=image_info,
+            mmap_filepath=mmap_filepath,
+        ),
+        transform=transform,  # type: ignore
+    )
+
+
+def get_train_dataloader(
+    fabric: Fabric,
+    dataset: TaskDataset,
+    batch_size: int,
+    num_workers: int,
+    loader_args: dict[str, Any] | None = None,
+) -> DataLoader[TaskDatasetItem]:
+    timeout = Env.LIGHTLY_TRAIN_DATALOADER_TIMEOUT_SEC.value if num_workers > 0 else 0
+    # TODO(Guarin, 07/25): Persistent workers by default?
+    dataloader_kwargs: dict[str, Any] = dict(
+        dataset=dataset,
+        batch_size=batch_size // fabric.world_size,
+        shuffle=True,
+        num_workers=num_workers,
+        drop_last=True,
+        timeout=timeout,
+    )
+    if loader_args is not None:
+        logger.debug(f"Using additional dataloader arguments {loader_args}.")
+        # Ignore batch_size and num_workers from loader_args. They are already
+        # handled through dedicated function arguments.
+        loader_args.pop("batch_size", None)
+        loader_args.pop("num_workers", None)
+        dataloader_kwargs.update(**loader_args)
+    return DataLoader(**dataloader_kwargs)
+
+
+def get_val_dataloader(
+    fabric: Fabric,
+    dataset: TaskDataset,
+    batch_size: int,
+    num_workers: int,
+    loader_args: dict[str, Any] | None = None,
+) -> DataLoader[TaskDatasetItem]:
+    timeout = Env.LIGHTLY_TRAIN_DATALOADER_TIMEOUT_SEC.value if num_workers > 0 else 0
+    dataloader_kwargs: dict[str, Any] = dict(
+        dataset=dataset,
+        batch_size=batch_size // fabric.world_size,
+        shuffle=False,
+        num_workers=num_workers,
+        drop_last=False,
+        timeout=timeout,
+    )
+    if loader_args is not None:
+        logger.debug(f"Using additional dataloader arguments {loader_args}.")
+        # Ignore batch_size and num_workers from loader_args. They are already
+        # handled through dedicated function arguments.
+        loader_args.pop("batch_size", None)
+        loader_args.pop("num_workers", None)
+        dataloader_kwargs.update(**loader_args)
+    return DataLoader(**dataloader_kwargs)
+
+
+def disable_persistent_workers_for_step_aware_transforms(
+    dataloader: DataLoader[Any],
+    transform: TaskTransform,
+    collate_fn: TaskCollateFunction,
+) -> None:
+    """Force ``persistent_workers=False`` when transform/collate are step-aware."""
+    needs_refresh = (
+        transform.uses_step_dependent_worker_state()
+        or collate_fn.uses_step_dependent_worker_state()
+    )
+    if needs_refresh and dataloader.num_workers > 0 and dataloader.persistent_workers:
+        logger.warning(
+            "Step-aware transform/collate requires persistent_workers=False. "
+            "Overriding user-provided persistent_workers=True."
+        )
+        dataloader.persistent_workers = False
+
+
+def get_steps(steps: int | Literal["auto"], default_steps: int) -> int:
+    return default_steps if steps == "auto" else steps
+
+
+def get_gradient_accumulation_steps(
+    gradient_accumulation_steps: int | Literal["auto"],
+    global_batch_size: int,
+    default_batch_size: int,
+) -> int:
+    """Returns the number of gradient accumulation steps.
+
+    When 'auto', activates gradient accumulation when global_batch_size is
+    smaller than default_batch_size. The number of steps is set to
+    max(1, default_batch_size // global_batch_size) to keep the effective
+    batch size as close as possible to the model's default batch size.
+
+    Args:
+        gradient_accumulation_steps: Number of steps or 'auto'.
+        global_batch_size: The global batch size across all devices.
+        default_batch_size: The model's default batch size.
+
+    Returns:
+        The number of gradient accumulation steps.
+
+    Raises:
+        ValueError: If gradient_accumulation_steps < 1.
+    """
+    if gradient_accumulation_steps == "auto":
+        return max(1, default_batch_size // global_batch_size)
+    if gradient_accumulation_steps < 1:
+        raise ValueError(
+            f"gradient_accumulation_steps must be >= 1, got {gradient_accumulation_steps}."
+        )
+    return gradient_accumulation_steps
+
+
+def get_train_model_cls(model_name: str, task: str) -> type[TrainModel]:
+    for train_model_cls in TASK_TRAIN_MODEL_CLASSES:
+        if (
+            train_model_cls.task == task
+            and train_model_cls.task_model_cls.is_supported_model(model_name)
+        ):
+            return train_model_cls
+    raise ValueError(f"Unsupported model name '{model_name}' for task '{task}'.")
+
+
+def get_train_model_args(
+    model_args: dict[str, Any] | TrainModelArgs | None,
+    model_args_cls: type[TrainModelArgs],
+    total_steps: int,
+    gradient_accumulation_steps: int,
+    train_num_batches: int,
+    model_name: str,
+    model_init_args: dict[str, Any],
+    data_args: TaskDataArgs,
+) -> TrainModelArgs:
+    if isinstance(model_args, TrainModelArgs):
+        return model_args
+    model_args = {} if model_args is None else model_args
+    args = validate.pydantic_model_validate(model_args_cls, model_args)
+    args.resolve_auto(
+        total_steps=total_steps,
+        gradient_accumulation_steps=gradient_accumulation_steps,
+        train_num_batches=train_num_batches,
+        model_name=model_name,
+        model_init_args=model_init_args,
+        data_args=data_args,
+    )
+    return args
+
+
+def get_current_learning_rate(optimizer: Optimizer, scheduler: LRScheduler) -> float:
+    """Returns current learning rate independent of parameter groups.
+
+    This is essentially the learning rate that was passed to the Optimizer at
+    construction time multiplied by the scheduler value at the current step.
+    """
+    last_lr_float = _scheduler_scalar_to_float(scheduler.get_last_lr()[0])
+    base_lr_float = _scheduler_scalar_to_float(scheduler.base_lrs[0])
+    scheduler_factor: float = last_lr_float / base_lr_float
+    lr: float = optimizer.defaults["lr"] * scheduler_factor
+    return lr
+
+
+def get_training_epoch(
+    step: int,
+    train_num_batches: int,
+    gradient_accumulation_steps: int = 1,
+) -> int:
+    """Returns the number of completed training epochs for logging."""
+    if train_num_batches < 1:
+        raise ValueError("train_num_batches must be >= 1.")
+    if gradient_accumulation_steps < 1:
+        raise ValueError("gradient_accumulation_steps must be >= 1.")
+    completed_batches = (step + 1) * gradient_accumulation_steps
+    return completed_batches // train_num_batches
+
+
+# For compatibility with older versions of PyTorch where `get_last_lr` returns `list[float]` only.
+def _scheduler_scalar_to_float(value: Any) -> float:
+    if isinstance(value, torch.Tensor):
+        return float(value.item())
+    return float(value)
+
+
+def log_step(
+    split: Literal["train", "val"],
+    step: int,
+    max_steps: int,
+    epoch: int,
+    agg_metric_values: AggregatedMetricValues | None,
+    task: str,
+    timer_agg: TimerAggregateMetrics,
+    global_batch_size: int,
+    gradient_accumulation_steps: int = 1,
+    learning_rate: float | None = None,
+    gradient_norm: float | None = None,
+) -> None:
+    split_cap = split.capitalize()
+    name_to_display_name = {
+        "train_loss": "Train Loss",
+        "val_loss": "Val Loss",
+    }
+    name_to_display_name = {**name_to_display_name, **TASK_TO_METRICS.get(task, {})}
+
+    width = len(str(max_steps))
+    parts = [
+        f"{split_cap} Step {step + 1:>{width}}/{max_steps:>{width}}",
+        f"Epoch {epoch}",
+    ]
+
+    # TODO(Guarin, 02/26): Loss name should be part of AggregatedMetricValues and not
+    # be redefined here.
+    if agg_metric_values is not None:
+        loss_name = f"{split}_loss"
+        loss = agg_metric_values.metric_values.get(loss_name)
+        if loss is not None:
+            parts.append(f"{loss_name}: {loss:4.4f}")
+
+    if learning_rate is not None:
+        parts.append(f"lr: {learning_rate:2.8f}")
+
+    if gradient_norm is not None:
+        parts.append(f"grad_norm: {gradient_norm:4.4f}")
+
+    # Add profiling information.
+    profiling_parts = []
+    step_name = f"{split}_step"
+    dataload_step_name = f"{split}_dataload"
+
+    # GPU utilization
+    gpu_util = timer_agg["phase_gpu_utils"].get(split, -1.0)
+    if gpu_util >= 0:
+        profiling_parts.append(f"GPU Util {gpu_util:3.1f}%")
+
+    # GPU max memory
+    gpu_max_mem = timer_agg["phase_gpu_max_mem"].get(split, -1.0)
+    if gpu_max_mem >= 0:
+        profiling_parts.append(f"GPU Max Mem {gpu_max_mem:7.1f} MB")
+
+    # Step time (average time per full step)
+    step_count = timer_agg["step_counts"].get(step_name, 0)
+    step_time_total = timer_agg["step_total_times"].get(step_name, 0.0)
+    step_time = step_time_total / step_count if step_count > 0 else 0.0
+    profiling_parts.append(f"Step Time {step_time:4.2f}s")
+
+    # Data time (average dataload time per effective training step).
+    # The timer records one entry per microbatch, so we multiply by
+    # gradient_accumulation_steps to get the per-effective-step total.
+    dataload_count = timer_agg["step_counts"].get(dataload_step_name, 0)
+    dataload_time_total = timer_agg["step_total_times"].get(dataload_step_name, 0.0)
+    data_time = (
+        dataload_time_total / dataload_count * gradient_accumulation_steps
+        if dataload_count > 0
+        else 0.0
+    )
+    profiling_parts.append(f"Data Time {data_time:4.2f}s")
+
+    # Throughput (images per second)
+    throughput = global_batch_size / step_time if step_time > 0 else 0.0
+    profiling_parts.append(f"{throughput:4.0f} img/s")
+
+    if profiling_parts:
+        parts.append(f"Profiling [ {' | '.join(profiling_parts)} ]")
+
+    line = " | ".join(parts)
+    logger.info(line)
+
+
+def log_fabric(
+    fabric: Fabric,
+    log_dict: dict[str, float],
+    agg_metric_values: AggregatedMetricValues,
+    step: int,
+    epoch: int,
+) -> None:
+    final_dict = {}
+    final_dict.update(agg_metric_values.metric_values)
+    final_dict.update(log_dict)
+    final_dict["epoch"] = epoch
+    fabric.log_dict(final_dict, step=step)
+
+
+def log_training_summary(
+    timer_agg: TimerAggregateMetrics,
+    fabric: Fabric,
+    last_val_agg_metric_values: AggregatedMetricValues,
+    best_val_agg_metric_values: BestAggregatedMetricValues,
+    step: int,
+    global_batch_size: int,
+    gradient_accumulation_steps: int,
+) -> None:
+    """Log validation metrics and profiling information.
+
+    Args:
+        timer_agg: The aggregated metrics dict from timer.get_aggregated_metrics().
+        fabric: The Fabric instance for distributed communication.
+        last_val_metrics: The metrics from the last validation step.
+        best_val_metrics: The best validation metrics seen so far.
+        step: The current training step.
+        global_batch_size: The global batch size across all GPUs.
+        gradient_accumulation_steps: Number of gradient accumulation steps. Used to
+            compute the effective global batch size for train throughput.
+    """
+    max_len = max(len(name) for name in last_val_agg_metric_values.metric_values.keys())
+    best_metrics = best_val_agg_metric_values.agg_metric_values
+    best_step = best_val_agg_metric_values.step
+
+    # All metrics
+    logger.info("")
+    logger.info("Validation Metrics")
+    col = 8
+    logger.info(f"  | {'Name':<{max_len}} | {'Best':^{col}} | {'Last':^{col}} |")
+    logger.info(f"  |:{'-' * max_len}-|:{'-' * col}:|:{'-' * col}:|")
+    logger.info(f"  | {'step':<{max_len}} | {best_step:>{col}} | {step:>{col}} |")
+    for metric_name in sorted(last_val_agg_metric_values.metric_values.keys()):
+        last_value = last_val_agg_metric_values.metric_values[metric_name]
+        best_value = best_metrics.metric_values.get(metric_name, float("nan"))
+        logger.info(
+            f"  | {metric_name:<{max_len}} | {best_value:>{col}.4f} | {last_value:>{col}.4f} |"
+        )
+    logger.info("")
+
+    # Best head metrics
+    if last_val_agg_metric_values.best_head_metric_values is not None:
+        best_head_metrics = (
+            best_metrics.best_head_metric_values
+            if best_metrics.best_head_metric_values is not None
+            else last_val_agg_metric_values.best_head_metric_values
+        )
+
+        logger.info(
+            f"Validation Metrics - Best Head: {last_val_agg_metric_values.best_head_name}"
+        )
+        col = 8
+        max_len_head = max(
+            len(name)
+            for name in last_val_agg_metric_values.best_head_metric_values.keys()
+        )
+
+        logger.info(
+            f"  | {'Metric':<{max_len_head}} | {'Best':^{col}} | {'Last':^{col}} |"
+        )
+        logger.info(f"  |:{'-' * max_len_head}-|:{'-' * col}:|:{'-' * col}:|")
+        logger.info(
+            f"  | {'step':<{max_len_head}} | {best_step:>{col}} | {step:>{col}} |"
+        )
+
+        for metric_name in sorted(
+            last_val_agg_metric_values.best_head_metric_values.keys()
+        ):
+            last_value = last_val_agg_metric_values.best_head_metric_values[metric_name]
+            best_value = best_head_metrics.get(metric_name, float("nan"))
+            logger.info(
+                f"  | {metric_name:<{max_len_head}} | {best_value:>{col}.4f} | {last_value:>{col}.4f} |"
+            )
+        logger.info("")
+
+    if best_metrics.watch_metric is not None:
+        logger.info("Validation Metrics - Watch Metric")
+        logger.info(
+            f"  | {'Watch Metric':<{max_len}} | {'Best':^{col}} | {'Last':^{col}} |"
+        )
+        logger.info(f"  |:{'-' * max_len}-|:{'-' * col}:|:{'-' * col}:|")
+        logger.info(f"  | {'step':<{max_len}} | {best_step:>{col}} | {step:>{col}} |")
+        logger.info(
+            f"  | {best_metrics.watch_metric:<{max_len}} | {best_metrics.watch_metric_value:>{col}.4f} | {last_val_agg_metric_values.watch_metric_value:>{col}.4f} |"
+        )
+        logger.info("")
+
+    ### Profiling Info
+
+    # Calculate total time
+    train_time_sec = timer_agg["step_total_times"].get("train_step", 0.0)
+    val_time_sec = timer_agg["step_total_times"].get("val_step", 0.0)
+    total_time_sec = train_time_sec + val_time_sec
+
+    # Only log on rank 0
+    if fabric.global_rank != 0:
+        return
+
+    # Calculate derived metrics
+    total_time_min = total_time_sec / 60
+    train_time_min = train_time_sec / 60
+    val_time_min = val_time_sec / 60
+
+    train_time_perc = (
+        (train_time_sec / total_time_sec * 100) if total_time_sec > 0 else 0.0
+    )
+    val_time_perc = (val_time_sec / total_time_sec * 100) if total_time_sec > 0 else 0.0
+
+    # Use aggregated step counts for averages
+    train_count = timer_agg["step_counts"].get("train_step", 0)
+    val_count = timer_agg["step_counts"].get("val_step", 0)
+    train_step_time = train_time_sec / train_count if train_count > 0 else 0.0
+    val_step_time = val_time_sec / val_count if val_count > 0 else 0.0
+
+    effective_global_batch_size = global_batch_size * gradient_accumulation_steps
+    train_throughput = (
+        (effective_global_batch_size / train_step_time) if train_step_time > 0 else 0.0
+    )
+    val_throughput = (global_batch_size / val_step_time) if val_step_time > 0 else 0.0
+
+    train_gpu_util = timer_agg["phase_gpu_utils"].get("train", -1.0)
+    val_gpu_util = timer_agg["phase_gpu_utils"].get("val", -1.0)
+
+    train_gpu_max_mem = timer_agg["phase_gpu_max_mem"].get("train", -1.0)
+    val_gpu_max_mem = timer_agg["phase_gpu_max_mem"].get("val", -1.0)
+
+    # Format and log the summary
+    logger.info("Profiling")
+
+    name_w = 22
+    time_w = 5  # matches :5.1f for minutes
+
+    v_total = f"{total_time_min:5.1f} min"
+    v_train = f"{train_time_min:5.1f} min ({train_time_perc:3.1f}%) ({train_step_time:4.2f} s/step)"
+    v_val = (
+        f"{val_time_min:5.1f} min ({val_time_perc:3.1f}%) ({val_step_time:4.2f} s/step)"
+    )
+    v_train_tp = f"{train_throughput:4.0f} img/s"
+    v_val_tp = f"{val_throughput:4.0f} img/s"
+
+    v_train_util = f"{train_gpu_util:3.1f}%" if train_gpu_util >= 0 else None
+    v_train_mem = f"{train_gpu_max_mem:7.1f} MB" if train_gpu_max_mem >= 0 else None
+    v_val_util = f"{val_gpu_util:3.1f}%" if val_gpu_util >= 0 else None
+    v_val_mem = f"{val_gpu_max_mem:7.1f} MB" if val_gpu_max_mem >= 0 else None
+
+    val_w = max(
+        len(v_total),
+        len(v_train),
+        len(v_val),
+        len(v_train_tp),
+        len(v_val_tp),
+        *(
+            len(x)
+            for x in [v_train_util, v_train_mem, v_val_util, v_val_mem]
+            if x is not None
+        ),
+    )
+
+    logger.info(f"  | {'Name':<{name_w}} | {'Value':<{val_w}} |")
+    logger.info(f"  |:{'-' * name_w}-|:{'-' * val_w}:|")
+
+    # align the "X.Y min" chunk across Total/Train/Val
+    prefix_w = time_w + 4  # "xxxxx.x min"
+
+    logger.info(
+        f"  | {'Total Time':<{name_w}} | {v_total:>{prefix_w}}{'':<{val_w - prefix_w}} |"
+    )
+    logger.info(
+        f"  | {'Train Time':<{name_w}} | {v_train[:prefix_w]:>{prefix_w}}{v_train[prefix_w:]:<{val_w - prefix_w}} |"
+    )
+    logger.info(
+        f"  | {'Val Time':<{name_w}} | {v_val[:prefix_w]:>{prefix_w}}{v_val[prefix_w:]:<{val_w - prefix_w}} |"
+    )
+
+    logger.info(f"  | {'Train Throughput':<{name_w}} | {v_train_tp:>{val_w}} |")
+    if v_train_util is not None:
+        logger.info(f"  | {'Train GPU Util':<{name_w}} | {v_train_util:>{val_w}} |")
+    if v_train_mem is not None:
+        logger.info(f"  | {'Train GPU Max Mem':<{name_w}} | {v_train_mem:>{val_w}} |")
+
+    logger.info(f"  | {'Val Throughput':<{name_w}} | {v_val_tp:>{val_w}} |")
+    if v_val_util is not None:
+        logger.info(f"  | {'Val GPU Util':<{name_w}} | {v_val_util:>{val_w}} |")
+    if v_val_mem is not None:
+        logger.info(f"  | {'Val GPU Max Mem':<{name_w}} | {v_val_mem:>{val_w}} |")
+    logger.info("")
+
+
+def add_timer_logs(
+    timer_agg: TimerAggregateMetrics,
+    log_dict: dict[str, float],
+    split: Literal["train", "val"],
+    global_batch_size: int,
+    gradient_accumulation_steps: int,
+) -> None:
+    """Add profiling metrics to the log dictionary.
+
+    Adds GPU util, GPU mem, step time, data time, and throughput to the log_dict
+    for logging to tensorboard, wandb, etc.
+
+    Args:
+        timer_agg: The aggregated metrics dict from timer.get_aggregated_metrics().
+        log_dict: The dictionary to add metrics to.
+        split: The split ("train" or "val") to get metrics for.
+        global_batch_size: The global batch size across all GPUs.
+        gradient_accumulation_steps: Number of gradient accumulation steps. The timer
+            records one dataload entry per microbatch, so this factor is used to convert
+            to a per-effective-step data time.
+    """
+    step_name = f"{split}_step"
+    dataload_step_name = f"{split}_dataload"
+
+    # GPU utilization
+    gpu_util = timer_agg["phase_gpu_utils"].get(split, -1.0)
+    if gpu_util >= 0:
+        log_dict[f"profiling/{split}_gpu_util_perc"] = gpu_util
+
+    # GPU max memory
+    gpu_max_mem = timer_agg["phase_gpu_max_mem"].get(split, -1.0)
+    if gpu_max_mem >= 0:
+        log_dict[f"profiling/{split}_gpu_max_mem_mb"] = gpu_max_mem
+
+    # Step time
+    step_count = timer_agg["step_counts"].get(step_name, 0)
+    step_time_total = timer_agg["step_total_times"].get(step_name, 0.0)
+    step_time = step_time_total / step_count if step_count > 0 else 0.0
+    log_dict[f"profiling/{split}_step_time_sec"] = step_time
+
+    # Data time (per effective training step).
+    # The timer records one entry per microbatch, so we multiply by
+    # gradient_accumulation_steps to get the per-effective-step total.
+    dataload_count = timer_agg["step_counts"].get(dataload_step_name, 0)
+    dataload_time_total = timer_agg["step_total_times"].get(dataload_step_name, 0.0)
+    data_time = (
+        dataload_time_total / dataload_count * gradient_accumulation_steps
+        if dataload_count > 0
+        else 0.0
+    )
+    log_dict[f"profiling/{split}_data_time_sec"] = data_time
+
+    # Throughput
+    throughput = global_batch_size / step_time if step_time > 0 else 0.0
+    log_dict[f"profiling/{split}_throughput_img_per_sec"] = throughput
+
+
+@dataclass
+class BestAggregatedMetricValues:
+    agg_metric_values: AggregatedMetricValues
+    step: int
+
+
+def get_best_metrics(
+    best_agg_metric_values: BestAggregatedMetricValues | None,
+    last_agg_metric_values: AggregatedMetricValues,
+    step: int,
+    metric_args: TaskMetricArgs,
+) -> BestAggregatedMetricValues:
+    if last_agg_metric_values.watch_metric is None:
+        logger.warning(
+            f"Unknown watch metric: '{metric_args.watch_metric}'! No metric will be "
+            "tracked as best metric and the last checkpoint will be saved as best "
+            f"checkpoint. Set `metric_args={{'watch_metric': '<metric name>'}}` to a "
+            f"valid metric to enable best checkpoint tracking. Valid metrics are: "
+            f"{list(last_agg_metric_values.metric_values.keys())}"
+        )
+
+    if (
+        best_agg_metric_values is None
+        or best_agg_metric_values.agg_metric_values.watch_metric is None
+        or best_agg_metric_values.agg_metric_values.watch_metric_value is None
+        or best_agg_metric_values.agg_metric_values.watch_metric_mode is None
+    ):
+        return BestAggregatedMetricValues(
+            agg_metric_values=last_agg_metric_values,
+            step=step,
+        )
+
+    if (
+        last_agg_metric_values.watch_metric is None
+        or last_agg_metric_values.watch_metric_value is None
+    ):
+        return best_agg_metric_values
+
+    if (
+        best_agg_metric_values.agg_metric_values.watch_metric
+        != last_agg_metric_values.watch_metric
+    ):
+        raise RuntimeError(
+            "Best and last aggregated metrics use different watch metrics: "
+            f"{best_agg_metric_values.agg_metric_values.watch_metric!r} != "
+            f"{last_agg_metric_values.watch_metric!r}"
+        )
+
+    best_metric_value = best_agg_metric_values.agg_metric_values.watch_metric_value
+    last_metric_value = last_agg_metric_values.watch_metric_value
+    mode = best_agg_metric_values.agg_metric_values.watch_metric_mode
+
+    if (mode == "max" and last_metric_value > best_metric_value) or (
+        mode == "min" and last_metric_value < best_metric_value
+    ):
+        return BestAggregatedMetricValues(
+            agg_metric_values=last_agg_metric_values,
+            step=step,
+        )
+    else:
+        return best_agg_metric_values
+
+
+def get_save_checkpoint_args(
+    checkpoint_args: dict[str, Any] | TaskSaveCheckpointArgs | None,
+    data_args: TaskDataArgs,
+) -> TaskSaveCheckpointArgs:
+    if isinstance(checkpoint_args, TaskSaveCheckpointArgs):
+        checkpoint_args = checkpoint_args.model_dump()
+    checkpoint_args = {} if checkpoint_args is None else checkpoint_args
+    args = validate.pydantic_model_validate(TaskSaveCheckpointArgs, checkpoint_args)
+    args.resolve_auto(data_args=data_args)
+    return args
+
+
+def get_checkpoint_path(
+    out_dir: PathLike, best_or_last: Literal["best", "last"]
+) -> Path:
+    out_dir = Path(out_dir).resolve()
+    ckpt_path = out_dir / "checkpoints" / f"{best_or_last}.ckpt"
+    return ckpt_path
+
+
+def save_checkpoint(
+    fabric: Fabric,
+    out_dir: Path,
+    state: TrainTaskState,
+    best_or_last: Literal["best", "last"],
+) -> None:
+    ckpt_path = get_checkpoint_path(out_dir=out_dir, best_or_last=best_or_last)
+
+    logger.info(f"Saving the {best_or_last} checkpoint to '{ckpt_path}'")
+    fabric.save(path=ckpt_path, state=state)  # type: ignore[arg-type]
+
+
+def get_exported_model_path(
+    out_dir: PathLike, best_or_last: Literal["best", "last"]
+) -> Path:
+    out_dir = Path(out_dir).resolve()
+    model_path = out_dir / "exported_models" / f"exported_{best_or_last}.pt"
+    return model_path
+
+
+def export_model(
+    out_dir: Path, model_dict: dict[str, Any], best_or_last: Literal["best", "last"]
+) -> None:
+    model_path = get_exported_model_path(out_dir=out_dir, best_or_last=best_or_last)
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+
+    logger.info(f"Exporting the {best_or_last} model to '{model_path}'")
+    torch.save(model_dict, model_path)
+
+
+def read_model_init_args_from_ckpt(ckpt_path: PathLike) -> dict[str, Any]:
+    """Return `model_init_args.model_name` from a checkpoint.
+
+    Tries loading on the meta device (no tensor data) when supported; otherwise falls
+    back to a normal CPU load.
+
+    Args:
+        ckpt_path: Path to the checkpoint file.
+
+    Returns:
+        The stored model name.
+
+    Raises:
+        FileNotFoundError: If ckpt_path doesn't exist.
+        KeyError: If the expected keys are missing.
+    """
+    p = Path(ckpt_path)
+    if not p.exists():
+        raise FileNotFoundError(f"Checkpoint file '{p}' does not exist.")
+
+    try:
+        ckpt = torch.load(p, map_location="meta", weights_only=False)
+    except (TypeError, RuntimeError, NotImplementedError, AttributeError):
+        ckpt = torch.load(p, map_location="cpu", weights_only=False)
+
+    return cast(dict[str, Any], ckpt["model_init_args"])
+
+
+def load_checkpoint(
+    fabric: Fabric,
+    out_dir: Path,
+    resume_interrupted: bool,
+    model: str,
+    checkpoint: PathLike | None,
+    task: str,
+) -> tuple[CheckpointDict | None, Path | None, str, dict[str, Any] | None]:
+    """Build a checkpoint context from the current run configuration.
+
+    Args:
+        fabric: Fabric instance used to load checkpoint files.
+        out_dir: Output directory where checkpoints are stored.
+        resume_interrupted: Whether to resume from an interrupted run.
+        model: Model name or path to model checkpoint.
+        checkpoint: Path to model checkpoint.
+        task: The training task.
+
+    Returns:
+        (checkpoint, checkpoint_path, model_name) tuple. Checkpoint contains the loaded
+        checkpoint if available. model_name is the name of the model to initialize the
+        backbone from. Checkpoint is None if no checkpoint was loaded or if
+        resume_interrupted is True.
+
+    Raises:
+        ValueError: If resume and checkpoint options are requested simultaneously.
+        FileNotFoundError: If the resolved checkpoint file does not exist.
+    """
+    model_path: Path | None
+    model_name = model
+    model_name_from_checkpoint = False
+    try:
+        get_train_model_cls(model_name=model, task=task)
+    except ValueError:
+        # Download checkpoint only from rank zero. Other ranks will load from cache.
+        with fabric.rank_zero_first():
+            model_path = task_model_helpers.download_checkpoint(checkpoint=model)
+        model_name_from_checkpoint = True
+    else:
+        model_path = None
+
+    ckpt_path: Path
+    if resume_interrupted:
+        if model_path is not None:
+            logger.warning(
+                "`model` is set to a pretrained checkpoint while `resume_interrupted` "
+                "is True. Loading weights from the interrupted run and ignoring "
+                f"model='{model}'."
+            )
+        if checkpoint is not None:
+            raise ValueError(
+                f"resume_interrupted={resume_interrupted} and checkpoint='{checkpoint}' "
+                "cannot be set at the same time! Please set only one of them. "
+            )
+        ckpt_path = get_checkpoint_path(out_dir, best_or_last="last")
+        # We don't return the loaded checkpoint here because it has to be loaded with
+        # fabric.load(ckpt_path, state) for resume to work properly.
+
+        # Get the model_init_args and update the model_name from the checkpoint.
+        # This is needed when resuming from a crashed run and the model_name contains
+        # an extra suffix, e.g., '-coco'.
+        model_init_args = read_model_init_args_from_ckpt(ckpt_path)
+        model_name = model_init_args["model_name"]
+        return (
+            None,
+            ckpt_path,
+            model_name,
+            model_init_args,
+        )
+    elif checkpoint is not None:
+        if model_path is not None:
+            logger.warning(
+                "`model` is set to a pretrained checkpoint while `checkpoint` is also "
+                "set to a pretrained checkpoint. Loading weights from checkpoint "
+                f"'{checkpoint}' and ignoring model='{model}'."
+            )
+        ckpt_path = Path(checkpoint).resolve()
+    elif model_path is not None:
+        ckpt_path = model_path
+    else:
+        # No checkpoint to load. Backbone will be initialized from model name.
+        return (None, None, model_name, None)
+
+    if not ckpt_path.exists():
+        raise FileNotFoundError(f"Checkpoint file '{ckpt_path}' does not exist.")
+
+    logger.info(f"Loading model checkpoint from '{ckpt_path}'")
+
+    # Need context manager because fabric.load doesn't expose weights_only parameter and
+    # the checkpoint might contain more than just model weights.
+    with _torch_weights_only_false():
+        ckpt = fabric.load(path=ckpt_path)
+
+    model_init_args = ckpt.get("model_init_args", {})
+    if model_name_from_checkpoint:
+        model_name = model_init_args.get("model_name", model)
+
+    model_class_path = ckpt.get("model_class_path", "")
+    train_model_state_dict = ckpt.get("train_model")
+    if train_model_state_dict is None:
+        raise ValueError(
+            f"Checkpoint file '{ckpt_path}' does not contain model state dict."
+        )
+
+    return (
+        CheckpointDict(
+            train_model_state_dict=train_model_state_dict,
+            model_class_path=model_class_path,
+            model_init_args=model_init_args,
+        ),
+        ckpt_path,
+        model_name,
+        model_init_args,
+    )
+
+
+def resume_from_checkpoint(
+    fabric: Fabric,
+    state: TrainTaskState,
+    checkpoint_path: PathLike,
+) -> None:
+    logger.info(f"Resuming training from model checkpoint '{checkpoint_path}'")
+    # Resume only works properly when loading with fabric.load(path, state)!
+    # Need context manager because fabric.load doesn't expose weights_only parameter and
+    # the checkpoint contains more than just model weights.
+    with _torch_weights_only_false():
+        fabric.load(path=checkpoint_path, state=state)  # type: ignore[arg-type]
+
+
+def finetune_from_checkpoint(
+    state: TrainTaskState,
+    checkpoint: CheckpointDict,
+) -> None:
+    """Restore model state from the checkpoint for fine-tuning.
+
+    Args:
+        state: Training state container to populate with checkpoint data.
+        checkpoint: Checkpoint context the state dicts to load.
+    """
+
+    train_model = cast(TrainModel, state["train_model"])
+
+    incompatible = train_model.load_train_state_dict(
+        checkpoint["train_model_state_dict"], strict=False
+    )
+
+    if incompatible.missing_keys:
+        logger.warning(
+            "Missing keys after loading checkpoint: %s",
+            incompatible.missing_keys,
+        )
+    if incompatible.unexpected_keys:
+        logger.warning(
+            "Unexpected keys after loading checkpoint: %s",
+            incompatible.unexpected_keys,
+        )
+
+
+def log_param_and_module_info(
+    model: Module,
+    optimizer: Optimizer,
+) -> None:
+    # Log requires grad of all parameters
+    for name, param in model.named_parameters():
+        logger.debug(f"grad={param.requires_grad} {name}")
+
+    # Log training state of all modules
+    for name, module in model.named_modules():
+        logger.debug(f"train={module.training} {name}")
+
+    # Log optimizer parameter groups
+    param_id_to_name = {id(param): name for name, param in model.named_parameters()}
+    logger.debug("Optimizer parameter groups")
+    for group in optimizer.param_groups:
+        group_info = group.copy()
+        group_info.pop("params", None)
+        logger.debug(f"  {group_info}")
+        for param in group["params"]:
+            param_name = param_id_to_name[id(param)]
+            logger.debug(f"    {param_name}")
+
+    # Raise an error if a parameter requires grad but is not in any optimizer parameter
+    # group.
+    optimizer_params = {
+        param for group in optimizer.param_groups for param in group["params"]
+    }
+    optimizer_missing_params = []
+    for name, param in model.named_parameters():
+        if param.requires_grad and param not in optimizer_params:
+            optimizer_missing_params.append(name)
+    if optimizer_missing_params:
+        raise RuntimeError(
+            f"The following parameters require grad but are not in any optimizer "
+            f"parameter group: {optimizer_missing_params}. Please raise an issue "
+            "if you encounter this error: https://github.com/lightly-ai/lightly-train/issues"
+        )
+
+
+def get_torch_compile_args(
+    train_model_cls: type[TrainModel],
+    torch_compile_args: dict[str, Any] | TorchCompileArgs | None,
+) -> TorchCompileArgs:
+    if isinstance(torch_compile_args, TorchCompileArgs):
+        return torch_compile_args
+    torch_compile_args = {} if torch_compile_args is None else torch_compile_args
+    args = validate.pydantic_model_validate(
+        train_model_cls.torch_compile_args_cls, torch_compile_args
+    )
+    return args
+
+
+def save_train_step_visualizations(
+    *,
+    result: TaskStepResult,
+    out_dir: Path,
+    step: int,
+    loggers: Iterable[FabricLogger],
+) -> None:
+    image = result.create_label_image()
+    _save_images_to_dir_and_loggers(
+        image=image,
+        path=_image_examples_dir(out_dir) / f"train_labels_{step}.jpg",
+        loggers=loggers,
+        key=f"train_images/labels_{step}",
+        step=step,
+    )
+
+
+def save_val_step_visualizations(
+    *,
+    result: TaskStepResult,
+    out_dir: Path,
+    val_step: int,
+    global_step: int,
+    loggers: Iterable[FabricLogger],
+) -> None:
+    viz_dir = _image_examples_dir(out_dir)
+    _save_images_to_dir_and_loggers(
+        image=result.create_prediction_image(),
+        path=viz_dir / f"val_predictions_{val_step}.jpg",
+        loggers=loggers,
+        key=f"val_images/predictions_{val_step}",
+        step=global_step,
+    )
+    label_path = viz_dir / f"val_labels_{val_step}.jpg"
+    if not label_path.exists():
+        _save_images_to_dir_and_loggers(
+            image=result.create_label_image(),
+            path=label_path,
+            loggers=loggers,
+            key=f"val_images/labels_{val_step}",
+            step=global_step,
+        )
+
+
+def _image_examples_dir(out_dir: Path) -> Path:
+    return out_dir / _IMAGE_EXAMPLES_DIR
+
+
+def _save_images_to_dir_and_loggers(
+    *,
+    image: PILImage | None,
+    path: Path,
+    loggers: Iterable[FabricLogger],
+    key: str,
+    step: int,
+) -> None:
+    if image is None:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    image.save(path)
+    logger_helpers.log_image_to_loggers(
+        loggers=loggers, key=key, image=image, step=step
+    )

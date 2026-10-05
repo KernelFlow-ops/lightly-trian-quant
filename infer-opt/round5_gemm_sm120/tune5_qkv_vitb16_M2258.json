@@ -1,0 +1,4297 @@
+{
+  "torch_us": 41.03200137615204,
+  "n_compile_fail": 0,
+  "compile_errors": [],
+  "rows": [
+    {
+      "us": 42.60160028934479,
+      "tf": 187.57360046868092,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 42.636799812316895,
+      "tf": 187.41874594658447,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 43.0431991815567,
+      "tf": 185.6492013591774,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 43.68639886379242,
+      "tf": 182.91586763455894,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.11199986934662,
+      "tf": 181.15106038420382,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.124799966812134,
+      "tf": 181.09851054305682,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.48319971561432,
+      "tf": 179.63940550785185,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.71040070056915,
+      "tf": 178.72654744287,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.72000002861023,
+      "tf": 178.6881830699394,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.88320052623749,
+      "tf": 178.03845221172938,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 44.93120014667511,
+      "tf": 177.8482552416603,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.10720074176788,
+      "tf": 177.15432171787683,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.13599872589111,
+      "tf": 177.04129248426722,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.13919949531555,
+      "tf": 177.0287386870758,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.16800045967102,
+      "tf": 176.91585792324005,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.1775997877121,
+      "tf": 176.87826687449348,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.46560049057007,
+      "tf": 175.7578359414253,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.77920138835907,
+      "tf": 174.55384344105158,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 45.84000110626221,
+      "tf": 174.32232458886998,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 46.07039988040924,
+      "tf": 173.45053597848252,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 46.07999920845032,
+      "tf": 173.41440297886535,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 46.166399121284485,
+      "tf": 173.0898598135602,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 46.28799855709076,
+      "tf": 172.63514952248644,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 46.30720019340515,
+      "tf": 172.56356503147066,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 46.94400131702423,
+      "tf": 170.22271915074458,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.16480076313019,
+      "tf": 169.42583076162802,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.257599234580994,
+      "tf": 169.09313383301517,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.27360010147095,
+      "tf": 169.03590026669787,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.50399887561798,
+      "tf": 168.21606056624947,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.55200147628784,
+      "tf": 168.04625050293075,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.57759869098663,
+      "tf": 167.95583997209695,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.785601019859314,
+      "tf": 167.22475769801514,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.859200835227966,
+      "tf": 166.9675926999197,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.94879853725433,
+      "tf": 166.6555950466904,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.9775995016098,
+      "tf": 166.55555165347275,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 47.98719882965088,
+      "tf": 166.52223398925443,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.00960123538971,
+      "tf": 166.44453081000756,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.03839921951294,
+      "tf": 166.34475090406687,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.25280010700226,
+      "tf": 165.60563395864742,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.287999629974365,
+      "tf": 165.4849157810152,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.396798968315125,
+      "tf": 165.11289428938434,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.62079918384552,
+      "tf": 164.35220494390853,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.79679977893829,
+      "tf": 163.75941840860338,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.97280037403107,
+      "tf": 163.17089263772985,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 48.98880124092102,
+      "tf": 163.11759727905041,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.02079999446869,
+      "tf": 163.01112084873492,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.033600091934204,
+      "tf": 162.96856720733567,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.15199875831604,
+      "tf": 162.5760041070153,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.15840029716492,
+      "tf": 162.55483302333695,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.27999973297119,
+      "tf": 162.1537255539715,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.30239915847778,
+      "tf": 162.08005469092714,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.404799938201904,
+      "tf": 161.7441131630019,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.54560101032257,
+      "tf": 161.2844609622382,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.59680140018463,
+      "tf": 161.11796177183018,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.62559938430786,
+      "tf": 161.0244642108407,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.686399102211,
+      "tf": 160.8274235281504,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.692800641059875,
+      "tf": 160.80670537609623,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.89759922027588,
+      "tf": 160.14669396664848,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.97439980506897,
+      "tf": 159.9005807607412,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 49.987199902534485,
+      "tf": 159.8596354182831,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.0,
+      "tf": 159.81871103999998,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.044798851013184,
+      "tf": 159.67564533108757,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.092798471450806,
+      "tf": 159.52264189340994,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.16000270843506,
+      "tf": 159.30891388600782,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.19199848175049,
+      "tf": 159.2073596134144,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.26879906654358,
+      "tf": 158.96412288310205,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.42880177497864,
+      "tf": 158.4597545596429,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.42880177497864,
+      "tf": 158.4597545596429,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.42880177497864,
+      "tf": 158.4597545596429,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.44479966163635,
+      "tf": 158.40950118941927,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.649601221084595,
+      "tf": 157.76897269377721,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.69119930267334,
+      "tf": 157.63950472520335,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.71359872817993,
+      "tf": 157.56987775272378,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.729602575302124,
+      "tf": 157.52016862616648,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.889599323272705,
+      "tf": 157.02492568743028,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.892800092697144,
+      "tf": 157.01505001582055,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 50.93119740486145,
+      "tf": 156.89667549888108,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.02720260620117,
+      "tf": 156.60148203046677,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.046401262283325,
+      "tf": 156.54258389228048,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.06239914894104,
+      "tf": 156.49353898730237,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.06880068778992,
+      "tf": 156.4739223239789,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.126402616500854,
+      "tf": 156.2976298555564,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.286399364471436,
+      "tf": 155.8100325041673,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.71520113945007,
+      "tf": 154.5181179988537,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 51.955199241638184,
+      "tf": 153.8043481430029,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.26240158081055,
+      "tf": 152.90027458160424,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.28480100631714,
+      "tf": 152.83477030035021,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.42239832878113,
+      "tf": 152.43361247767996,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.457600831985474,
+      "tf": 152.33131948969367,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.47359871864319,
+      "tf": 152.28487748374928,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.56320238113403,
+      "tf": 152.02527985372717,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.58880257606506,
+      "tf": 151.9512740462538,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.68480181694031,
+      "tf": 151.6743971015677,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.697598934173584,
+      "tf": 151.6375643979863,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.73600220680237,
+      "tf": 151.52713929022966,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 52.92159914970398,
+      "tf": 150.99573105104665,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.014397621154785,
+      "tf": 150.73142222804978,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.08160185813904,
+      "tf": 150.54058793018027,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.10400128364563,
+      "tf": 150.4770894629546,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.174400329589844,
+      "tf": 150.27786872009727,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.18400263786316,
+      "tf": 150.2507362300526,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.305602073669434,
+      "tf": 149.9079879251033,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.32480072975159,
+      "tf": 149.85401619216188,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.331202268600464,
+      "tf": 149.83602866768263,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.34720015525818,
+      "tf": 149.79109547911992,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.356802463531494,
+      "tf": 149.76413846128943,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.382402658462524,
+      "tf": 149.6923172065809,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.5040020942688,
+      "tf": 149.35210898655313,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.519999980926514,
+      "tf": 149.3074655240623,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.58080267906189,
+      "tf": 149.13803363238284,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.69600057601929,
+      "tf": 148.81807706864416,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.724801540374756,
+      "tf": 148.73829819538238,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.88479828834534,
+      "tf": 148.29665890627166,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 53.94560098648071,
+      "tf": 148.12951206165272,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.096001386642456,
+      "tf": 147.71767500681014,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.11199927330017,
+      "tf": 147.67400316592756,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.11520004272461,
+      "tf": 147.6652686433952,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.131197929382324,
+      "tf": 147.62162777968993,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.20479774475098,
+      "tf": 147.42118566015344,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.34880256652832,
+      "tf": 147.03057242555258,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.51840162277222,
+      "tf": 146.57318105713145,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.59520220756531,
+      "tf": 146.36699249907144,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.604798555374146,
+      "tf": 146.34126969439282,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.72319722175598,
+      "tf": 146.02464690829672,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 54.924798011779785,
+      "tf": 145.4886652525545,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 55.212801694869995,
+      "tf": 144.7297602494688,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 55.30880093574524,
+      "tf": 144.47855344547125,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 55.36640286445618,
+      "tf": 144.3282412903508,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 55.4144024848938,
+      "tf": 144.20322504024767,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 55.609601736068726,
+      "tf": 143.69704695829589,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 55.635201930999756,
+      "tf": 143.630925648667,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 56.220799684524536,
+      "tf": 142.13486106281056,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 56.24319911003113,
+      "tf": 142.078254410226,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 56.52480125427246,
+      "tf": 141.37043164563096,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 56.60160183906555,
+      "tf": 141.17861142376327,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 56.806397438049316,
+      "tf": 140.6696413148639,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 57.23839998245239,
+      "tf": 139.60794771429295,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 57.631999254226685,
+      "tf": 138.6544915221547,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 57.80479907989502,
+      "tf": 138.24000220042825,
+      "cfg": {
+        "bm": 32,
+        "bn": 256,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 57.82719850540161,
+      "tf": 138.18645479174597,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 58.03520083427429,
+      "tf": 137.69118461085313,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 58.2207977771759,
+      "tf": 137.25225103549954,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 58.22719931602478,
+      "tf": 137.23716142742256,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 58.23360085487366,
+      "tf": 137.22207513690486,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 58.67519974708557,
+      "tf": 136.18931995876017,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 59.0719997882843,
+      "tf": 135.27450536023392,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 59.45919752120972,
+      "tf": 134.39359905840556,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 59.50400233268738,
+      "tf": 134.29240452302037,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 59.84960198402405,
+      "tf": 133.51693724100386,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 59.884798526763916,
+      "tf": 133.438464327949,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.02560257911682,
+      "tf": 133.12545328416383,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.06079912185669,
+      "tf": 133.04743974164046,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.099202394485474,
+      "tf": 132.96242268821234,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.470402240753174,
+      "tf": 132.14622783862717,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.61440110206604,
+      "tf": 131.83229408708334,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.684800148010254,
+      "tf": 131.67935846390043,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.7200026512146,
+      "tf": 131.60301717872463,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.74560284614563,
+      "tf": 131.5475553389299,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.82879900932312,
+      "tf": 131.3676364179941,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.85759997367859,
+      "tf": 131.30546645704308,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.889601707458496,
+      "tf": 131.23645627363618,
+      "cfg": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.95359921455383,
+      "tf": 131.09866611604474,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 60.97919940948486,
+      "tf": 131.04362847304074,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.07519865036011,
+      "tf": 130.83765142944623,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.0975980758667,
+      "tf": 130.78968410636074,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.11999750137329,
+      "tf": 130.74175194166938,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.12319827079773,
+      "tf": 130.73490553614823,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.28640174865723,
+      "tf": 130.38676319702648,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.318397521972656,
+      "tf": 130.31872773805856,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.35680079460144,
+      "tf": 130.2371611380216,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.37920022010803,
+      "tf": 130.1896330246112,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.52639985084534,
+      "tf": 129.8781591539881,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.564797163009644,
+      "tf": 129.7971555212277,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.584001779556274,
+      "tf": 129.756679025245,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.60320043563843,
+      "tf": 129.71624031690922,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.74079775810242,
+      "tf": 129.42715096277368,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.743998527526855,
+      "tf": 129.4204415419818,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.747199296951294,
+      "tf": 129.41373281677804,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.904001235961914,
+      "tf": 129.08592970494163,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.94239854812622,
+      "tf": 129.00591096406177,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.94559931755066,
+      "tf": 128.99924514469873,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.96479797363281,
+      "tf": 128.95927709471906,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 61.99039816856384,
+      "tf": 128.90602074003633,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.0415985584259,
+      "tf": 128.79963988153472,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.067198753356934,
+      "tf": 128.74651526894962,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.07039952278137,
+      "tf": 128.73987622823546,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.12159991264343,
+      "tf": 128.63376930467027,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.18240261077881,
+      "tf": 128.50798966418253,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.21439838409424,
+      "tf": 128.44190026022923,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.38719820976257,
+      "tf": 128.0861423706242,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.595200538635254,
+      "tf": 127.66051523499479,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.643200159072876,
+      "tf": 127.56269685629462,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.73919939994812,
+      "tf": 127.36750912391476,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.76800036430359,
+      "tf": 127.30906681144612,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.77120113372803,
+      "tf": 127.30257518851802,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.79360055923462,
+      "tf": 127.25716443767179,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 62.800002098083496,
+      "tf": 127.24419243680032,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.01119923591614,
+      "tf": 126.81770302580114,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.126397132873535,
+      "tf": 126.58627634300171,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.174402713775635,
+      "tf": 126.49008472948361,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.337600231170654,
+      "tf": 126.16416666931723,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.385599851608276,
+      "tf": 126.06862711258616,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.520002365112305,
+      "tf": 125.80187743174483,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.53920102119446,
+      "tf": 125.76386582724739,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.56800198554993,
+      "tf": 125.70688557769165,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.73760104179382,
+      "tf": 125.37239276953973,
+      "cfg": {
+        "bm": 64,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.894397020339966,
+      "tf": 125.06473062819872,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.977599143981934,
+      "tf": 124.90208540049082,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 63.999998569488525,
+      "tf": 124.85837079080206,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.2080008983612,
+      "tf": 124.45389110695633,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.31999802589417,
+      "tf": 124.23718590263299,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.3231987953186,
+      "tf": 124.23100376938304,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.35520052909851,
+      "tf": 124.16922775940789,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 64,
+        "stages": 2,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.37119841575623,
+      "tf": 124.13836853539217,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.3775999546051,
+      "tf": 124.12602454323691,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.38720226287842,
+      "tf": 124.10751315727019,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.39679861068726,
+      "tf": 124.08901877730656,
+      "cfg": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.44479823112488,
+      "tf": 123.99659509121747,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.52800035476685,
+      "tf": 123.83671441958282,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.70720171928406,
+      "tf": 123.49375864941072,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.76160287857056,
+      "tf": 123.39002119794937,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.76479768753052,
+      "tf": 123.38393444157293,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.81279730796814,
+      "tf": 123.29255770322365,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.8256003856659,
+      "tf": 123.26820738195492,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 64.97600078582764,
+      "tf": 122.98287760644939,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.16159772872925,
+      "tf": 122.63259082852197,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.17120003700256,
+      "tf": 122.61452217333651,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.20959734916687,
+      "tf": 122.54232316774294,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.22560119628906,
+      "tf": 122.51225600745609,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.28000235557556,
+      "tf": 122.41016028881155,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.39520025253296,
+      "tf": 122.19452683288459,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.42080044746399,
+      "tf": 122.14671018000003,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.48479795455933,
+      "tf": 122.02733766614054,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.6607985496521,
+      "tf": 121.70024928888624,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.83359837532043,
+      "tf": 121.38081085046122,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 65.98719954490662,
+      "tf": 121.09826765055982,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 4,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.0319983959198,
+      "tf": 121.01610955475444,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.16320013999939,
+      "tf": 120.7761343933095,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.18559956550598,
+      "tf": 120.73525970088279,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.24640226364136,
+      "tf": 120.62444568987169,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.34560227394104,
+      "tf": 120.44408789908064,
+      "cfg": {
+        "bm": 128,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.45119786262512,
+      "tf": 120.25269384187324,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.46400094032288,
+      "tf": 120.22952935341573,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.61760210990906,
+      "tf": 119.95231438706176,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.6208028793335,
+      "tf": 119.94655132682101,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.66240096092224,
+      "tf": 119.87170334120304,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.68800115585327,
+      "tf": 119.82568698265186,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.79679751396179,
+      "tf": 119.63051896806495,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.82239770889282,
+      "tf": 119.58468755958086,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.85760021209717,
+      "tf": 119.5217226859741,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 66.87039732933044,
+      "tf": 119.49884958280404,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.10399985313416,
+      "tf": 119.08285004603604,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.1999990940094,
+      "tf": 118.91273303175326,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.24159717559814,
+      "tf": 118.83916931854047,
+      "cfg": {
+        "bm": 192,
+        "bn": 64,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.32800006866455,
+      "tf": 118.68666147591543,
+      "cfg": {
+        "bm": 96,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.49439835548401,
+      "tf": 118.39405560610832,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.70240068435669,
+      "tf": 118.03031312368786,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.76000261306763,
+      "tf": 117.92997703425317,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 67.92320013046265,
+      "tf": 117.64662937923285,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 68.25600266456604,
+      "tf": 117.0730080879518,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 68.4831976890564,
+      "tf": 116.68461493697089,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 68.80000233650208,
+      "tf": 116.14731512531333,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 68.8480019569397,
+      "tf": 116.0663392526315,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 68.9408004283905,
+      "tf": 115.9101069663423,
+      "cfg": {
+        "bm": 32,
+        "bn": 192,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 69.1424012184143,
+      "tf": 115.57214402718515,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 69.25119757652283,
+      "tf": 115.39057563834888,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 69.57119703292847,
+      "tf": 114.85982551396727,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 32,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 69.66720223426819,
+      "tf": 114.70154241488093,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 32,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 70.07039785385132,
+      "tf": 114.04153246948904,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 70.27519941329956,
+      "tf": 113.70918359127015,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 70.28800249099731,
+      "tf": 113.688471272512,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 70.99840044975281,
+      "tf": 112.55092370222296,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 72.21119999885559,
+      "tf": 110.66061154123794,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 72.23039865493774,
+      "tf": 110.63119823240422,
+      "cfg": {
+        "bm": 96,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 72.40319848060608,
+      "tf": 110.36716222060896,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 72.43840098381042,
+      "tf": 110.31352767968924,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 72.53760099411011,
+      "tf": 110.16266656859587,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 72.54080176353455,
+      "tf": 110.15780578285468,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 73.62880110740662,
+      "tf": 108.53002400980503,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 74.20480251312256,
+      "tf": 107.6875792585913,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 74.29760098457336,
+      "tf": 107.55307635921088,
+      "cfg": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 128,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 74.82879757881165,
+      "tf": 106.78957581249034,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 5,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 75.02080202102661,
+      "tf": 106.5162639791604,
+      "cfg": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": false,
+        "tma": false,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 75.11039972305298,
+      "tf": 106.38920284626595,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 81.2287986278534,
+      "tf": 98.37564616227014,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 0,
+        "pol": "square"
+      }
+    },
+    {
+      "us": 81.71520233154297,
+      "tf": 97.79007239776986,
+      "cfg": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 4,
+        "threads": 256,
+        "ws": true,
+        "tma": true,
+        "swz": 8,
+        "pol": "square"
+      }
+    }
+  ]
+}

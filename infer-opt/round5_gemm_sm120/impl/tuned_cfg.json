@@ -1,0 +1,256 @@
+{
+ "qkv|3072|1024|2058": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 64,
+   "bn": 128,
+   "bk": 32,
+   "stages": 2,
+   "threads": 128,
+   "ws": false,
+   "tma": false,
+   "swz": 8,
+   "pol": "square"
+  },
+  "us": 68.35520267486572
+ },
+ "proj|1024|1024|2058": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 256,
+   "bn": 64,
+   "bk": 32,
+   "stages": 3,
+   "threads": 256,
+   "ws": true,
+   "tma": true,
+   "swz": 0,
+   "pol": "square"
+  },
+  "us": 28.409600257873535
+ },
+ "fc1|4096|1024|2058": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 160,
+   "bn": 64,
+   "bk": 32,
+   "st": 2,
+   "wm": 2,
+   "wn": 2,
+   "minb": 3,
+   "epi": 0,
+   "rf32": 1,
+   "splitk": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 83.5103988647461
+ },
+ "fc2|1024|4096|2058": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 80,
+   "bn": 64,
+   "bk": 32,
+   "st": 2,
+   "wm": 1,
+   "wn": 4,
+   "minb": 4,
+   "epi": 1,
+   "rf32": 1,
+   "splitk": 2,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+  },
+  "us": 89.69280123710632
+ },
+ "qkv|3072|1024|2258": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 96,
+   "bn": 64,
+   "bk": 32,
+   "stages": 2,
+   "threads": 128,
+   "ws": false,
+   "tma": false,
+   "swz": 0,
+   "pol": "square"
+  },
+  "us": 74.30400252342224
+ },
+ "proj|1024|1024|2258": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 256,
+   "bn": 64,
+   "bk": 32,
+   "stages": 3,
+   "threads": 256,
+   "ws": true,
+   "tma": true,
+   "swz": 0,
+   "pol": "square"
+  },
+  "us": 28.76479923725128
+ },
+ "fc1|4096|1024|2258": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 64,
+   "bn": 128,
+   "bk": 32,
+   "st": 2,
+   "wm": 1,
+   "wn": 4,
+   "minb": 1,
+   "epi": 0,
+   "rf32": 1,
+   "splitk": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 91.03999733924866
+ },
+ "fc2|1024|4096|2258": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 112,
+   "bn": 64,
+   "bk": 64,
+   "st": 2,
+   "wm": 1,
+   "wn": 4,
+   "minb": 2,
+   "epi": 1,
+   "rf32": 1,
+   "splitk": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+  },
+  "us": 97.01759815216064
+ },
+ "qkv|2304|768|2058": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 64,
+   "bn": 128,
+   "bk": 32,
+   "stages": 2,
+   "threads": 128,
+   "ws": false,
+   "tma": false,
+   "swz": 0,
+   "pol": "square"
+  },
+  "us": 42.0991986989975
+ },
+ "proj|768|768|2058": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 64,
+   "bn": 64,
+   "bk": 64,
+   "stages": 3,
+   "threads": 256,
+   "ws": false,
+   "tma": false,
+   "swz": 8,
+   "pol": "square"
+  },
+  "us": 17.555199563503265
+ },
+ "fc1|3072|768|2058": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 64,
+   "bn": 128,
+   "bk": 32,
+   "st": 2,
+   "wm": 1,
+   "wn": 4,
+   "minb": 2,
+   "epi": 0,
+   "rf32": 1,
+   "splitk": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 51.38559937477112
+ },
+ "fc2|768|3072|2058": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 64,
+   "bn": 80,
+   "bk": 64,
+   "st": 2,
+   "wm": 4,
+   "wn": 1,
+   "minb": 3,
+   "epi": 1,
+   "rf32": 1,
+   "splitk": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1"
+  },
+  "us": 55.34399747848511
+ },
+ "qkv|2304|768|2258": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 64,
+   "bn": 128,
+   "bk": 32,
+   "stages": 2,
+   "threads": 128,
+   "ws": false,
+   "tma": false,
+   "swz": 0,
+   "pol": "square"
+  },
+  "us": 42.72960126399994
+ },
+ "proj|768|768|2258": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 64,
+   "bn": 64,
+   "bk": 64,
+   "stages": 2,
+   "threads": 256,
+   "ws": false,
+   "tma": false,
+   "swz": 8,
+   "pol": "square"
+  },
+  "us": 17.852799594402313
+ },
+ "fc1|3072|768|2258": {
+  "impl": "mg",
+  "cfg": {
+   "bm": 96,
+   "bn": 64,
+   "bk": 32,
+   "st": 2,
+   "wm": 2,
+   "wn": 2,
+   "minb": 3,
+   "epi": 0,
+   "rf32": 1,
+   "splitk": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 54.153597354888916
+ },
+ "fc2|768|3072|2258": {
+  "impl": "tl",
+  "cfg": {
+   "bm": 96,
+   "bn": 128,
+   "bk": 64,
+   "stages": 3,
+   "threads": 256,
+   "ws": true,
+   "tma": true,
+   "swz": 0,
+   "pol": "square"
+  },
+  "us": 57.01119899749756
+ }
+}

@@ -1,0 +1,1128 @@
+#
+# Copyright (c) Lightly AG and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+from __future__ import annotations
+
+import copy
+import logging
+import math
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any, Literal
+
+import torch
+from PIL.Image import Image as PILImage
+from torch import Tensor
+from torch.nn import GELU, Embedding, Linear, Sequential
+from torch.nn import functional as F
+from torchvision.transforms.v2 import functional as transforms_functional
+
+from lightly_train import _logging, _torch_helpers, _torch_testing
+from lightly_train._data import file_helpers
+from lightly_train._export import tensorrt_helpers
+from lightly_train._export.onnx_helpers import check_onnx_dynamo_requirements
+from lightly_train._models import package_helpers
+from lightly_train._models.dinov3.dinov3_package import DINOV3_PACKAGE
+from lightly_train._models.dinov3.dinov3_src.layers.attention import (
+    SelfAttention,
+)
+from lightly_train._models.dinov3.dinov3_src.models.vision_transformer import (
+    DinoVisionTransformer,
+)
+from lightly_train._task_models.dinov3_eomt_instance_segmentation.config import (
+    DINOV3_EOMT_INSTANCE_SEGMENTATION_MODEL_REGISTRY,
+)
+from lightly_train._task_models.dinov3_eomt_instance_segmentation.scale_block import (
+    ScaleBlock,
+)
+from lightly_train._task_models.eomt import hooks
+from lightly_train._task_models.object_detection_components import tiling_utils
+from lightly_train._task_models.task_model import TaskModel
+from lightly_train.types import PathLike
+
+if TYPE_CHECKING:
+    import tensorrt as trt  # type: ignore[import-untyped,import-not-found]
+
+logger = logging.getLogger(__name__)
+
+
+class DINOv3EoMTInstanceSegmentation(TaskModel):
+    model_suffix = "eomt"
+
+    def __init__(
+        self,
+        *,
+        model_name: str,
+        classes: dict[int, str],
+        image_size: tuple[int, int],
+        image_normalize: dict[str, tuple[float, ...]],
+        num_queries: int,
+        num_joint_blocks: int,
+        backbone_freeze: bool = False,
+        backbone_weights: PathLike | None = None,
+        backbone_args: dict[str, Any] | None = None,
+        load_weights: bool = True,
+    ) -> None:
+        """
+        Args:
+            model_name:
+                The model name. For example "vits14-eomt".
+            classes:
+                A dict mapping the class ID to the class name. The dict must only
+                contain the classes that the model should predict. It must NOT contain
+                classes that are in the dataset but should be ignored by the model.
+            image_size:
+                The size of the input images.
+            image_normalize:
+                A dict containing the mean and standard deviation for normalizing
+                the input images. The dict must contain the keys "mean" and "std".
+                Example: {"mean": [0.485, 0.456, 0.406], "std": [0.229, 0.224, 0.225]}.
+                This is used to normalize the input images before passing them to the
+                model.
+            num_queries:
+                The number of query tokens to use in the model. This is the number of
+                individual segments that the model will predict.
+            num_joint_blocks:
+                The number of blocks that process the query tokens and image tokens
+                jointly.
+            backbone_freeze:
+                Whether to freeze the backbone during training. This freezes the
+                backbone layers until the last num_joint_blocks blocks which are left
+                unfrozen.
+            backbone_weights:
+                The path to the DINOv3 backbone weights. The weights must be exported
+                using LightlyTrain.
+            backbone_args:
+                Additional arguments to pass to the DINOv3 backbone.
+            load_weights:
+                If False, then no pretrained weights are loaded.
+        """
+        super().__init__(locals(), ignore_args={"backbone_weights", "load_weights"})
+        parsed_name = self._resolve_model_name(model_name=model_name)
+        self.model_name = parsed_name["model_name"]
+        self.classes = classes
+        self.image_size = image_size
+        self.image_normalize = image_normalize
+        self.backbone_freeze = backbone_freeze
+
+        # Internally, the model processes classes as contiguous integers starting at 0.
+        # This list maps the internal class id to the class id in `classes`.
+        # An additional class is added to represent "unknown/ignored classes" if needed.
+        internal_class_to_class = list(self.classes.keys())
+
+        # Efficient lookup for converting internal class IDs to class IDs.
+        # Registered as buffer to be automatically moved to the correct device.
+        self.internal_class_to_class: Tensor
+        self.register_buffer(
+            "internal_class_to_class",
+            torch.tensor(internal_class_to_class, dtype=torch.long),
+            persistent=False,  # No need to save it in the state dict.
+        )
+
+        self.included_classes: dict[int, str] = {
+            internal_class_id: class_name
+            for internal_class_id, class_name in enumerate(self.classes.values())
+        }
+
+        # NOTE(Guarin, 08/25): We don't set drop_path_rate=0 here because it is already
+        # set by DINOv3.
+        backbone_model_args: dict[str, Any] = {}
+        if backbone_args is not None:
+            backbone_model_args.update(backbone_args)
+        if backbone_weights is not None:
+            backbone_model_args["weights"] = str(backbone_weights)
+
+        # Get the backbone.
+        backbone = DINOV3_PACKAGE.get_model(
+            model_name=parsed_name["backbone_name"],
+            num_input_channels=len(self.image_normalize["mean"]),
+            model_args=backbone_model_args,
+            load_weights=load_weights,
+        )
+        assert isinstance(backbone, DinoVisionTransformer)
+        self.backbone = backbone
+
+        embed_dim = self.backbone.embed_dim
+        self.patch_size = self.backbone.patch_size
+
+        # TODO(Guarin, 07/25): Improve how mask tokens are handled for fine-tuning.
+        # Should we drop them from the model? We disable grads here for DDP to work
+        # without find_unused_parameters=True.
+        self.backbone.mask_token.requires_grad = False
+
+        if len(self.backbone.blocks) < num_joint_blocks:
+            raise ValueError(
+                f"num_joint_blocks ({num_joint_blocks}) cannot be larger than the "
+                f"number of blocks in the backbone ({len(self.backbone.blocks)})."
+            )
+
+        ### EoMT Specific parameters.
+        self.num_queries = num_queries
+        # Number of blocks that process queries and image tokens jointly.
+        self.num_joint_blocks = num_joint_blocks
+        self.queries = Embedding(num_queries, embed_dim)
+        self.class_head = Linear(embed_dim, len(self.classes) + 1)
+        self.mask_head = Sequential(
+            Linear(embed_dim, embed_dim),
+            GELU(),
+            Linear(embed_dim, embed_dim),
+            GELU(),
+            Linear(embed_dim, embed_dim),
+        )
+
+        num_upscale = max(1, math.ceil(math.log2(self.patch_size)) - 2)
+        self.upscale = Sequential(
+            *[ScaleBlock(embed_dim) for _ in range(num_upscale)],
+        )
+
+        # TODO(Guarin, 07/25): Move all attention mask handling to the train module.
+        # Attention mask prob can be passed as argument to forward_train. No need to
+        # store it as a parameter here.
+        self.attn_mask_probs: Tensor
+        self.register_buffer(
+            "attn_mask_probs", torch.ones(self.num_joint_blocks), persistent=False
+        )
+
+        _torch_helpers.register_load_state_dict_pre_hook(
+            self, hooks.queries_adjust_num_queries_hook
+        )
+        _torch_helpers.register_load_state_dict_pre_hook(
+            self, hooks.class_head_reuse_or_reinit_hook
+        )
+
+        if self.backbone_freeze:
+            self.freeze_backbone()
+
+    @classmethod
+    def list_model_names(cls) -> list[str]:
+        return list(DINOV3_EOMT_INSTANCE_SEGMENTATION_MODEL_REGISTRY.list_aliases())
+
+    @classmethod
+    def is_supported_model(cls, model: str) -> bool:
+        return model in DINOV3_EOMT_INSTANCE_SEGMENTATION_MODEL_REGISTRY.list_aliases()
+
+    @classmethod
+    def _resolve_model_name(cls, model_name: str) -> dict[str, str]:
+        try:
+            config = DINOV3_EOMT_INSTANCE_SEGMENTATION_MODEL_REGISTRY.get(
+                alias=model_name
+            )()
+        except KeyError:
+            raise ValueError(
+                f"Model name '{model_name}' is not supported. Available "
+                f"models are: {cls.list_model_names()}. See the documentation for "
+                "more information: https://docs.lightly.ai/train/stable/instance_segmentation.html"
+            ) from None
+
+        package_name, backbone_name = package_helpers.parse_model_name(
+            config.backbone_name
+        )
+
+        return {
+            "model_name": f"{package_name}/{backbone_name}-{cls.model_suffix}",
+            "backbone_name": backbone_name,
+        }
+
+    @torch.no_grad()
+    def predict(
+        self, image: PathLike | PILImage | Tensor, threshold: float = 0.8
+    ) -> dict[str, Tensor]:
+        """Returns the predicted mask for the given image.
+
+        Args:
+            image:
+                The input image as a path, URL, PIL image, or tensor. Tensors must have
+                shape (C, H, W).
+            threshold:
+                The confidence threshold for the predicted masks. Only masks with a
+                confidence score above this threshold are returned.
+
+        Returns:
+            A {"labels": Tensor, "masks": Tensor, "scores": Tensor} dict. Labels is a
+            tensor of shape (Q,) containing the predicted class for each query. Masks is
+            a tensor of shape (Q, H, W) containing the predicted mask for each query.
+            Scores is a tensor of shape (Q,) containing the confidence score for each
+            query.
+        """
+        self._track_inference()
+        if self.training:
+            self.eval()
+
+        x, metadata = self.preprocess_image(image)
+        batch = self.preprocess_batch(x.unsqueeze(0))
+        raw = self.forward_backend(batch)
+        return self.postprocess(raw, [metadata], threshold=threshold)[0]
+
+    def preprocess_image(
+        self, image: PathLike | PILImage | Tensor
+    ) -> tuple[Tensor, dict[str, Any]]:
+        first_param = next(self.parameters())
+        device, dtype = first_param.device, first_param.dtype
+
+        x = file_helpers.as_image_tensor(image).to(device)
+        image_h, image_w = x.shape[-2:]
+
+        x = transforms_functional.to_dtype(x, dtype=dtype, scale=True)
+        # Normalize before resize_and_pad so the zero padding inserted by
+        # resize_and_pad is identical to the per-image `predict` path.
+        x = transforms_functional.normalize(
+            x,
+            mean=list(self.image_normalize["mean"]),
+            std=list(self.image_normalize["std"]),
+        )
+        x, (crop_h, crop_w) = self.resize_and_pad(x)
+        return x, {
+            "orig_h": image_h,
+            "orig_w": image_w,
+            "crop_h": crop_h,
+            "crop_w": crop_w,
+        }
+
+    def preprocess_batch(self, batch: Tensor) -> Tensor:
+        return batch
+
+    def forward_backend(self, x: Tensor) -> tuple[Tensor, Tensor]:
+        """Forward pass that returns the logits of the last layer. Intended for
+        inference."""
+        # x is a batch of images with shape (B, C, H, W).
+        H, W = x.shape[-2:]
+
+        # Forward pass.
+        # Only the logits of the last layer are returned.
+        mask_logits_per_layer, class_logits_per_layer = self.forward_train(
+            x, return_logits_per_layer=False
+        )
+        mask_logits = mask_logits_per_layer[-1]
+        class_logits = class_logits_per_layer[-1]
+
+        # Interpolate.
+        mask_logits = F.interpolate(mask_logits, (H, W), mode="bilinear")
+        return mask_logits, class_logits
+
+    def postprocess(  # type: ignore[override]
+        self,
+        raw_outputs: tuple[Tensor, Tensor],
+        metadata: Sequence[dict[str, Any]],
+        threshold: float,
+    ) -> list[dict[str, Tensor]]:
+        mask_logits_batch, class_logits_batch = raw_outputs
+        out: list[dict[str, Tensor]] = []
+        for i, meta in enumerate(metadata):
+            crop_h, crop_w = meta["crop_h"], meta["crop_w"]
+            orig_h, orig_w = meta["orig_h"], meta["orig_w"]
+            # (1, Q, crop_h, crop_w)
+            mask_logits = mask_logits_batch[i : i + 1, ..., :crop_h, :crop_w]
+            # (1, Q, orig_h, orig_w)
+            mask_logits = F.interpolate(
+                mask_logits, size=(orig_h, orig_w), mode="bilinear"
+            )
+            class_logits = class_logits_batch[i : i + 1]
+            labels, masks, scores = self.get_labels_masks_scores(
+                mask_logits=mask_logits, class_logits=class_logits
+            )
+            labels = self.internal_class_to_class[labels]
+            labels = labels.squeeze(0)
+            masks = masks.squeeze(0)
+            scores = scores.squeeze(0)
+            keep = scores >= threshold
+            out.append(
+                {
+                    "labels": labels[keep],
+                    "masks": masks[keep],
+                    "scores": scores[keep],
+                }
+            )
+        return out
+
+    @torch.no_grad()
+    def predict_batch(
+        self,
+        images: Sequence[PathLike | PILImage | Tensor],
+        threshold: float = 0.8,
+    ) -> list[dict[str, Tensor]]:
+        """Run inference on a batch of images and return per-image predictions.
+
+        Args:
+            images:
+                Sequence of input images. Each can be a path, a PIL image, or a
+                tensor of shape (C, H, W).
+            threshold:
+                The confidence threshold for the predicted masks. Only masks with a
+                confidence score above this threshold are returned.
+
+        Returns:
+            A list with one dict per input image. Each dict contains:
+                - "labels": Tensor of shape (N,) with predicted class indices.
+                - "masks": Tensor of shape (N, H, W) with predicted masks at the
+                  original image resolution.
+                - "scores": Tensor of shape (N,) with confidence scores.
+        """
+        self._track_inference()
+        if self.training:
+            self.eval()
+        tensors: list[Tensor] = []
+        metadata: list[dict[str, Any]] = []
+        for image in images:
+            x, meta = self.preprocess_image(image)
+            tensors.append(x)
+            metadata.append(meta)
+        batch = torch.stack(tensors, dim=0)
+        batch = self.preprocess_batch(batch)
+        raw = self.forward_backend(batch)
+        return self.postprocess(raw, metadata, threshold=threshold)
+
+    @torch.no_grad()
+    def predict_sahi(
+        self,
+        image: PathLike | PILImage | Tensor,
+        threshold: float = 0.8,
+        overlap: float = 0.2,
+        nms_iou_threshold: float = 0.5,
+        global_local_iou_threshold: float = 0.5,
+        batch_size: int | None = None,
+    ) -> dict[str, Tensor]:
+        """Run Slicing Aided Hyper Inference (SAHI) for instance segmentation.
+
+        The image is converted to a tensor, then:
+
+        - A resized-and-padded full-image "global" prediction is computed.
+        - The image is tiled into overlapping crops of size ``self.image_size``.
+        - Each tile is run through the model (in batches of ``batch_size``) and its
+          masks are stitched back into the original image coordinates.
+        - Global and tile predictions are merged using mask NMS and a global/local
+          consistency heuristic. NMS is only applied on tile predictions; the
+          heuristic discards tile predictions that heavily overlap global
+          predictions.
+
+        Args:
+            image:
+                Input image. Can be a path, a PIL image, or a tensor of shape
+                (C, H, W).
+            threshold:
+                Score threshold for filtering low-confidence predictions.
+            overlap:
+                Fractional overlap between tiles in [0, 1). 0.0 means no overlap.
+            nms_iou_threshold:
+                Mask IoU threshold used for non-maximum suppression when merging
+                predictions from tiles. A lower value yields fewer predictions.
+            global_local_iou_threshold:
+                Mask IoU above which a tile prediction is discarded because it
+                matches a global prediction of the same class. A lower value yields
+                fewer predictions.
+            batch_size:
+                Number of tiles to run through the model at once. If None, all tiles
+                are processed in a single batch. Must be a positive integer.
+
+        Returns:
+            A dictionary with:
+                - "labels": Tensor of shape (N,) with predicted class indices.
+                - "masks": Tensor of shape (N, H, W) with binary masks at the
+                    original image resolution.
+                - "scores": Tensor of shape (N,) with confidence scores.
+        """
+        self._track_inference()
+        if self.training:
+            self.eval()
+
+        first_param = next(self.parameters())
+        device, dtype = first_param.device, first_param.dtype
+
+        x = file_helpers.as_image_tensor(image).to(device)
+        orig_h, orig_w = x.shape[-2:]
+        tile_h, tile_w = self.image_size
+
+        x = transforms_functional.to_dtype(x, dtype=dtype, scale=True)
+        x = transforms_functional.normalize(
+            x,
+            mean=list(self.image_normalize["mean"]),
+            std=list(self.image_normalize["std"]),
+        )
+
+        x_global, (crop_h, crop_w) = self.resize_and_pad(x)
+        global_batch = self.preprocess_batch(x_global.unsqueeze(0))
+        global_raw = self.forward_backend(global_batch)
+        pred_global = self.postprocess(
+            global_raw,
+            [
+                {
+                    "orig_h": orig_h,
+                    "orig_w": orig_w,
+                    "crop_h": crop_h,
+                    "crop_w": crop_w,
+                }
+            ],
+            threshold=threshold,
+        )[0]
+
+        tiles, coordinates = tiling_utils.tile_image(
+            image=x,
+            overlap=overlap,
+            tile_size=self.image_size,
+            padding_mode="pad",
+        )
+
+        if batch_size is None:
+            batch_size = len(tiles)
+        if batch_size <= 0:
+            raise ValueError("batch_size must be a positive integer or None.")
+
+        all_labels: list[Tensor] = []
+        all_masks: list[Tensor] = []
+        all_scores: list[Tensor] = []
+
+        for start in range(0, len(tiles), batch_size):
+            end = min(start + batch_size, len(tiles))
+            tile_batch = self.preprocess_batch(tiles[start:end])
+            coordinate_batch = coordinates[start:end]
+
+            raw = self.forward_backend(tile_batch)
+            metadata: list[dict[str, Any]] = []
+            valid_sizes: list[tuple[int, int]] = []
+            for coordinate in coordinate_batch:
+                x_start = int(coordinate[0].item())
+                y_start = int(coordinate[1].item())
+                valid_h = min(tile_h, orig_h - y_start)
+                valid_w = min(tile_w, orig_w - x_start)
+                valid_sizes.append((valid_h, valid_w))
+                metadata.append(
+                    {
+                        "orig_h": valid_h,
+                        "orig_w": valid_w,
+                        "crop_h": valid_h,
+                        "crop_w": valid_w,
+                    }
+                )
+
+            predictions = self.postprocess(raw, metadata, threshold=threshold)
+            for prediction, coordinate, valid_size in zip(
+                predictions, coordinate_batch, valid_sizes
+            ):
+                labels = prediction["labels"]
+                masks = prediction["masks"]
+                scores = prediction["scores"]
+                if labels.numel() == 0:
+                    continue
+
+                x_start = int(coordinate[0].item())
+                y_start = int(coordinate[1].item())
+                valid_h, valid_w = valid_size
+                full_masks = masks.new_zeros(
+                    (masks.shape[0], orig_h, orig_w), dtype=torch.bool
+                )
+                full_masks[
+                    :, y_start : y_start + valid_h, x_start : x_start + valid_w
+                ] = masks[:, :valid_h, :valid_w]
+
+                all_labels.append(labels)
+                all_masks.append(full_masks)
+                all_scores.append(scores)
+
+        if len(all_labels) > 0:
+            labels_tiles = torch.cat(all_labels, dim=0)
+            masks_tiles = torch.cat(all_masks, dim=0)
+            scores_tiles = torch.cat(all_scores, dim=0)
+        else:
+            labels_tiles = torch.empty(0, dtype=torch.long, device=device)
+            masks_tiles = torch.empty(
+                (0, orig_h, orig_w), dtype=torch.bool, device=device
+            )
+            scores_tiles = torch.empty(0, dtype=dtype, device=device)
+
+        labels, masks, scores = tiling_utils.combine_instance_segmentation_tiles(
+            pred_global=pred_global,
+            pred_tiles={
+                "labels": labels_tiles,
+                "masks": masks_tiles,
+                "scores": scores_tiles,
+            },
+            nms_iou_threshold=nms_iou_threshold,
+            global_local_iou_threshold=global_local_iou_threshold,
+        )
+        return {
+            "labels": labels,
+            "masks": masks,
+            "scores": scores,
+        }
+
+    def forward(self, x: Tensor) -> tuple[Tensor, Tensor, Tensor]:
+        # Function used for ONNX export
+        # (1, Q, H, W), (1, Q, K+1), Q = num_queries, K = len(self.classes)
+        mask_logits, class_logits = self.forward_backend(x)
+        labels, masks, scores = self.get_labels_masks_scores(
+            mask_logits=mask_logits, class_logits=class_logits
+        )
+
+        # Map internal class IDs to class IDs.
+        labels = self.internal_class_to_class[labels]
+        return labels, masks, scores
+
+    # TODO(Guarin, 07/25): Refactor to take attn_mask_probs as input.
+    def forward_train(
+        self, x: Tensor, return_logits_per_layer: bool
+    ) -> tuple[list[Tensor], list[Tensor]]:
+        _, _, H, W = x.shape
+        patch_size = self.backbone.patch_size
+        num_backbone_blocks = len(self.backbone.blocks)  # type: ignore[arg-type]
+
+        # Match the logic of the PatchEmbded forward
+        # (src/lightly_train/_models/dinov3/dinov3_src/layers/patch_embed.py).
+        # TODO(Thomas, 09/25): Update the patch embedding logic to not drop extra pixels.
+        assert patch_size is not None
+        grid_size = (H // patch_size, W // patch_size)
+
+        x, image_size = self.backbone.prepare_tokens_with_masks(x)
+        mask_logits_per_layer, class_logits_per_layer = [], []
+        for i, block in enumerate(self.backbone.blocks):  # type: ignore[arg-type]
+            attn_mask = None
+
+            rope_sincos: tuple[Tensor, Tensor] | None = None
+            if self.backbone.rope_embed is not None:
+                rope_sincos = self.backbone.rope_embed(H=image_size[0], W=image_size[1])  # type: ignore
+
+            if i == num_backbone_blocks - self.num_joint_blocks:
+                # Prepend query tokens.
+                x = torch.cat(
+                    (self.queries.weight[None, :, :].expand(x.shape[0], -1, -1), x),
+                    dim=1,
+                )
+
+            if (
+                return_logits_per_layer
+                and i >= num_backbone_blocks - self.num_joint_blocks
+            ):
+                mask_logits, class_logits = self._predict(
+                    self.backbone.norm(x), grid_size=grid_size
+                )
+                mask_logits_per_layer.append(mask_logits)
+                class_logits_per_layer.append(class_logits)
+
+                # NOTE(Guarin, 08/25): This is different from the original EoMT code.
+                # The original code also applies the attention mask during validation.
+                # This results is higher reported validation mIoU during training.
+                # As attention masking is disabled towards the end of training, the
+                # mIoU values converge to the same values whether the attention mask
+                # is applied or not. We disable the attention mask as this is also
+                # what happens during inference. This way our validation mIoU reflects
+                # actual inference performance.
+                if self.training:
+                    attn_mask = torch.ones(
+                        x.shape[0],
+                        x.shape[1],
+                        x.shape[1],
+                        dtype=torch.bool,
+                        device=x.device,
+                    )
+                    interpolated = F.interpolate(
+                        input=mask_logits,
+                        size=grid_size,
+                        mode="bilinear",
+                    )
+                    interpolated = interpolated.view(
+                        interpolated.size(0), interpolated.size(1), -1
+                    )
+                    attn_mask[
+                        :,
+                        : self.num_queries,
+                        # + 1 class token + register tokens
+                        self.num_queries + 1 + self.backbone.n_storage_tokens :,
+                    ] = interpolated > 0
+                    attn_mask = self._disable_attn_mask(
+                        attn_mask=attn_mask,
+                        prob=self.attn_mask_probs[
+                            i - num_backbone_blocks + self.num_joint_blocks
+                        ],
+                    )
+
+            # TODO(Guarin, 08/25): Double check if sample_drop_ratio > 0 sometimes.
+            # This is usually not the case in EoMT but should be verified.
+            x = x + block.ls1(  # type: ignore[operator]
+                self._attn(block.attn, block.norm1(x), rope=rope_sincos, mask=attn_mask)  # type: ignore
+            )
+            x = x + block.ls2(block.mlp(block.norm2(x)))  # type: ignore[operator]
+
+        mask_logits, class_logits = self._predict(
+            self.backbone.norm(x), grid_size=grid_size
+        )
+        mask_logits_per_layer.append(mask_logits)
+        class_logits_per_layer.append(class_logits)
+
+        return (
+            mask_logits_per_layer,
+            class_logits_per_layer,
+        )
+
+    def _predict(self, x: Tensor, grid_size: tuple[int, int]) -> tuple[Tensor, Tensor]:
+        # TODO(Guarin, 08/25): Investigate if having different norms for queries and
+        # patch tokens is beneficial.
+        q = x[:, : self.num_queries, :]
+
+        class_logits = self.class_head(q)
+
+        # num queries + 1 class token + register tokens
+        x = x[:, self.num_queries + 1 + self.backbone.n_storage_tokens :, :]
+        x = x.transpose(1, 2).reshape(x.shape[0], -1, *grid_size)
+
+        mask_logits = torch.einsum(
+            "bqc, bchw -> bqhw", self.mask_head(q), self.upscale(x)
+        )
+
+        return mask_logits, class_logits
+
+    @torch.no_grad()
+    def get_labels_masks_scores(
+        self, mask_logits: Tensor, class_logits: Tensor
+    ) -> tuple[Tensor, Tensor, Tensor]:
+        # Get score and label for each query.
+        # NOTE(Guarin, 01/26): Calculate softmax always in fp32 for numerical
+        # stability. Otherwise converting a fp32 model to fp16 results in NaNs.
+        scores = class_logits.softmax(dim=-1, dtype=torch.float32)[..., :-1].type_as(
+            class_logits
+        )  # (1, Q, K)
+        scores, labels = torch.max(scores, dim=-1)  # (1, Q), (1, Q)
+
+        # Multiply scores with mask scores.
+        masks = mask_logits > 0  # (1, Q, H, W)
+
+        #### WARNING
+        # Be careful when modifying anything here. These operations
+        # must be kept in FP32 to avoid numerical issues in FP16 models. Test on
+        # TensorRT FP16 when making any changes. You have to force TensorRT to use FP32.
+        # See export_tensorrt in this file for details.
+        mask_logits_fp32 = mask_logits.float()
+        masks_fp32 = masks.float()
+
+        # (1, Q)
+        score_per_query = (
+            mask_logits_fp32.sigmoid().flatten(2) * masks_fp32.flatten(2)
+        ).sum(2)
+        mask_pixels_per_query = masks_fp32.flatten(2).sum(2)
+        mask_scores = score_per_query / mask_pixels_per_query
+        mask_scores = torch.where(
+            mask_pixels_per_query > 0, mask_scores, torch.zeros_like(mask_scores)
+        )
+
+        scores = scores * mask_scores  # (1, Q)
+        scores = scores.type_as(mask_logits)
+        #####
+
+        # (1, Q), (1, Q, H, W), (1, Q)
+        return labels, masks, scores
+
+    def resize_and_pad(self, image: Tensor) -> tuple[Tensor, tuple[int, int]]:
+        """Resize and pad image to self.image_size while keeping aspect ratio constant.
+
+        Args:
+            image:
+                A tensor of shape (..., H, W).
+
+        Returns:
+            An (image, (crop_h, crop_w)) tuple where image is a tensor of shape
+            (..., H', W') with H'==self.image_size[0] and W'==self.image_size[1], and
+            (crop_h, crop_w) are the height and width of the resized (non-padded) image.
+        """
+        image_h, image_w = image.shape[-2:]
+        resize_factor = min(self.image_size[0] / image_h, self.image_size[1] / image_w)
+        crop_h = round(image_h * resize_factor)
+        crop_w = round(image_w * resize_factor)
+        pad_h = max(0, self.image_size[0] - crop_h)
+        pad_w = max(0, self.image_size[1] - crop_w)
+        # (..., crop_h, crop_w)
+        image = transforms_functional.resize(image, size=[crop_h, crop_w])
+        # (..., H', W')
+        image = transforms_functional.pad(image, padding=[0, 0, pad_w, pad_h])
+        return image, (crop_h, crop_w)
+
+    # TODO(Guarin, 07/25): No need for attention mask handling in this module. Move it
+    # to DINOv3InstanceSegmentationTrain.
+    @torch.compiler.disable  # type: ignore[misc, untyped-decorator]
+    def _disable_attn_mask(self, attn_mask: Tensor, prob: Tensor) -> Tensor:
+        # prob is a scalar tensor.
+        if prob < 1:
+            random_queries = (
+                torch.rand(
+                    attn_mask.shape[0], self.num_queries, device=attn_mask.device
+                )
+                > prob
+            )
+            attn_mask[
+                :,
+                : self.num_queries,
+                self.num_queries + 1 + self.backbone.n_storage_tokens :,
+            ][random_queries] = True
+
+        return attn_mask
+
+    # TODO(Guarin, 07/25): Add support for attention masks directly to Attention class?
+    def _attn(
+        self,
+        module: SelfAttention,
+        x: Tensor,
+        rope: Tensor | tuple[Tensor, Tensor] | None,
+        mask: Tensor | None,
+    ) -> Tensor:
+        # This mirrors DINOv3 Attention forward but with mask support.
+        qkv = module.qkv(x)
+        B, N, _ = qkv.shape
+        C = module.qkv.in_features
+
+        qkv = qkv.reshape(B, N, 3, module.num_heads, C // module.num_heads)
+        q, k, v = torch.unbind(qkv, 2)
+        q, k, v = [t.transpose(1, 2) for t in [q, k, v]]
+        if rope is not None:
+            q, k = module.apply_rope(q, k, rope)
+        if mask is not None:
+            mask = mask[:, None, ...].expand(-1, module.num_heads, -1, -1)
+        x = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=mask)
+        x = x.transpose(1, 2)
+        x = x.reshape([B, N, C])
+        x = module.proj(x)
+        x = module.proj_drop(x)
+        return x
+
+    def load_train_state_dict(self, state_dict: dict[str, Any]) -> None:
+        """Load the state dict from a training checkpoint."""
+        new_state_dict = {}
+        for name, param in state_dict.items():
+            if name.startswith("model."):
+                name = name[len("model.") :]
+                new_state_dict[name] = param
+        self.load_state_dict(new_state_dict, strict=True)
+
+    def freeze_backbone(self) -> None:
+        num_backbone_blocks = self.backbone.n_blocks
+        num_joint_blocks = self.num_joint_blocks
+
+        # Freeze parameters until the first joint block.
+        frozen_params = set()
+        for name, param in self.backbone.named_parameters():
+            name_parts = name.split(".")
+            for i, key in enumerate(name_parts):
+                if key == "blocks":
+                    block_idx = int(name_parts[i + 1])
+                    is_joint_block = block_idx >= (
+                        num_backbone_blocks - num_joint_blocks
+                    )
+                    if is_joint_block:
+                        break
+            else:
+                param.requires_grad_(False)
+                frozen_params.add(id(param))
+                continue
+            break
+
+        # Iterate over leaf modules, set to eval until first non-frozen param.
+        frozen_modules = set()
+        for module in self.backbone.modules():
+            if next(module.children(), None) is not None:
+                continue
+            module_params = set(id(p) for p in module.parameters(recurse=False))
+            if module_params.issubset(frozen_params):
+                module.eval()
+                frozen_modules.add(id(module))
+            else:
+                break
+
+        # Iterate over non-leaf modules, set to eval if all children are frozen.
+        # Iterating in reverse order ensures that child modules are processed before
+        # their parents.
+        all_modules = list(self.backbone.modules())
+        for module in reversed(all_modules):
+            if next(module.children(), None) is None:
+                continue  # Skip leaf modules, already handled in pass 1.
+            children = list(module.children())
+            if all(id(child) in frozen_modules for child in children):
+                module.eval()
+                frozen_modules.add(id(module))
+
+    @torch.no_grad()
+    def export_onnx(
+        self,
+        out: PathLike,
+        *,
+        precision: Literal["auto", "fp32", "fp16"] = "auto",
+        batch_size: int = 1,
+        dynamic_batch_size: bool = True,
+        height: int | None = None,
+        width: int | None = None,
+        opset_version: int | None = None,
+        simplify: bool = True,
+        verify: bool = True,
+        format_args: dict[str, Any] | None = None,
+    ) -> None:
+        """Exports the model to ONNX for inference.
+
+        The export uses a dummy input of shape (batch_size, C, H, W) where C is
+        inferred from the first model parameter and (H, W) come from
+        `self.image_size`. If `dynamic_batch_size` is True, the ONNX graph will
+        have a dynamic batch dimension for the input. The graph produces three
+        outputs: labels, masks, and scores.
+
+        Optionally simplifies the exported model in-place using onnxslim and
+        verifies numerical closeness against a float32 CPU reference via
+        ONNX Runtime.
+
+        Args:
+            out:
+                Path where the ONNX model will be written.
+            precision:
+                Precision for the ONNX model. Either "auto", "fp32", or "fp16". "auto"
+                uses the model's current precision.
+            batch_size:
+                Batch size for the ONNX input.
+            dynamic_batch_size:
+                If True, the ONNX graph will have a dynamic batch dimension for the
+                input. If False, the batch dimension is fixed to `batch_size`.
+            height:
+                Height of the ONNX input. If None, will be taken from `self.image_size`.
+            width:
+                Width of the ONNX input. If None, will be taken from `self.image_size`.
+            opset_version:
+                ONNX opset version to target. If None, PyTorch's default opset is used.
+            simplify:
+                If True, run onnxslim to simplify and overwrite the exported model.
+            verify:
+                If True, validate the ONNX file and compare outputs to a float32 CPU
+                reference forward pass.
+            format_args:
+                Optional extra keyword arguments forwarded to `torch.onnx.export`.
+
+        Returns:
+            None. Writes the ONNX model to `out`.
+        """
+        # TODO(Guarin, 01/26): Move warnings module out of commands subpackage and
+        # move import to the top of the file.
+        from lightly_train._commands import _warnings
+
+        _logging.set_up_console_logging()
+        _warnings.filter_export_warnings()
+
+        self.eval()
+
+        first_parameter = next(self.parameters())
+        model_device = first_parameter.device
+        dtype = first_parameter.dtype
+
+        if precision == "fp32":
+            dtype = torch.float32
+        elif precision == "fp16":
+            dtype = torch.float16
+        elif precision != "auto":
+            raise ValueError(
+                f"Invalid precision '{precision}'. Must be one of 'auto', 'fp32', 'fp16'."
+            )
+
+        self.to(dtype)
+
+        height = self.image_size[0] if height is None else height
+        width = self.image_size[1] if width is None else width
+        num_channels = len(self.image_normalize["mean"])
+
+        check_onnx_dynamo_requirements()
+
+        if dynamic_batch_size:
+            batch_size = 2
+            batch_dim = torch.export.Dim("batch_size", min=1, max=2**31 - 1)
+            dynamic_shapes = ({0: batch_dim},)
+        else:
+            dynamic_shapes = None
+
+        dummy_input = torch.randn(
+            batch_size,
+            num_channels,
+            height,
+            width,
+            requires_grad=False,
+            device=model_device,
+            dtype=dtype,
+        )
+
+        input_names = ["images"]
+        output_names = ["labels", "masks", "scores"]
+
+        torch.onnx.export(
+            self,
+            (dummy_input,),
+            str(out),
+            input_names=input_names,
+            output_names=output_names,
+            opset_version=opset_version,
+            dynamo=True,
+            dynamic_shapes=dynamic_shapes,
+            **(format_args or {}),
+        )
+
+        if simplify:
+            import onnxslim  # type: ignore [import-not-found,import-untyped]
+
+            # Simplify.
+            onnxslim.slim(
+                model=str(out),
+                output_model=out,
+            )
+
+        if verify:
+            logger.info("Verifying ONNX model")
+            import onnx
+            import onnxruntime as ort
+
+            onnx.checker.check_model(out, full_check=True)
+
+            # Always run the reference input in float32 and on cpu for consistency.
+            reference_model = copy.deepcopy(self).cpu().to(torch.float32).eval()
+            reference_outputs: tuple[Tensor, ...] = reference_model(
+                dummy_input.cpu().to(torch.float32),
+            )
+
+            # Get outputs from the ONNX model.
+            session = ort.InferenceSession(out)
+            input_feed = {
+                "images": dummy_input.cpu().numpy(),
+            }
+            outputs_onnx = session.run(output_names=None, input_feed=input_feed)
+            outputs_onnx = tuple(torch.from_numpy(y) for y in outputs_onnx)
+
+            # Verify that the outputs from both models are close.
+            if len(outputs_onnx) != len(reference_outputs):
+                raise AssertionError(
+                    f"Number of onnx outputs should be {len(reference_outputs)} but is {len(outputs_onnx)}"
+                )
+            for output_onnx, output_model, output_name in zip(
+                outputs_onnx, reference_outputs, output_names
+            ):
+
+                def msg(s: str) -> str:
+                    return f'ONNX validation failed for output "{output_name}": {s}'
+
+                if output_model.is_floating_point():
+                    # Absolute and relative tolerances are a bit arbitrary and taken from here:
+                    # https://github.com/pytorch/pytorch/blob/main/torch/onnx/_internal/exporter/_core.py#L1611-L1618
+                    torch.testing.assert_close(
+                        output_onnx,
+                        output_model,
+                        msg=msg,
+                        equal_nan=True,
+                        check_device=False,
+                        check_dtype=False,
+                        check_layout=False,
+                        atol=5e-3,
+                        rtol=1e-1,
+                    )
+                else:
+                    _torch_testing.assert_most_equal(
+                        output_onnx,
+                        output_model,
+                        msg=msg,
+                    )
+
+        logger.info(f"Successfully exported ONNX model to '{out}'")
+
+    @torch.no_grad()
+    def export_tensorrt(
+        self,
+        out: PathLike,
+        *,
+        precision: Literal["auto", "fp32", "fp16"] = "auto",
+        onnx_args: dict[str, Any] | None = None,
+        max_batchsize: int = 1,
+        opt_batchsize: int = 1,
+        min_batchsize: int = 1,
+        verbose: bool = False,
+    ) -> None:
+        """Build a TensorRT engine from an ONNX model.
+
+        .. note::
+            TensorRT is not part of LightlyTrain’s dependencies and must be installed separately.
+            Installation depends on your OS, Python version, GPU, and NVIDIA driver/CUDA setup.
+            See the `TensorRT documentation <https://docs.nvidia.com/deeplearning/tensorrt/latest/installing-tensorrt/installing.html>`_ for more details.
+            On CUDA 12.x systems you can often install the Python package via `pip install tensorrt-cu12`.
+
+        This loads the ONNX file, parses it with TensorRT, infers the static input
+        shape (C, H, W) from the `"images"` input, and creates an engine with a
+        dynamic batch dimension in the range `[min_batchsize, opt_batchsize, max_batchsize]`.
+        Spatial dimensions must be static in the ONNX model (dynamic H/W are not yet supported).
+
+        The engine is serialized and written to `out`.
+
+        Args:
+            out:
+                Path where the TensorRT engine will be saved.
+            precision:
+                Precision for ONNX export and TensorRT engine building. Either
+                "auto", "fp32", or "fp16". "auto" uses the model's current precision.
+            onnx_args:
+                Optional arguments to pass to `export_onnx` when exporting
+                the ONNX model prior to building the TensorRT engine. If None,
+                default arguments are used and the ONNX file is saved alongside
+                the TensorRT engine with the same name but `.onnx` extension.
+            max_batchsize:
+                Maximum supported batch size.
+            opt_batchsize:
+                Batch size TensorRT optimizes for.
+            min_batchsize:
+                Minimum supported batch size.
+            verbose:
+                Enable verbose TensorRT logging.
+
+        Raises:
+            FileNotFoundError: If the ONNX file does not exist.
+            RuntimeError: If the ONNX cannot be parsed or engine building fails.
+            ValueError: If batch size constraints are invalid or H/W are dynamic.
+        """
+
+        def update_network_fn(net: trt.INetworkDefinition) -> None:
+            import tensorrt as trt
+
+            wanted = ("ReduceSum", "Div", "Mul", "Sigmoid")
+
+            io_tensors = {
+                *(net.get_input(i) for i in range(net.num_inputs)),
+                *(net.get_output(i) for i in range(net.num_outputs)),
+            }
+
+            # find first Sigmoid layer index
+            start_idx: int | None = None
+            for i in range(net.num_layers):
+                layer = net.get_layer(i)
+                if "Sigmoid" in layer.name:
+                    start_idx = i
+                    break
+            if start_idx is None:
+                logger.warning("No Sigmoid layer found; nothing to update.")
+                return
+
+            for i in range(start_idx, net.num_layers):
+                layer = net.get_layer(i)
+                if any(k in layer.name for k in wanted):
+                    layer.precision = trt.DataType.FLOAT
+
+                    for j in range(layer.num_outputs):
+                        out = layer.get_output(j)
+                        if out is None:
+                            continue
+
+                        # Only set dtype for network I/O tensors to avoid TRT warnings.
+                        if out in io_tensors:
+                            out.dtype = trt.DataType.FLOAT
+
+                    logger.debug(f"Forcing FP32 for layer: {layer.name}")
+
+        model_dtype = next(self.parameters()).dtype
+
+        tensorrt_helpers.export_tensorrt(
+            export_onnx_fn=self.export_onnx,
+            out=out,
+            precision=precision,
+            model_dtype=model_dtype,
+            onnx_args=onnx_args,
+            max_batchsize=max_batchsize,
+            opt_batchsize=opt_batchsize,
+            min_batchsize=min_batchsize,
+            # FP32 attention scores required for FP16 model stability. Otherwise output
+            # contains NaN.
+            fp32_attention_scores=True,
+            verbose=verbose,
+            update_network_fn=update_network_fn,
+        )

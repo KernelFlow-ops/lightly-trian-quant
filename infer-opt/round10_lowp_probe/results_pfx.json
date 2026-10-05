@@ -1,0 +1,114 @@
+{
+ "vitl16|qkv|2058": {
+  "pfx_bf16": {
+   "us": 7.318047214956844,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitl16|qkv|2258": {
+  "pfx_bf16": {
+   "us": 14.47436529047349,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitl16|proj|2058": {
+  "pfx_bf16": {
+   "us": 6.990762753675213,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitl16|proj|2258": {
+  "pfx_bf16": {
+   "us": 8.055947964487512,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitl16|fc1|2058": {
+  "pfx_bf16": {
+   "us": 8.335582334987242,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitl16|fc1|2258": {
+  "pfx_bf16": {
+   "us": 14.821237271970457,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitl16|fc2|2058": {
+  "pfx_bf16": {
+   "us": 9.054336792383438,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitl16|fc2|2258": {
+  "pfx_bf16": {
+   "us": 15.209727817111546,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitb16|qkv|2058": {
+  "pfx_bf16": {
+   "us": 6.055093120746627,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitb16|qkv|2258": {
+  "pfx_bf16": {
+   "us": 8.509964691965203,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitb16|proj|2058": {
+  "pfx_bf16": {
+   "us": 5.530062251620823,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitb16|proj|2258": {
+  "pfx_bf16": {
+   "us": 5.760356231972024,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitb16|fc1|2058": {
+  "pfx_bf16": {
+   "us": 6.568473359675107,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitb16|fc1|2258": {
+  "pfx_bf16": {
+   "us": 11.536846604458121,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ },
+ "vitb16|fc2|2058": {
+  "pfx_bf16": {
+   "us": 6.572133850268792,
+   "foreign_gpu_procs": []
+  },
+  "rows": 10
+ },
+ "vitb16|fc2|2258": {
+  "pfx_bf16": {
+   "us": 10.649795078341544,
+   "foreign_gpu_procs": []
+  },
+  "rows": 210
+ }
+}

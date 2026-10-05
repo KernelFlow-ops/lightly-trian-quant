@@ -1,0 +1,129 @@
+{
+ "quant_rows float32 K=d M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows float16 K=d M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows bfloat16 K=d M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows float32 K=ff M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows float16 K=ff M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows bfloat16 K=ff M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "gelu_quant M=2058": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "ln_mx8 M=2058": {
+  "q_match": 0.9999990463256836,
+  "sf_match": 1.0
+ },
+ "gemm qkv M=2058": {
+  "rel_l2": 0.0016601060051470995,
+  "cos": 0.9999986220237415,
+  "max_abs": 0.0078125,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.03758671507239342
+ },
+ "gemm proj M=2058": {
+  "rel_l2": 0.0016604517586529255,
+  "cos": 0.9999986214505627,
+  "max_abs": 0.007807254791259766,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.037490516901016235
+ },
+ "gemm fc1 M=2058": {
+  "rel_l2": 0.0016594292828813195,
+  "cos": 0.9999986231463555,
+  "max_abs": 0.007811546325683594,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.0374416708946228
+ },
+ "gemm fc2 M=2058": {
+  "rel_l2": 0.0016593791078776121,
+  "cos": 0.9999986232296705,
+  "max_abs": 0.015621185302734375,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.037659674882888794
+ },
+ "quant_rows float32 K=d M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows float16 K=d M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows bfloat16 K=d M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows float32 K=ff M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows float16 K=ff M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "quant_rows bfloat16 K=ff M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "gelu_quant M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "ln_mx8 M=2258": {
+  "q_match": 1.0,
+  "sf_match": 1.0
+ },
+ "gemm qkv M=2258": {
+  "rel_l2": 0.0016601732932031155,
+  "cos": 0.9999986219115049,
+  "max_abs": 0.0078125,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.03758180886507034
+ },
+ "gemm proj M=2258": {
+  "rel_l2": 0.001658108551055193,
+  "cos": 0.9999986253370757,
+  "max_abs": 0.007811069488525391,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.037470925599336624
+ },
+ "gemm fc1 M=2258": {
+  "rel_l2": 0.001659626024775207,
+  "cos": 0.9999986228199167,
+  "max_abs": 0.007811784744262695,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.0376197025179863
+ },
+ "gemm fc2 M=2258": {
+  "rel_l2": 0.001660927664488554,
+  "cos": 0.9999986206595195,
+  "max_abs": 0.015621662139892578,
+  "finite": true,
+  "rel_l2_vs_fp32_operands": 0.037536438554525375
+ },
+ "epi_rope": {
+  "max_abs": 0.0078125,
+  "rel_l2": 0.00020742398919537663
+ },
+ "epi_res N=1024": {
+  "max_abs": 4.76837158203125e-07
+ }
+}

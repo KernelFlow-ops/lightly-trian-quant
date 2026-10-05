@@ -1,0 +1,1179 @@
+{
+ "qkv|3072|1024|2058": {
+  "cfg": {
+   "epi": 2,
+   "bm": 160,
+   "bn": 128,
+   "bk": 32,
+   "st": 3,
+   "wm": 2,
+   "wn": 4,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=2 -DFRAGALL=0 -DSTG=1 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 59.911600748697914,
+  "tflops": 216.11534804937426,
+  "baseline_us": {
+   "r5_v1": 71.0356143804697,
+   "cublas_fp16acc": 47.705450654029846,
+   "cublas_bf16": 70.40638648546658
+  },
+  "top3": [
+   {
+    "us": 59.911600748697914,
+    "cfg": {
+     "epi": 2,
+     "bm": 160,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=2 -DFRAGALL=0 -DSTG=1 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 62.19760179519653,
+    "cfg": {
+     "epi": 2,
+     "bm": 160,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 64.20393387476604,
+    "cfg": {
+     "epi": 2,
+     "bm": 96,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=0 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "qkv|3072|1024|2258": {
+  "cfg": {
+   "epi": 2,
+   "bm": 96,
+   "bn": 128,
+   "bk": 32,
+   "st": 2,
+   "wm": 2,
+   "wn": 4,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=0 -DNFULL=1"
+  },
+  "us": 65.32035555158343,
+  "tflops": 217.483624025614,
+  "baseline_us": {
+   "r5_v1": 77.17249790827434,
+   "cublas_fp16acc": 48.700210295225446,
+   "cublas_bf16": 80.25709065524015
+  },
+  "top3": [
+   {
+    "us": 65.32035555158343,
+    "cfg": {
+     "epi": 2,
+     "bm": 96,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=0 -DNFULL=1"
+    }
+   },
+   {
+    "us": 68.52035863058907,
+    "cfg": {
+     "epi": 2,
+     "bm": 64,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 68.85414464133126,
+    "cfg": {
+     "epi": 2,
+     "bm": 80,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 1,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "proj|1024|1024|2058": {
+  "cfg": {
+   "epi": 1,
+   "bm": 128,
+   "bn": 128,
+   "bk": 64,
+   "st": 2,
+   "wm": 1,
+   "wn": 8,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 22.701076972178925,
+  "tflops": 190.1204432410566,
+  "baseline_us": {
+   "r5_v1": 29.33633327484131,
+   "cublas_fp16acc": 15.83629846572876,
+   "cublas_bf16": 26.985211805863813
+  },
+  "top3": [
+   {
+    "us": 22.701076972178925,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 22.79207645318447,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 4,
+     "wn": 2,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 23.011128107706707,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 8,
+     "wn": 1,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   }
+  ]
+ },
+ "proj|1024|1024|2258": {
+  "cfg": {
+   "epi": 1,
+   "bm": 128,
+   "bn": 128,
+   "bk": 64,
+   "st": 2,
+   "wm": 1,
+   "wn": 8,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 22.95384651575333,
+  "tflops": 206.29959395912553,
+  "baseline_us": {
+   "r5_v1": 29.567333062489826,
+   "cublas_fp16acc": 16.32775444733469,
+   "cublas_bf16": 27.02903025078051
+  },
+  "top3": [
+   {
+    "us": 22.95384651575333,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 24.561555849181282,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 4,
+     "wn": 2,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 24.88436135980818,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 8,
+     "wn": 1,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   }
+  ]
+ },
+ "fc1|4096|1024|2058": {
+  "cfg": {
+   "epi": 0,
+   "bm": 112,
+   "bn": 128,
+   "bk": 32,
+   "st": 2,
+   "wm": 1,
+   "wn": 4,
+   "minb": 2,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 70.12340757581923,
+  "tflops": 246.1910489066577,
+  "baseline_us": {
+   "r5_v1": 85.44380891890754,
+   "cublas_fp16acc": 62.63573169708252,
+   "cublas_bf16": 102.47521930270725
+  },
+  "top3": [
+   {
+    "us": 70.12340757581923,
+    "cfg": {
+     "epi": 0,
+     "bm": 112,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 1,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 74.50980298659381,
+    "cfg": {
+     "epi": 0,
+     "bm": 112,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 1,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 75.11741039799709,
+    "cfg": {
+     "epi": 0,
+     "bm": 80,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DSTG=1 -DNFULL=1",
+     "pkt": 2
+    }
+   }
+  ]
+ },
+ "fc1|4096|1024|2258": {
+  "cfg": {
+   "epi": 0,
+   "bm": 112,
+   "bn": 128,
+   "bk": 32,
+   "st": 2,
+   "wm": 1,
+   "wn": 4,
+   "minb": 2,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 74.00290171305339,
+  "tflops": 255.9558669394569,
+  "baseline_us": {
+   "r5_v1": 94.10400268359062,
+   "cublas_fp16acc": 63.73172057302374,
+   "cublas_bf16": 103.0871139632331
+  },
+  "top3": [
+   {
+    "us": 74.00290171305339,
+    "cfg": {
+     "epi": 0,
+     "bm": 112,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 1,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 75.65916577974956,
+    "cfg": {
+     "epi": 0,
+     "bm": 112,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 1,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 75.7408340771993,
+    "cfg": {
+     "epi": 0,
+     "bm": 160,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=0 -DSTG=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "fc2|1024|4096|2058": {
+  "cfg": {
+   "epi": 1,
+   "bm": 128,
+   "bn": 128,
+   "bk": 32,
+   "st": 4,
+   "wm": 2,
+   "wn": 4,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 70.20888946674488,
+  "tflops": 245.89130229979133,
+  "baseline_us": {
+   "r5_v1": 94.52358881632487,
+   "cublas_fp16acc": 55.65762174302253,
+   "cublas_bf16": 106.17018468452223
+  },
+  "top3": [
+   {
+    "us": 70.20888946674488,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 128,
+     "bk": 32,
+     "st": 4,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 73.39074564915077,
+    "cfg": {
+     "epi": 1,
+     "bm": 112,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 75.27058732275869,
+    "cfg": {
+     "epi": 1,
+     "bm": 112,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 1,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "fc2|1024|4096|2258": {
+  "cfg": {
+   "epi": 1,
+   "bm": 128,
+   "bn": 128,
+   "bk": 32,
+   "st": 4,
+   "wm": 2,
+   "wn": 4,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 72.45599989797554,
+  "tflops": 261.420405358718,
+  "baseline_us": {
+   "r5_v1": 100.06899966133966,
+   "cublas_fp16acc": 57.14042258985115,
+   "cublas_bf16": 106.1105439157197
+  },
+  "top3": [
+   {
+    "us": 72.45599989797554,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 128,
+     "bk": 32,
+     "st": 4,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 77.80341804027557,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 128,
+     "bk": 64,
+     "st": 3,
+     "wm": 4,
+     "wn": 2,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 77.86855043149463,
+    "cfg": {
+     "epi": 1,
+     "bm": 112,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   }
+  ]
+ },
+ "qkv|2304|768|2058": {
+  "cfg": {
+   "epi": 2,
+   "bm": 64,
+   "bn": 128,
+   "bk": 64,
+   "st": 2,
+   "wm": 2,
+   "wn": 4,
+   "minb": 2,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+  },
+  "us": 37.11931807056704,
+  "tflops": 196.20906661469664,
+  "baseline_us": {
+   "r5_v1": 43.26596455267298,
+   "cublas_fp16acc": 27.204550534404216,
+   "cublas_bf16": 41.760374928078456
+  },
+  "top3": [
+   {
+    "us": 37.11931807056704,
+    "cfg": {
+     "epi": 2,
+     "bm": 64,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 37.957052837935905,
+    "cfg": {
+     "epi": 2,
+     "bm": 128,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 2,
+     "wn": 2,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 38.53601919379748,
+    "cfg": {
+     "epi": 2,
+     "bm": 64,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "qkv|2304|768|2258": {
+  "cfg": {
+   "epi": 2,
+   "bm": 256,
+   "bn": 128,
+   "bk": 32,
+   "st": 3,
+   "wm": 4,
+   "wn": 2,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 38.837332474557975,
+  "tflops": 205.75397543677335,
+  "baseline_us": {
+   "r5_v1": 43.66124024865223,
+   "cublas_fp16acc": 28.925222042855133,
+   "cublas_bf16": 42.07181372837714
+  },
+  "top3": [
+   {
+    "us": 38.837332474557975,
+    "cfg": {
+     "epi": 2,
+     "bm": 256,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 4,
+     "wn": 2,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 39.66004838827651,
+    "cfg": {
+     "epi": 2,
+     "bm": 64,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 40.1994290783016,
+    "cfg": {
+     "epi": 2,
+     "bm": 128,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 2,
+     "wn": 2,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "proj|768|768|2058": {
+  "cfg": {
+   "epi": 1,
+   "bm": 80,
+   "bn": 128,
+   "bk": 64,
+   "st": 3,
+   "wm": 1,
+   "wn": 8,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=0 -DNFULL=1"
+  },
+  "us": 14.97844954331716,
+  "tflops": 162.08056628151868,
+  "baseline_us": {
+   "r5_v1": 17.882234909955194,
+   "cublas_fp16acc": 12.220760186513266,
+   "cublas_bf16": 20.744021733601887
+  },
+  "top3": [
+   {
+    "us": 14.97844954331716,
+    "cfg": {
+     "epi": 1,
+     "bm": 80,
+     "bn": 128,
+     "bk": 64,
+     "st": 3,
+     "wm": 1,
+     "wn": 8,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=0 -DNFULL=1"
+    }
+   },
+   {
+    "us": 15.089283386866251,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 15.199500322341919,
+    "cfg": {
+     "epi": 1,
+     "bm": 80,
+     "bn": 128,
+     "bk": 32,
+     "st": 3,
+     "wm": 1,
+     "wn": 8,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=1 -DNFULL=1",
+     "pkt": 2
+    }
+   }
+  ]
+ },
+ "proj|768|768|2258": {
+  "cfg": {
+   "epi": 1,
+   "bm": 96,
+   "bn": 64,
+   "bk": 64,
+   "st": 2,
+   "wm": 2,
+   "wn": 4,
+   "minb": 2,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+  },
+  "us": 16.297298565245512,
+  "tflops": 163.44090238859002,
+  "baseline_us": {
+   "r5_v1": 18.166450893177707,
+   "cublas_fp16acc": 12.32698678970337,
+   "cublas_bf16": 20.832688278622097
+  },
+  "top3": [
+   {
+    "us": 16.297298565245512,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 16.568944410041528,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 64,
+     "bk": 32,
+     "st": 3,
+     "wm": 2,
+     "wn": 4,
+     "minb": 3,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 16.708092557059395,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 64,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 3,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "fc1|3072|768|2058": {
+  "cfg": {
+   "epi": 0,
+   "bm": 160,
+   "bn": 128,
+   "bk": 64,
+   "st": 2,
+   "wm": 2,
+   "wn": 4,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=0 -DSTG=1 -DNFULL=1"
+  },
+  "us": 40.67024878046581,
+  "tflops": 238.77066472886176,
+  "baseline_us": {
+   "r5_v1": 53.44830002895621,
+   "cublas_fp16acc": 36.171554789548985,
+   "cublas_bf16": 61.735443534609125
+  },
+  "top3": [
+   {
+    "us": 40.67024878046581,
+    "cfg": {
+     "epi": 0,
+     "bm": 160,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=1 -DFRAGALL=0 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 41.966000268625656,
+    "cfg": {
+     "epi": 0,
+     "bm": 160,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=0 -DNFULL=1"
+    }
+   },
+   {
+    "us": 45.394464980724244,
+    "cfg": {
+     "epi": 0,
+     "bm": 80,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 1,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "fc1|3072|768|2258": {
+  "cfg": {
+   "epi": 0,
+   "bm": 128,
+   "bn": 96,
+   "bk": 32,
+   "st": 3,
+   "wm": 4,
+   "wn": 1,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DSTG=1 -DNFULL=1"
+  },
+  "us": 48.230538732585714,
+  "tflops": 220.90942825819008,
+  "baseline_us": {
+   "r5_v1": 55.647691090901695,
+   "cublas_fp16acc": 38.10426923963759,
+   "cublas_bf16": 61.98751598785594
+  },
+  "top3": [
+   {
+    "us": 48.230538732585714,
+    "cfg": {
+     "epi": 0,
+     "bm": 128,
+     "bn": 96,
+     "bk": 32,
+     "st": 3,
+     "wm": 4,
+     "wn": 1,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 49.8515347705727,
+    "cfg": {
+     "epi": 0,
+     "bm": 80,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 1,
+     "wn": 4,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=1 -DSTG=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 50.1351752550499,
+    "cfg": {
+     "epi": 0,
+     "bm": 80,
+     "bn": 128,
+     "bk": 32,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=1 -DUNR=2 -DFRAGALL=0 -DSTG=1 -DNFULL=1",
+     "pkt": 2
+    }
+   }
+  ]
+ },
+ "fc2|768|3072|2058": {
+  "cfg": {
+   "epi": 1,
+   "bm": 80,
+   "bn": 128,
+   "bk": 64,
+   "st": 3,
+   "wm": 1,
+   "wn": 8,
+   "minb": 2,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+  },
+  "us": 41.79353100819725,
+  "tflops": 232.353239885267,
+  "baseline_us": {
+   "r5_v1": 56.80731839911882,
+   "cublas_fp16acc": 39.85006799449999,
+   "cublas_bf16": 60.957563855935355
+  },
+  "top3": [
+   {
+    "us": 41.79353100819725,
+    "cfg": {
+     "epi": 1,
+     "bm": 80,
+     "bn": 128,
+     "bk": 64,
+     "st": 3,
+     "wm": 1,
+     "wn": 8,
+     "minb": 2,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 42.92404651641846,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 96,
+     "bk": 64,
+     "st": 2,
+     "wm": 8,
+     "wn": 1,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 45.075397343598596,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 128,
+     "bk": 64,
+     "st": 3,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   }
+  ]
+ },
+ "fc2|768|3072|2258": {
+  "cfg": {
+   "epi": 1,
+   "bm": 128,
+   "bn": 96,
+   "bk": 64,
+   "st": 2,
+   "wm": 8,
+   "wn": 1,
+   "minb": 1,
+   "splitk": 1,
+   "rf32": 1,
+   "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+   "pkt": 2
+  },
+  "us": 43.02121040432952,
+  "tflops": 247.6587858840847,
+  "baseline_us": {
+   "r5_v1": 58.3184103129026,
+   "cublas_fp16acc": 39.85672153624236,
+   "cublas_bf16": 61.33574713612207
+  },
+  "top3": [
+   {
+    "us": 43.02121040432952,
+    "cfg": {
+     "epi": 1,
+     "bm": 128,
+     "bn": 96,
+     "bk": 64,
+     "st": 2,
+     "wm": 8,
+     "wn": 1,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=4 -DFRAGALL=0 -DNFULL=1",
+     "pkt": 2
+    }
+   },
+   {
+    "us": 44.35318939445555,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 128,
+     "bk": 64,
+     "st": 3,
+     "wm": 2,
+     "wn": 4,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=2 -DFRAGALL=1 -DNFULL=1"
+    }
+   },
+   {
+    "us": 44.946454661761145,
+    "cfg": {
+     "epi": 1,
+     "bm": 96,
+     "bn": 128,
+     "bk": 64,
+     "st": 2,
+     "wm": 1,
+     "wn": 8,
+     "minb": 1,
+     "splitk": 1,
+     "rf32": 1,
+     "extra": "-DORDER=0 -DUNR=1 -DFRAGALL=1 -DNFULL=1"
+    }
+   }
+  ]
+ }
+}

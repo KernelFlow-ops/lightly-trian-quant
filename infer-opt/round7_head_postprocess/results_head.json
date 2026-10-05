@@ -1,0 +1,28 @@
+{
+  "vitl16": {
+    "predict_torch_gpu_ms": 1.4567999839782715,
+    "predict_fused_gpu_ms": 0.9577280282974243,
+    "predict_torch_wall_ms": 1.468949019908905,
+    "predict_fused_wall_ms": 0.9685084223747253,
+    "mask_logits_diff": {
+      "max_abs": 1.0,
+      "mean_abs": 0.07575601200107485,
+      "max_rel": 4.134020618556701,
+      "cos": 0.9999972677355086,
+      "nan": false
+    }
+  },
+  "vitb16": {
+    "predict_torch_gpu_ms": 1.0611200332641602,
+    "predict_fused_gpu_ms": 0.642624020576477,
+    "predict_torch_wall_ms": 1.0734237730503082,
+    "predict_fused_wall_ms": 0.6538704037666321,
+    "mask_logits_diff": {
+      "max_abs": 0.5,
+      "mean_abs": 0.029187876519572456,
+      "max_rel": 109.93617021276596,
+      "cos": 0.9999973836726108,
+      "nan": false
+    }
+  }
+}

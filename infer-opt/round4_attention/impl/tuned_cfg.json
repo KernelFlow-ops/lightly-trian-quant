@@ -1,0 +1,50 @@
+{
+ "plain_qkv|12|1029": {
+  "bm": 256,
+  "bn": 32,
+  "stages": 2,
+  "threads": 512
+ },
+ "plain_qkv|12|1129": {
+  "bm": 256,
+  "bn": 64,
+  "stages": 2,
+  "threads": 512
+ },
+ "plain_qkv|16|1029": {
+  "bm": 128,
+  "bn": 32,
+  "stages": 2,
+  "threads": 256
+ },
+ "plain_qkv|16|1129": {
+  "bm": 256,
+  "bn": 64,
+  "stages": 2,
+  "threads": 512
+ },
+ "rope_qkv|12|1029": {
+  "bm": 256,
+  "bn": 32,
+  "stages": 2,
+  "threads": 512
+ },
+ "rope_qkv|12|1129": {
+  "bm": 256,
+  "bn": 32,
+  "stages": 2,
+  "threads": 512
+ },
+ "rope_qkv|16|1029": {
+  "bm": 256,
+  "bn": 32,
+  "stages": 2,
+  "threads": 512
+ },
+ "rope_qkv|16|1129": {
+  "bm": 256,
+  "bn": 32,
+  "stages": 2,
+  "threads": 512
+ }
+}

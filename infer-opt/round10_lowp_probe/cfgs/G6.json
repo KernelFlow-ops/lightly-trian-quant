@@ -1,0 +1,602 @@
+[
+{
+"name": "G6|i8b32|qkv|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|qkv|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|proj|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|proj|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|fc1|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|fc1|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|fc2|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|fc2|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|mlp|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|mlp|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|all4|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b32|all4|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b32",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|qkv|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|qkv|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|proj|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|proj|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|fc1|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|fc1|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|fc2|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|fc2|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|mlp|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|mlp|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|all4|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b64|all4|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b64",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|qkv|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|qkv|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|proj|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|proj|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|fc1|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|fc1|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|fc2|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|fc2|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|mlp|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|mlp|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": true
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|all4|all|pfx0|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": false
+}
+}
+],
+"mode": "full"
+},
+{
+"name": "G6|i8b128|all4|all|pfx1|rn",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "i8b128",
+"pfx": true
+}
+}
+],
+"mode": "full"
+}
+]

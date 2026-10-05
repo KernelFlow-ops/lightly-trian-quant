@@ -1,0 +1,243 @@
+{
+ "model": "vitb16",
+ "preset": "fast",
+ "tag": "_bare",
+ "backbone_groups": [
+  {
+   "kind": "qkv",
+   "tier": "P2",
+   "spec": {
+    "fmt": "int8",
+    "gptq": null,
+    "had": 16,
+    "pfx": false,
+    "sq": 0.7
+   },
+   "n_layers": 12,
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "saving_ms_central": 0.24275715388331498,
+   "saving_ms_pess": 0.22349022497210588,
+   "go": true
+  },
+  {
+   "kind": "proj",
+   "tier": "P2",
+   "spec": {
+    "fmt": "int8",
+    "gptq": null,
+    "had": 16,
+    "pfx": false,
+    "sq": 0.7
+   },
+   "n_layers": 12,
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "saving_ms_central": 0.05913446563505846,
+   "saving_ms_pess": 0.05913446563505846,
+   "go": false
+  },
+  {
+   "kind": "fc1",
+   "tier": "P2",
+   "spec": {
+    "fmt": "int8",
+    "gptq": null,
+    "had": 16,
+    "pfx": false,
+    "sq": 0.7
+   },
+   "n_layers": 12,
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "saving_ms_central": 0.3208258260441433,
+   "saving_ms_pess": 0.3015588971329342,
+   "go": true
+  },
+  {
+   "kind": "fc2",
+   "tier": "P2",
+   "spec": {
+    "fmt": "int8",
+    "gptq": null,
+    "had": 16,
+    "pfx": false,
+    "sq": null
+   },
+   "n_layers": 12,
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "saving_ms_central": 0.3357517366580001,
+   "saving_ms_pess": 0.3357517366580001,
+   "go": true
+  }
+ ],
+ "head": [
+  {
+   "kind": "ct2",
+   "tier": "P2",
+   "fmt": "mx8",
+   "saving_ms_central": 0.12387232718861167,
+   "saving_ms_pess": 0.11918829854088027,
+   "go": false
+  },
+  {
+   "kind": "ct1",
+   "tier": "P2",
+   "fmt": "mx8",
+   "saving_ms_central": 0.039402423555789545,
+   "saving_ms_pess": 0.03823141639385669,
+   "go": false
+  }
+ ],
+ "entries_after_go_rule": [
+  {
+   "kinds": [
+    "qkv"
+   ],
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "spec": {
+    "fmt": "int8",
+    "had": 16,
+    "sq": 0.7
+   }
+  },
+  {
+   "kinds": [
+    "fc1"
+   ],
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "spec": {
+    "fmt": "int8",
+    "had": 16,
+    "sq": 0.7
+   }
+  },
+  {
+   "kinds": [
+    "fc2"
+   ],
+   "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "spec": {
+    "fmt": "int8",
+    "had": 16
+   }
+  }
+ ],
+ "saving_ms_central_after_go_rule": 0.8993347165854584,
+ "saving_ms_pess_after_go_rule": 0.8608008587630402,
+ "plan_before_go_rule": {
+  "saving_ms_central": 0.9584691822205168,
+  "M": {
+   "n": 8,
+   "pooled_iou": 0.9761610949068881,
+   "min_iou": 0.9554455445544554,
+   "conf_max": 0.005841982144804937,
+   "conf_p99": 0.0056554500429261976,
+   "n_conf_gt3": 0,
+   "n_conf_gt5": 0,
+   "logit_mae": 4.3697476030502e-05,
+   "lr_cos": 0.9999979173344933,
+   "pass": true
+  },
+  "H": {
+   "n": 110,
+   "pooled_iou": 0.9789891867916737,
+   "min_iou": 0.9395532194480947,
+   "conf_max": 0.005841982144804937,
+   "conf_p99": 0.0037463509433914564,
+   "n_conf_gt3": 0,
+   "n_conf_gt5": 0,
+   "logit_mae": 4.0775842518831436e-05,
+   "lr_cos": 0.9999980789918053,
+   "pass": true
+  }
+ }
+}

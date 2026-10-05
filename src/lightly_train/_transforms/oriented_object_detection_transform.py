@@ -1,0 +1,247 @@
+#
+# Copyright (c) Lightly AG and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+from __future__ import annotations
+
+from typing import Literal
+
+import torch
+import torchvision.tv_tensors as tv_tensors
+from albumentations import BboxParams
+from pydantic import ConfigDict
+from torch import Tensor
+from torchvision.transforms import v2
+from typing_extensions import NotRequired
+
+from lightly_train._configs.validate import no_auto
+from lightly_train._transforms.channel_drop import ChannelDropTV
+from lightly_train._transforms.random_rotate_90 import RandomRotate90
+from lightly_train._transforms.scale_jitter import TorchVisionScaleJitter
+from lightly_train._transforms.task_transform import (
+    TaskCollateFunction,
+    TaskTransform,
+    TaskTransformArgs,
+    TaskTransformInput,
+    TaskTransformOutput,
+)
+from lightly_train._transforms.transform import (
+    ChannelDropArgs,
+    CopyBlendArgs,
+    MixUpArgs,
+    MosaicArgs,
+    NormalizeArgs,
+    RandomFlipArgs,
+    RandomIoUCropArgs,
+    RandomPhotometricDistortArgs,
+    RandomRotate90Args,
+    RandomRotationArgs,
+    RandomZoomOutArgs,
+    ResizeArgs,
+    ScaleJitterArgs,
+)
+from lightly_train.types import (
+    ImageSizeTuple,
+    OrientedObjectDetectionBatch,
+    OrientedObjectDetectionDatasetItem,
+)
+
+
+class OrientedObjectDetectionTransformInput(TaskTransformInput):
+    image: tv_tensors.Image  # CHW
+    bboxes: NotRequired[
+        tv_tensors.BoundingBoxes
+    ]  # N x 5, where each bbox is (cx, cy, w, h, angle)
+    class_labels: NotRequired[Tensor]  # N
+
+
+class OrientedObjectDetectionTransformOutput(TaskTransformOutput):
+    image: Tensor
+    bboxes: NotRequired[Tensor]
+    class_labels: NotRequired[Tensor]
+
+
+class OrientedObjectDetectionTransformArgs(TaskTransformArgs):
+    """Transform arguments for oriented object detection.
+
+    Task-specific transforms subclass this to set their own field defaults; it is
+    not used directly.
+    """
+
+    channel_drop: ChannelDropArgs | None
+    num_channels: int | Literal["auto"]
+    photometric_distort: RandomPhotometricDistortArgs | None
+    random_zoom_out: RandomZoomOutArgs | None
+    random_iou_crop: RandomIoUCropArgs | None
+    random_flip: RandomFlipArgs | None
+    random_rotate_90: RandomRotate90Args | None
+    random_rotate: RandomRotationArgs | None
+    image_size: ImageSizeTuple | Literal["auto"]
+    mixup: MixUpArgs | None = None
+    copyblend: CopyBlendArgs | None = None
+    mosaic: MosaicArgs | None = None
+    scale_jitter: ScaleJitterArgs | None = None
+    resize: ResizeArgs | None
+    bbox_params: BboxParams | None
+    normalize: NormalizeArgs | Literal["auto"] | None
+
+    # Necessary for BboxParams, which are not serializable by pydantic.
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+
+class OrientedObjectDetectionTransform(TaskTransform):
+    transform_args_cls: type[OrientedObjectDetectionTransformArgs] = (
+        OrientedObjectDetectionTransformArgs
+    )
+
+    def __init__(
+        self,
+        transform_args: OrientedObjectDetectionTransformArgs,
+    ) -> None:
+        super().__init__(transform_args=transform_args)
+
+        self.transform_args: OrientedObjectDetectionTransformArgs = transform_args
+
+        transforms_list: list[v2.Transform] = []
+
+        if transform_args.channel_drop is not None:
+            transforms_list.append(
+                ChannelDropTV(
+                    num_channels_keep=transform_args.channel_drop.num_channels_keep,
+                    weight_drop=transform_args.channel_drop.weight_drop,
+                )
+            )
+
+        if transform_args.photometric_distort is not None:
+            transforms_list.append(
+                v2.RandomPhotometricDistort(
+                    brightness=transform_args.photometric_distort.brightness,
+                    contrast=transform_args.photometric_distort.contrast,
+                    saturation=transform_args.photometric_distort.saturation,
+                    hue=transform_args.photometric_distort.hue,
+                    p=transform_args.photometric_distort.prob,
+                )
+            )
+
+        if transform_args.random_zoom_out is not None:
+            transforms_list.append(
+                v2.RandomZoomOut(
+                    fill=transform_args.random_zoom_out.fill,
+                    side_range=transform_args.random_zoom_out.side_range,
+                    p=transform_args.random_zoom_out.prob,
+                )
+            )
+
+        if transform_args.random_iou_crop is not None:
+            raise NotImplementedError(
+                "RandomIoUCrop is not implemented yet for OrientedObjectDetectionTransform."
+                "torchvision does not support it for now."
+            )
+
+        if transform_args.random_flip is not None:
+            if transform_args.random_flip.horizontal_prob > 0.0:
+                transforms_list.append(
+                    v2.RandomHorizontalFlip(
+                        p=transform_args.random_flip.horizontal_prob
+                    )
+                )
+            if transform_args.random_flip.vertical_prob > 0.0:
+                transforms_list.append(
+                    v2.RandomVerticalFlip(p=transform_args.random_flip.vertical_prob)
+                )
+
+        if transform_args.random_rotate_90 is not None:
+            transforms_list.append(
+                RandomRotate90(p=transform_args.random_rotate_90.prob)
+            )
+
+        if transform_args.random_rotate is not None:
+            transforms_list.append(
+                v2.RandomApply(
+                    [
+                        v2.RandomRotation(
+                            degrees=transform_args.random_rotate.degrees,  # type: ignore[arg-type]
+                            interpolation=v2.InterpolationMode.BILINEAR,
+                        )
+                    ],
+                    p=transform_args.random_rotate.prob,
+                )
+            )
+
+        if transform_args.resize is not None:
+            transforms_list.append(
+                v2.Resize(
+                    size=(
+                        no_auto(transform_args.resize.height),
+                        no_auto(transform_args.resize.width),
+                    ),
+                    antialias=True,
+                )
+            )
+
+        transforms_list.append(v2.ToDtype(torch.float32, scale=True))
+
+        if transform_args.normalize is not None:
+            normalize_args = no_auto(transform_args.normalize)
+            transforms_list.append(
+                v2.Normalize(
+                    mean=list(normalize_args.mean),
+                    std=list(normalize_args.std),
+                )
+            )
+
+        self.transform = v2.Compose(transforms_list)
+
+    def __call__(
+        self, input: OrientedObjectDetectionTransformInput
+    ) -> OrientedObjectDetectionTransformOutput:
+        image = input["image"]
+        bboxes = input["bboxes"]
+        class_labels = input["class_labels"]
+
+        transformed_image, transformed_bboxes = self.transform(image, bboxes)
+
+        return {
+            "image": transformed_image,
+            "bboxes": transformed_bboxes,
+            "class_labels": class_labels,
+        }
+
+
+class OrientedObjectDetectionCollateFunction(TaskCollateFunction):
+    def __init__(
+        self, split: Literal["train", "val"], transform_args: TaskTransformArgs
+    ):
+        super().__init__(split, transform_args)
+        assert isinstance(transform_args, OrientedObjectDetectionTransformArgs)
+        self.scale_jitter: TorchVisionScaleJitter | None = None
+        if transform_args.scale_jitter is not None:
+            self.scale_jitter = TorchVisionScaleJitter(
+                sizes=transform_args.scale_jitter.sizes,
+                target_size=no_auto(transform_args.image_size)
+                if transform_args.scale_jitter.sizes is None
+                else None,
+                num_scales=transform_args.scale_jitter.num_scales,
+                divisible_by=no_auto(transform_args.scale_jitter.divisible_by),
+                scale_range=transform_args.scale_jitter.scale_range,
+            )
+
+    def __call__(
+        self, batch: list[OrientedObjectDetectionDatasetItem]
+    ) -> OrientedObjectDetectionBatch:
+        if self.scale_jitter is not None:
+            batch = self.scale_jitter(batch)
+
+        out_ = OrientedObjectDetectionBatch(
+            {
+                "image_path": [item["image_path"] for item in batch],
+                "image": torch.stack([item["image"] for item in batch]),
+                "bboxes": [item["bboxes"] for item in batch],
+                "classes": [item["classes"] for item in batch],
+                "original_size": [item["original_size"] for item in batch],
+            }
+        )
+        return out_

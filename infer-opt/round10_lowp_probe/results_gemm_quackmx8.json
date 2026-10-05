@@ -1,0 +1,214 @@
+{
+ "vitl16|qkv|2058": {
+  "quack_mx8": {
+   "us": 25.17199993133545,
+   "tflops": 514.3737678102353,
+   "rounds_us": [
+    24.832439422607422,
+    25.17199993133545,
+    26.148340702056885
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 22:02:15"
+ },
+ "vitl16|qkv|2258": {
+  "quack_mx8": {
+   "us": 26.424130667810854,
+   "tflops": 537.6187329146645,
+   "rounds_us": [
+    26.365194631659467,
+    26.424130667810854,
+    27.476370334625244
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitl16|proj|2058": {
+  "quack_mx8": {
+   "us": 16.86595877011617,
+   "tflops": 255.8964405656657,
+   "rounds_us": [
+    16.855236556794907,
+    16.86595877011617,
+    16.871278484662373
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitl16|proj|2258": {
+  "quack_mx8": {
+   "us": 17.18851427237193,
+   "tflops": 275.4961331132282,
+   "rounds_us": [
+    17.22152696715461,
+    17.18851427237193,
+    17.184736000167
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitl16|fc1|2058": {
+  "quack_mx8": {
+   "us": 37.42092588673467,
+   "tflops": 461.33960758356926,
+   "rounds_us": [
+    36.30542064058608,
+    37.42092588673467,
+    38.9341444209002
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitl16|fc1|2258": {
+  "quack_mx8": {
+   "us": 41.61229928334554,
+   "tflops": 455.18938367294044,
+   "rounds_us": [
+    40.990400314331055,
+    41.61229928334554,
+    43.366666634877525
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitl16|fc2|2058": {
+  "quack_mx8": {
+   "us": 48.396077810549265,
+   "tflops": 356.7180656990531,
+   "rounds_us": [
+    48.396077810549265,
+    48.40474502713072,
+    48.3853349498674
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitl16|fc2|2258": {
+  "quack_mx8": {
+   "us": 48.646155525656305,
+   "tflops": 389.3725343621479,
+   "rounds_us": [
+    48.64074669632257,
+    48.64760941150141,
+    48.646155525656305
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|qkv|2058": {
+  "quack_mx8": {
+   "us": 14.814476172129313,
+   "tflops": 491.62364348068473,
+   "rounds_us": [
+    14.589892966406685,
+    14.814476172129313,
+    15.47079710733323
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|qkv|2258": {
+  "quack_mx8": {
+   "us": 15.517525183848846,
+   "tflops": 514.961983778008,
+   "rounds_us": [
+    15.47783307540111,
+    15.517525183848846,
+    16.06120513035701
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|proj|2058": {
+  "quack_mx8": {
+   "us": 13.681277963850233,
+   "tflops": 177.44801256247442,
+   "rounds_us": [
+    13.681277963850233,
+    13.687899377610949,
+    13.68096669514974
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|proj|2258": {
+  "quack_mx8": {
+   "us": 13.730422655741373,
+   "tflops": 193.99586238419235,
+   "rounds_us": [
+    13.730422655741373,
+    13.72942262225681,
+    13.733711507585314
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|fc1|2058": {
+  "quack_mx8": {
+   "us": 23.654540866212134,
+   "tflops": 410.5284643199683,
+   "rounds_us": [
+    23.654540866212134,
+    23.638168484373804,
+    24.358168080212
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|fc1|2258": {
+  "quack_mx8": {
+   "us": 24.66844465073381,
+   "tflops": 431.9113299136619,
+   "rounds_us": [
+    24.51691886251287,
+    24.66844465073381,
+    25.353860485461333
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|fc2|2058": {
+  "quack_mx8": {
+   "us": 37.622292836507164,
+   "tflops": 258.1145805812497,
+   "rounds_us": [
+    37.622292836507164,
+    37.63429508652798,
+    37.60307149369587
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ },
+ "vitb16|fc2|2258": {
+  "quack_mx8": {
+   "us": 37.76601673096649,
+   "tflops": 282.12084986086734,
+   "rounds_us": [
+    37.77550542077353,
+    37.72647990736851,
+    37.76601673096649
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuACK MXFP8 WITH epilogue (qkv: bias only, no RoPE/layout; fc1: bias+GELU (+z write); proj/fc2: bias+gamma+residual (+y write)), NO quantization"
+  }
+ }
+}

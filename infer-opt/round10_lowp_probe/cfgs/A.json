@@ -1,0 +1,563 @@
+[
+{
+"name": "A|p0",
+"entries": [],
+"mode": "screen"
+},
+{
+"name": "A|mx8|qkv|all",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|proj|all",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|fc1|all",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|fc2|all",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|ct1|all",
+"entries": [
+{
+"kinds": [
+"ct1"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|ct2|all",
+"entries": [
+{
+"kinds": [
+"ct2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|einsum|all",
+"entries": [
+{
+"kinds": [
+"einsum"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|mlp|all",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx8|backbone4|all",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|qkv|all",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|proj|all",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|fc1|all",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|fc2|all",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|ct1|all",
+"entries": [
+{
+"kinds": [
+"ct1"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|ct2|all",
+"entries": [
+{
+"kinds": [
+"ct2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|einsum|all",
+"entries": [
+{
+"kinds": [
+"einsum"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|mlp|all",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|int8|backbone4|all",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "int8"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|qkv|all",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|proj|all",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|fc1|all",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|fc2|all",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|ct1|all",
+"entries": [
+{
+"kinds": [
+"ct1"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|ct2|all",
+"entries": [
+{
+"kinds": [
+"ct2"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|einsum|all",
+"entries": [
+{
+"kinds": [
+"einsum"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|mlp|all",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|nv4|backbone4|all",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "nv4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|qkv|all",
+"entries": [
+{
+"kinds": [
+"qkv"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|proj|all",
+"entries": [
+{
+"kinds": [
+"proj"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|fc1|all",
+"entries": [
+{
+"kinds": [
+"fc1"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|fc2|all",
+"entries": [
+{
+"kinds": [
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|ct1|all",
+"entries": [
+{
+"kinds": [
+"ct1"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|ct2|all",
+"entries": [
+{
+"kinds": [
+"ct2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|einsum|all",
+"entries": [
+{
+"kinds": [
+"einsum"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|mlp|all",
+"entries": [
+{
+"kinds": [
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+},
+{
+"name": "A|mx4|backbone4|all",
+"entries": [
+{
+"kinds": [
+"qkv",
+"proj",
+"fc1",
+"fc2"
+],
+"layers": "all",
+"spec": {
+"fmt": "mx4"
+}
+}
+],
+"mode": "screen"
+}
+]

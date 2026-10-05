@@ -1,0 +1,34 @@
+{
+  "env": {
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "sm": "120",
+    "num_sms": 170,
+    "gpu_snapshot": {
+      "query": "utilization.gpu,memory.used,clocks.sm,clocks.mem,power.draw,temperature.gpu",
+      "value": "0 %, 3 MiB, 180 MHz, 405 MHz, 16.07 W, 29"
+    },
+    "time": "2026-09-30 14:18:36"
+  },
+  "bf16_gemm_tflops": {
+    "8192^3": 231.74193531536633,
+    "4096^3": 209.65070792478187,
+    "qkv_1029x3072x1024": 126.35270116430398,
+    "proj_1029x1024x1024": 131.35027124434578,
+    "fc1_1029x4096x1024": 168.37930223693039,
+    "fc2_1029x1024x4096": 168.44554646340757
+  },
+  "fp16_gemm_tflops_8192^3": 226.89902510749548,
+  "fp8_e4m3_gemm_tflops": {
+    "8192^3": 548.4364712759303,
+    "fc1_1029x4096x1024": 371.72390869483877
+  },
+  "dram_copy_gbps_1GiB": 1526.0026065555555,
+  "l2_copy_gbps_16MiB": 4090.0247055190102,
+  "eager_launch_us_per_op": 4.965897649526596,
+  "cuda_graph": {
+    "per_kernel_in_graph_us": 0.7546186447143555,
+    "per_replay_us": 150.9237289428711
+  }
+}

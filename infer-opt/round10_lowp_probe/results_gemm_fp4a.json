@@ -1,0 +1,1254 @@
+{
+ "vitl16|qkv|2058": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 18.295575271953236,
+   "tflops": 707.7020676058628,
+   "rounds_us": [
+    18.246894532983955,
+    18.295575271953236,
+    18.306076526641846
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 39.44113254547119,
+   "tflops": 328.28206525440476,
+   "rounds_us": [
+    39.39246733983358,
+    39.44113254547119,
+    39.520867665608726
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 30.600077066666042,
+   "tflops": 423.13019080937556,
+   "rounds_us": [
+    30.567591006939228,
+    30.600077066666042,
+    30.638872048793694
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 21.33822859379283,
+   "tflops": 606.7896588082502,
+   "rounds_us": [
+    21.33822859379283,
+    21.318280906008003,
+    21.340947402151006
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 39.40563201904297,
+   "tflops": 328.5778145048632,
+   "rounds_us": [
+    39.40563201904297,
+    39.4134004910787,
+    39.36983346939087
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 30.408385472419933,
+   "tflops": 425.79756362742523,
+   "rounds_us": [
+    30.408385472419933,
+    30.453975384051983,
+    30.407333985353127
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 21.111017779300088,
+   "tflops": 613.3203326982974,
+   "rounds_us": [
+    21.09787756936592,
+    21.132596752099822,
+    21.111017779300088
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 22:20:07"
+ },
+ "vitl16|qkv|2258": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 18.69565067869244,
+   "tflops": 759.8616326411574,
+   "rounds_us": [
+    18.684499191515375,
+    18.69565067869244,
+    18.720652117873684
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 40.94146490097046,
+   "tflops": 346.9858170039066,
+   "rounds_us": [
+    40.90859889984131,
+    40.94616572062174,
+    40.94146490097046
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 22.128222165284335,
+   "tflops": 641.9904654738656,
+   "rounds_us": [
+    22.128222165284335,
+    22.12366572132817,
+    22.15105515939218
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 20.50065000851949,
+   "tflops": 692.9588887228621,
+   "rounds_us": [
+    20.50065000851949,
+    20.491933822631836,
+    20.50665020942688
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 40.967233975728355,
+   "tflops": 346.7675571266691,
+   "rounds_us": [
+    40.943499406178795,
+    40.967233975728355,
+    40.96879959106445
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 21.623860325729638,
+   "tflops": 656.9644565774661,
+   "rounds_us": [
+    21.611000362195465,
+    21.627683388559444,
+    21.623860325729638
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 20.50835092862447,
+   "tflops": 692.6986815001234,
+   "rounds_us": [
+    20.48413356145223,
+    20.50835092862447,
+    20.52128314971924
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitl16|proj|2058": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 9.38437833930507,
+   "tflops": 459.9067364881629,
+   "rounds_us": [
+    9.383492397539543,
+    9.38437833930507,
+    9.403530395392215
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 9.703745917668419,
+   "tflops": 444.7703858508507,
+   "rounds_us": [
+    9.675158394707573,
+    9.705230357154967,
+    9.703745917668419
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 10.756666200202808,
+   "tflops": 401.23387076180046,
+   "rounds_us": [
+    10.734991023415013,
+    10.756666200202808,
+    10.758772230984873
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 9.36189384171457,
+   "tflops": 461.0112963222369,
+   "rounds_us": [
+    9.354287927800959,
+    9.367598728700118,
+    9.36189384171457
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 10.80119296124107,
+   "tflops": 399.57982710681006,
+   "rounds_us": [
+    10.79399962174265,
+    10.810359528190212,
+    10.80119296124107
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitl16|proj|2258": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 9.6778566875155,
+   "tflops": 489.2993737041651,
+   "rounds_us": [
+    9.641103328220428,
+    9.69335673347352,
+    9.6778566875155
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 9.81074571609497,
+   "tflops": 482.6716901072478,
+   "rounds_us": [
+    9.787444084409683,
+    9.81089709297059,
+    9.81074571609497
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 10.384350021680197,
+   "tflops": 456.0101697375002,
+   "rounds_us": [
+    10.389708479245504,
+    10.383391380310059,
+    10.384350021680197
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 9.714294047582717,
+   "tflops": 487.4640599517717,
+   "rounds_us": [
+    9.71803211030506,
+    9.714294047582717,
+    9.709182239714123
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 10.442504516014687,
+   "tflops": 453.470640949957,
+   "rounds_us": [
+    10.445708902473124,
+    10.442282399560652,
+    10.442504516014687
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitl16|fc1|2058": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 22.02177710003323,
+   "tflops": 783.9401509505766,
+   "rounds_us": [
+    22.068240024425364,
+    22.02177710003323,
+    22.01399979767976
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 24.737437566121418,
+   "tflops": 697.8796901601147,
+   "rounds_us": [
+    24.742645521958668,
+    24.72181369860967,
+    24.737437566121418
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 36.88902927167488,
+   "tflops": 467.9915846214993,
+   "rounds_us": [
+    36.88902927167488,
+    36.869363351301715,
+    36.90814971923828
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 21.615965324535704,
+   "tflops": 798.6576127786611,
+   "rounds_us": [
+    21.626280065168416,
+    21.615965324535704,
+    21.61047333165219
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 24.61520830790202,
+   "tflops": 701.3450809781674,
+   "rounds_us": [
+    24.607916673024494,
+    24.639062583446503,
+    24.61520830790202
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 36.27348307407264,
+   "tflops": 475.9332107354117,
+   "rounds_us": [
+    36.28345330556234,
+    36.27348307407264,
+    36.26760569485751
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 21.256193780062492,
+   "tflops": 812.1752860661607,
+   "rounds_us": [
+    21.253368310761033,
+    21.262421942593758,
+    21.256193780062492
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitl16|fc1|2258": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 22.365592144153737,
+   "tflops": 846.9025430632837,
+   "rounds_us": [
+    22.4176667354725,
+    22.365592144153737,
+    22.356869997801603
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 26.73611111111111,
+   "tflops": 708.4604333548052,
+   "rounds_us": [
+    26.73611111111111,
+    26.6892671585083,
+    26.741221215989853
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 35.946849620703496,
+   "tflops": 526.9300943994465,
+   "rounds_us": [
+    35.946849620703496,
+    35.937363451177426,
+    35.94736258188883
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 20.659367243448894,
+   "tflops": 916.8469024629184,
+   "rounds_us": [
+    20.68803310394287,
+    20.654765764872234,
+    20.659367243448894
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 26.228178872002495,
+   "tflops": 722.1804059076039,
+   "rounds_us": [
+    26.22528870900472,
+    26.228178872002495,
+    26.24455557929145
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 35.076636256593645,
+   "tflops": 540.0026594750634,
+   "rounds_us": [
+    35.07800174481941,
+    35.076636256593645,
+    35.07290825699315
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 20.72996695836385,
+   "tflops": 913.7244117197084,
+   "rounds_us": [
+    20.72996695836385,
+    20.7294503847758,
+    20.73365052541097
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitl16|fc2|2058": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 20.564999183019,
+   "tflops": 839.4726938892896,
+   "rounds_us": [
+    20.560650030771892,
+    20.564999183019,
+    20.573949813842773
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 27.68451107872857,
+   "tflops": 623.5889524978692,
+   "rounds_us": [
+    27.68355475531684,
+    27.69673400455051,
+    27.68451107872857
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 28.582141512916202,
+   "tflops": 604.0049607968862,
+   "rounds_us": [
+    28.582141512916202,
+    28.583072480701265,
+    28.579286166599818
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 26.114598910013836,
+   "tflops": 661.0767917013685,
+   "rounds_us": [
+    26.114598910013836,
+    26.105001237657333,
+    26.142043537563747
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 28.757736796424503,
+   "tflops": 600.3168951092991,
+   "rounds_us": [
+    28.757736796424503,
+    28.77802508217948,
+    28.75488145010812
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitl16|fc2|2258": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 21.057262755276863,
+   "tflops": 899.5222733426426,
+   "rounds_us": [
+    21.00810460877,
+    21.057262755276863,
+    21.058860578035052
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 27.992833228338334,
+   "tflops": 676.6545104417919,
+   "rounds_us": [
+    27.980094864254905,
+    27.992833228338334,
+    28.003000077747163
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 28.484761714935303,
+   "tflops": 664.9687665833094,
+   "rounds_us": [
+    28.485096636272612,
+    28.475000744774228,
+    28.484761714935303
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 26.358911726209854,
+   "tflops": 718.5985924132686,
+   "rounds_us": [
+    26.389556460910374,
+    26.355489095052082,
+    26.358911726209854
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 28.72352373032343,
+   "tflops": 659.4412663932135,
+   "rounds_us": [
+    28.726308118729364,
+    28.72247639156523,
+    28.72352373032343
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|qkv|2058": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 13.220881903043358,
+   "tflops": 550.8820671277208,
+   "rounds_us": [
+    13.230591691950316,
+    13.20727922583139,
+    13.220881903043358
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 20.7103172938029,
+   "tflops": 351.6675601189036,
+   "rounds_us": [
+    20.7103172938029,
+    20.69604992866516,
+    20.722516377766926
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 13.379989131804436,
+   "tflops": 544.3312905754049,
+   "rounds_us": [
+    13.37935463074715,
+    13.379989131804436,
+    13.399151063734486
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 11.10597344132157,
+   "tflops": 655.7864369548981,
+   "rounds_us": [
+    11.10597344132157,
+    11.096440993987763,
+    11.111126289711342
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 20.215384165445965,
+   "tflops": 360.2774348680961,
+   "rounds_us": [
+    20.20745078722636,
+    20.215384165445965,
+    20.220865805943806
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 13.204172093381164,
+   "tflops": 551.5792054581606,
+   "rounds_us": [
+    13.184419242284632,
+    13.205355213534448,
+    13.204172093381164
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 11.197441333049053,
+   "tflops": 650.4295521963504,
+   "rounds_us": [
+    11.183468071190086,
+    11.197441333049053,
+    11.199342237936484
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|qkv|2258": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 13.361387355353243,
+   "tflops": 598.0618134537077,
+   "rounds_us": [
+    13.40006500162104,
+    13.361387355353243,
+    13.360182444254557
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 16.65279103649987,
+   "tflops": 479.8556310762161,
+   "rounds_us": [
+    16.6730135679245,
+    16.65279103649987,
+    16.64465334680345
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 14.038562774658203,
+   "tflops": 569.2132221985634,
+   "rounds_us": [
+    14.041540266453534,
+    14.025919738857226,
+    14.038562774658203
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 10.998964309692383,
+   "tflops": 726.5170907917501,
+   "rounds_us": [
+    11.001153035206837,
+    10.998964309692383,
+    10.993810387345048
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 15.971105893452963,
+   "tflops": 500.33702145045106,
+   "rounds_us": [
+    15.971105893452963,
+    15.969986915588379,
+    15.973159472147623
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 13.90274776809517,
+   "tflops": 574.7738278283422,
+   "rounds_us": [
+    13.89821781509224,
+    13.908976796029629,
+    13.90274776809517
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 10.920123050087376,
+   "tflops": 731.7624092098542,
+   "rounds_us": [
+    10.919797838779917,
+    10.920123050087376,
+    10.921332919806765
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|proj|2058": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 7.6168208946416405,
+   "tflops": 318.7308218981326,
+   "rounds_us": [
+    7.6168208946416405,
+    7.613993721243776,
+    7.6177841351356035
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 12.166931348688463,
+   "tflops": 199.53392638002322,
+   "rounds_us": [
+    12.167274951934814,
+    12.16217700172873,
+    12.166931348688463
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 8.720269439913702,
+   "tflops": 278.399148183204,
+   "rounds_us": [
+    8.720269439913702,
+    8.719744411766106,
+    8.72152494200578
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 12.034431392071294,
+   "tflops": 201.73080928438915,
+   "rounds_us": [
+    12.033166838627235,
+    12.038215702655268,
+    12.034431392071294
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 8.73978763607377,
+   "tflops": 277.77741120156304,
+   "rounds_us": [
+    8.742362049454492,
+    8.73978763607377,
+    8.737553095986657
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|proj|2258": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 7.655055434615524,
+   "tflops": 347.9589673453204,
+   "rounds_us": [
+    7.655055434615524,
+    7.652802231871052,
+    7.656253414389528
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 12.286293386208891,
+   "tflops": 216.79810991571196,
+   "rounds_us": [
+    12.286293386208891,
+    12.2828579912282,
+    12.289959974963256
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 8.796900722151953,
+   "tflops": 302.7935938042964,
+   "rounds_us": [
+    8.772269208380516,
+    8.798503706641231,
+    8.796900722151953
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 12.196019584057378,
+   "tflops": 218.4028293527762,
+   "rounds_us": [
+    12.17351006526573,
+    12.196549013549207,
+    12.196019584057378
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 8.744539098536714,
+   "tflops": 304.60669841887113,
+   "rounds_us": [
+    8.718454245979904,
+    8.744666762385808,
+    8.744539098536714
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|fc1|2058": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 16.52182737986247,
+   "tflops": 587.7595808703356,
+   "rounds_us": [
+    16.50115966796875,
+    16.532333691914875,
+    16.52182737986247
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 37.61021296183268,
+   "tflops": 258.1974833765155,
+   "rounds_us": [
+    37.62375585960619,
+    37.61021296183268,
+    37.58587981715347
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 28.77981038320632,
+   "tflops": 337.4192604711013,
+   "rounds_us": [
+    28.7369518052964,
+    28.77981038320632,
+    28.783667655218217
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 18.124782520791758,
+   "tflops": 535.778143812773,
+   "rounds_us": [
+    18.124782520791758,
+    18.124101818471715,
+    18.126261407050535
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 37.4330896319765,
+   "tflops": 259.41920454529304,
+   "rounds_us": [
+    37.42778662479285,
+    37.43539434490782,
+    37.4330896319765
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 28.23588110151745,
+   "tflops": 343.91922465908533,
+   "rounds_us": [
+    28.216810453505744,
+    28.240334419977096,
+    28.23588110151745
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 17.98781104709791,
+   "tflops": 539.8579243785595,
+   "rounds_us": [
+    17.993434615757156,
+    17.98043562018353,
+    17.98781104709791
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|fc1|2258": {
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 16.649944914711845,
+   "tflops": 639.9168760363672,
+   "rounds_us": [
+    16.649944914711845,
+    16.643542382452225,
+    16.652651958995396
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 38.58123222986857,
+   "tflops": 276.1596797250946,
+   "rounds_us": [
+    38.58999808629354,
+    38.58123222986857,
+    38.57616583506266
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v2": {
+   "us": 19.760237799750435,
+   "tflops": 539.1929410958082,
+   "rounds_us": [
+    19.759047599065873,
+    19.760237799750435,
+    19.76709517221602
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 17.82344907954119,
+   "tflops": 597.7844517327434,
+   "rounds_us": [
+    17.82344907954119,
+    17.82369613647461,
+    17.818580503049105
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 38.793766498565674,
+   "tflops": 274.64672027641177,
+   "rounds_us": [
+    38.80680004755656,
+    38.793766498565674,
+    38.78740072250366
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "us": 19.22512622106643,
+   "tflops": 554.2008210237376,
+   "rounds_us": [
+    19.22512622106643,
+    19.21617417108445,
+    19.226967342316158
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 17.615651738816414,
+   "tflops": 604.8360227582403,
+   "rounds_us": [
+    17.62143425319506,
+    17.615651738816414,
+    17.615522163501684
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|fc2|2058": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 15.856256851783165,
+   "tflops": 612.4309429881578,
+   "rounds_us": [
+    15.794064754094833,
+    15.856256851783165,
+    15.859166781107584
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 20.505815744400024,
+   "tflops": 473.56625344943717,
+   "rounds_us": [
+    20.45673330624898,
+    20.50771713256836,
+    20.505815744400024
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 22.56081501642863,
+   "tflops": 430.430475535951,
+   "rounds_us": [
+    22.541037312260382,
+    22.56081501642863,
+    22.56842675032439
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 19.824200868606567,
+   "tflops": 489.84886706722375,
+   "rounds_us": [
+    19.824200868606567,
+    19.814433654149372,
+    19.834083318710327
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 22.696185995031286,
+   "tflops": 427.8631809822994,
+   "rounds_us": [
+    22.69490780653777,
+    22.701462109883625,
+    22.696185995031286
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ },
+ "vitb16|fc2|2258": {
+  "spark_nv4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_mx4": {
+   "error": "NotImplementedError: MXFP4 scaling only supported in CUDA for B200/B300",
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt mx4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v2": {
+   "error": "unsupported",
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v2 (TMA; M padded to 128), bf16 out, NO epilogue, NO quantization"
+  },
+  "cublaslt_nv4": {
+   "us": 16.018373171488445,
+   "tflops": 665.1474916918772,
+   "rounds_us": [
+    15.990400314331055,
+    16.02255980173747,
+    16.018373171488445
+   ],
+   "foreign_gpu_procs": [],
+   "note": "cuBLASLt nv4 scaled_mm, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_nv4_v1": {
+   "us": 21.68221013587818,
+   "tflops": 491.3973561380423,
+   "rounds_us": [
+    21.659175554911297,
+    21.68807021358557,
+    21.68221013587818
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm nv4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_nv4": {
+   "us": 22.58770333396064,
+   "tflops": 471.69827664509944,
+   "rounds_us": [
+    22.576036276640714,
+    22.58827730461403,
+    22.58770333396064
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS nv4 GEMM, bf16 out, NO epilogue, NO quantization"
+  },
+  "spark_mx4_v1": {
+   "us": 20.841069388807867,
+   "tflops": 511.2300399384378,
+   "rounds_us": [
+    20.83286067895722,
+    20.848351612425688,
+    20.841069388807867
+   ],
+   "foreign_gpu_procs": [],
+   "note": "Spark fp4gemm mx4 v1, bf16 out, NO epilogue, NO quantization"
+  },
+  "qutlass_mx4": {
+   "us": 22.703574763404,
+   "tflops": 469.2908868771701,
+   "rounds_us": [
+    22.703574763404,
+    22.703888239683927,
+    22.699406853428595
+   ],
+   "foreign_gpu_procs": [],
+   "note": "QuTLASS mx4 GEMM, bf16 out, NO epilogue, NO quantization"
+  }
+ }
+}

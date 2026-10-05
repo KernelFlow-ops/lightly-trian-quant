@@ -1,0 +1,201 @@
+#
+# Copyright (c) Lightly AG and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+from __future__ import annotations
+
+import logging
+from pathlib import Path
+from typing import Any
+
+import torch
+
+try:
+    from rfdetr.detr import RFDETR
+except ImportError:
+
+    class RFDETR:  # type: ignore[no-redef]
+        pass
+
+
+from lightly_train._models import log_usage_example
+from lightly_train._models.model_wrapper import ModelWrapper
+from lightly_train._models.package import Package
+from lightly_train._models.rfdetr.rfdetr import RFDETRModelWrapper
+
+logger = logging.getLogger(__name__)
+
+
+def _get_model_registry() -> dict[str, str]:
+    """Return the rfdetr pretrained model registry (filename → URL).
+
+    Raises ImportError if rfdetr is not installed.
+    Raises RuntimeError if rfdetr is installed but the registry constant is missing
+    (indicates an incompatible rfdetr version).
+    """
+    import rfdetr.main as rfdetr_main
+
+    # rfdetr renamed HOSTED_MODELS to OPEN_SOURCE_MODELS in v1.x
+    registry: dict[str, str] | None = getattr(
+        rfdetr_main, "OPEN_SOURCE_MODELS", None
+    ) or getattr(rfdetr_main, "HOSTED_MODELS", None)
+    if registry is None:
+        raise RuntimeError(
+            "rfdetr is installed but neither 'OPEN_SOURCE_MODELS' nor 'HOSTED_MODELS' "
+            "was found in rfdetr.main. The installed rfdetr version may be incompatible."
+            "Make sure to install rfdetr through `pip install lightly-train[rfdetr]`."
+        )
+    return registry
+
+
+class RFDETRPackage(Package):
+    name = "rfdetr"
+
+    @classmethod
+    def list_model_names(cls) -> list[str]:
+        try:
+            model_registry = _get_model_registry()
+        except ImportError:
+            return []
+        # We use the model names from the checkpoint .pth filenames Roboflow provided
+        return [
+            f"{cls.name}/{model_name.split('.')[0]}"
+            for model_name in model_registry.keys()
+        ]
+
+    @classmethod
+    def is_supported_model(cls, model: RFDETR | ModelWrapper | Any) -> bool:
+        if isinstance(model, ModelWrapper):
+            return isinstance(model.get_model(), RFDETR)
+        return isinstance(model, RFDETR)
+
+    @classmethod
+    def get_model(
+        cls,
+        model_name: str,
+        num_input_channels: int = 3,
+        model_args: dict[str, Any] | None = None,
+        load_weights: bool = True,
+    ) -> RFDETR:
+        try:
+            from rfdetr import (
+                RFDETRBase,
+                RFDETRLarge,
+                RFDETRMedium,
+                RFDETRNano,
+                RFDETRSegPreview,
+                RFDETRSmall,
+            )
+
+            HOSTED_MODELS = _get_model_registry()
+        except ImportError:
+            raise ValueError(
+                f"Cannot create model '{model_name}' because rfdetr is not installed."
+            )
+        if num_input_channels != 3:
+            raise ValueError(
+                f"RFDETR models only support 3 input channels, but got "
+                f"{num_input_channels}."
+            )
+
+        args = {} if model_args is None else model_args.copy()
+        # Remove these arguments so that get_model() only returns the full model
+        args.pop("encoder_only", None)
+        args.pop("backbone_only", None)
+        if not load_weights:
+            args["pretrain_weights"] = None
+
+        model_names = [model_name.split(".")[0] for model_name in HOSTED_MODELS.keys()]
+        if model_name not in model_names:
+            raise ValueError(
+                f"Model name '{model_name}' is not supported. "
+                f"Supported model names are: {model_names}"
+            )
+        model_rfdetr: RFDETR
+        if "base" in model_name:
+            # Type ignore as typing **args correctly is too complex
+            model_rfdetr = RFDETRBase(**args)  # type: ignore[no-untyped-call]
+        elif "nano" in model_name:
+            # Type ignore as typing **args correctly is too complex
+            model_rfdetr = RFDETRNano(**args)  # type: ignore[no-untyped-call]
+        elif "small" in model_name:
+            # Type ignore as typing **args correctly is too complex
+            model_rfdetr = RFDETRSmall(**args)  # type: ignore[no-untyped-call]
+        elif "medium" in model_name:
+            # Type ignore as typing **args correctly is too complex
+            model_rfdetr = RFDETRMedium(**args)  # type: ignore[no-untyped-call]
+        elif "seg-preview" in model_name:
+            # Type ignore as typing **args correctly is too complex
+            model_rfdetr = RFDETRSegPreview(**args)  # type: ignore[no-untyped-call]
+        elif "large" in model_name:
+            # Type ignore as typing **args correctly is too complex
+            model_rfdetr = RFDETRLarge(**args)  # type: ignore[no-untyped-call]
+        else:
+            raise ValueError(
+                f"Model name '{model_name}' is not supported. "
+                f"Supported model names are: {cls.list_model_names()}"
+            )
+
+        return model_rfdetr
+
+    @classmethod
+    def get_model_wrapper(cls, model: RFDETR) -> RFDETRModelWrapper:
+        return RFDETRModelWrapper(model)
+
+    @classmethod
+    def export_model(
+        cls,
+        model: RFDETR | ModelWrapper | Any,
+        out: Path,
+        log_example: bool = True,
+    ) -> None:
+        try:
+            from rfdetr.models.backbone.dinov2 import (
+                DinoV2,
+                WindowedDinov2WithRegistersBackbone,
+            )
+            from rfdetr.models.lwdetr import LWDETR
+        except ImportError:
+            raise ValueError(
+                f"Cannot create model because '{cls.name}' is not installed."
+            )
+
+        if isinstance(model, ModelWrapper):
+            model = model.get_model()
+
+        if not cls.is_supported_model(model):
+            raise ValueError(
+                f"Model must be of type 'RFDETR' or 'RFDETRModelWrapper', got {type(model)}"
+            )
+
+        lwdetr_model = model.model.model
+        assert isinstance(lwdetr_model, LWDETR)
+
+        assert isinstance(
+            lwdetr_model.backbone[0].encoder.encoder,
+            WindowedDinov2WithRegistersBackbone,
+        ), type(lwdetr_model.backbone[0].encoder)
+        assert isinstance(lwdetr_model.backbone[0].encoder, DinoV2)
+
+        torch.save({"model": lwdetr_model.state_dict()}, out)
+        if log_example:
+            log_message_code = [
+                "from rfdetr import RFDETRBase, RFDETRLarge # based on the model you used",
+                "",
+                "# Load the pretrained model",
+                f"model = RFDETRBase(pretrain_weights={out})",
+                "",
+                "# Finetune or evaluate the model",
+                "...",
+            ]
+            logger.info(
+                log_usage_example.format_log_msg_model_usage_example(log_message_code)
+            )
+
+
+# Create singleton instance of the package. The singleton should be used whenever
+# possible.
+RFDETR_PACKAGE = RFDETRPackage()

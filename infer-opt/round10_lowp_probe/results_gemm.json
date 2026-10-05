@@ -1,0 +1,678 @@
+{
+ "vitl16|qkv|2058": {
+  "r5_v1": {
+   "us": 70.74846940882065,
+   "tflops": 183.01196557597493,
+   "rounds_us": [
+    69.95823804069968,
+    70.8157034481273,
+    70.74846940882065
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 69.91164824541877,
+   "tflops": 185.20256313436946,
+   "rounds_us": [
+    69.71323490142822,
+    70.52311476539163,
+    69.91164824541877
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 69.50959037331974,
+   "tflops": 186.2738131308257,
+   "rounds_us": [
+    69.42029560313506,
+    70.23140963386086,
+    69.50959037331974
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 45.50814628601074,
+   "tflops": 284.516454848001,
+   "rounds_us": [
+    45.417556056269895,
+    45.65770537764938,
+    45.50814628601074
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "_meta": {
+  "other_gpu_procs": [],
+  "time": "2026-10-04 19:25:30"
+ },
+ "vitl16|qkv|2258": {
+  "r5_v1": {
+   "us": 76.0161280632019,
+   "tflops": 186.88281039766522,
+   "rounds_us": [
+    75.49687474966049,
+    76.0161280632019,
+    76.02956146001816
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 79.76219654083252,
+   "tflops": 178.1057727106035,
+   "rounds_us": [
+    79.33913071950276,
+    79.76219654083252,
+    79.9899975458781
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 79.22952969868977,
+   "tflops": 179.30319291337315,
+   "rounds_us": [
+    79.29700215657552,
+    79.22952969868977,
+    79.21866575876872
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 47.03569412231445,
+   "tflops": 302.02823436723577,
+   "rounds_us": [
+    47.03569412231445,
+    47.129498078272896,
+    47.00957811795748
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitl16|proj|2058": {
+  "r5_v1": {
+   "us": 29.239095392681303,
+   "tflops": 147.60849328739158,
+   "rounds_us": [
+    29.22781024660383,
+    29.25804683140346,
+    29.239095392681303
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 26.938001314798992,
+   "tflops": 160.2174847927171,
+   "rounds_us": [
+    26.94348759121365,
+    26.938001314798992,
+    26.93539990319146
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 27.031800482008194,
+   "tflops": 159.66153711709288,
+   "rounds_us": [
+    27.034378051757812,
+    27.031800482008194,
+    27.02220016055637
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 15.952679316202799,
+   "tflops": 270.5463283284578,
+   "rounds_us": [
+    15.952679316202799,
+    15.941546758015951,
+    15.954306920369467
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitl16|proj|2258": {
+  "r5_v1": {
+   "us": 29.576857884724934,
+   "tflops": 160.10386344810473,
+   "rounds_us": [
+    29.503214926946733,
+    29.646095775422594,
+    29.576857884724934
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 27.078511979844833,
+   "tflops": 174.87553302502906,
+   "rounds_us": [
+    27.078511979844833,
+    27.08384460873074,
+    27.064132690429688
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 27.144845326741535,
+   "tflops": 174.4481929810441,
+   "rounds_us": [
+    27.144845326741535,
+    27.169399791293674,
+    27.12104320526123
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 16.382066408793133,
+   "tflops": 289.05811378339143,
+   "rounds_us": [
+    16.40113353729248,
+    16.382066408793133,
+    16.329679489135742
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitl16|fc1|2058": {
+  "r5_v1": {
+   "us": 86.26147320396022,
+   "tflops": 200.13285911754437,
+   "rounds_us": [
+    85.29648864478396,
+    86.26147320396022,
+    86.44806711297286
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 102.62841979662578,
+   "tflops": 168.21612666560418,
+   "rounds_us": [
+    102.19141840934753,
+    102.62841979662578,
+    102.72341966629028
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 102.80758142471313,
+   "tflops": 167.9229782936037,
+   "rounds_us": [
+    102.80758142471313,
+    102.78583566347758,
+    102.80808806419373
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 63.782361837533806,
+   "tflops": 270.66660384847734,
+   "rounds_us": [
+    63.66579349224384,
+    63.782361837533806,
+    63.82569288596129
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitl16|fc1|2258": {
+  "r5_v1": {
+   "us": 94.10494449091892,
+   "tflops": 201.2803574399626,
+   "rounds_us": [
+    92.50408060410443,
+    94.10494449091892,
+    94.15945352292529
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 103.0970811843872,
+   "tflops": 183.7246665608653,
+   "rounds_us": [
+    102.67691810925801,
+    103.0970811843872,
+    103.25449705123901
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 103.10799876848857,
+   "tflops": 183.70521288585823,
+   "rounds_us": [
+    103.07283202807109,
+    103.16283504168193,
+    103.10799876848857
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 64.70912297566731,
+   "tflops": 292.71725520252534,
+   "rounds_us": [
+    64.62064107259114,
+    64.77434794108073,
+    64.70912297566731
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitl16|fc2|2058": {
+  "r5_v1": {
+   "us": 93.5218510804353,
+   "tflops": 184.5959534007937,
+   "rounds_us": [
+    92.19962579232676,
+    93.5218510804353,
+    93.53288897761593
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 105.63519795735677,
+   "tflops": 163.4280580509642,
+   "rounds_us": [
+    104.7636455959744,
+    105.63519795735677,
+    105.93333774142795
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 105.81422381930881,
+   "tflops": 163.15155600895443,
+   "rounds_us": [
+    105.86293538411458,
+    105.76746198866103,
+    105.81422381930881
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 53.896991155480826,
+   "tflops": 320.3101860398461,
+   "rounds_us": [
+    53.95436543290333,
+    53.896991155480826,
+    53.89182798324093
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitl16|fc2|2258": {
+  "r5_v1": {
+   "us": 99.63058431943257,
+   "tflops": 190.11709098553922,
+   "rounds_us": [
+    98.75050187110901,
+    99.63058431943257,
+    100.18900036811829
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 105.62462276882596,
+   "tflops": 179.32823206816118,
+   "rounds_us": [
+    104.89075978597005,
+    105.62462276882596,
+    105.76559702555339
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 105.78888787163629,
+   "tflops": 179.04977777045443,
+   "rounds_us": [
+    105.61386744181316,
+    105.81946902804904,
+    105.78888787163629
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 55.08395300971137,
+   "tflops": 343.8656056630611,
+   "rounds_us": [
+    55.08395300971137,
+    55.15231026543511,
+    55.067242516411675
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|qkv|2058": {
+  "r5_v1": {
+   "us": 43.36284336290861,
+   "tflops": 167.95823767935394,
+   "rounds_us": [
+    43.11912101611757,
+    43.36284336290861,
+    43.445436578047904
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 41.70519427249306,
+   "tflops": 174.63404448888153,
+   "rounds_us": [
+    41.62130021212394,
+    41.70519427249306,
+    41.78635279337565
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 41.66680888125771,
+   "tflops": 174.79492544666786,
+   "rounds_us": [
+    41.66680888125771,
+    41.611332642404655,
+    41.78757834852787
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 26.653171390013494,
+   "tflops": 273.256290796557,
+   "rounds_us": [
+    26.653171390013494,
+    26.651184246768516,
+    26.737812881366764
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|qkv|2258": {
+  "r5_v1": {
+   "us": 44.188177376462704,
+   "tflops": 180.83876788854514,
+   "rounds_us": [
+    43.314034478706226,
+    44.188177376462704,
+    44.405544013307804
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 42.253473348784865,
+   "tflops": 189.11902190946878,
+   "rounds_us": [
+    41.95828186838251,
+    42.5021397440057,
+    42.253473348784865
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 42.13013983609383,
+   "tflops": 189.67265675092744,
+   "rounds_us": [
+    41.94186026589912,
+    42.48838675649542,
+    42.13013983609383
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 27.223577666700933,
+   "tflops": 293.5299559019487,
+   "rounds_us": [
+    27.22268087822094,
+    27.348817524157074,
+    27.223577666700933
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|proj|2058": {
+  "r5_v1": {
+   "us": 17.879797064739726,
+   "tflops": 135.7798175901914,
+   "rounds_us": [
+    17.879797064739726,
+    17.87508743396704,
+    17.91870939558831
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 20.67905068397522,
+   "tflops": 117.39975983913544,
+   "rounds_us": [
+    20.67905068397522,
+    20.680216948191326,
+    20.677282412846882
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 20.708566904067993,
+   "tflops": 117.23242826248394,
+   "rounds_us": [
+    20.71208357810974,
+    20.7075834274292,
+    20.708566904067993
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 12.16057819478652,
+   "tflops": 199.63817057981746,
+   "rounds_us": [
+    12.158460476819206,
+    12.187901665182675,
+    12.16057819478652
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|proj|2258": {
+  "r5_v1": {
+   "us": 18.13680294788245,
+   "tflops": 146.86409681211165,
+   "rounds_us": [
+    18.15066734949748,
+    18.12986352226951,
+    18.13680294788245
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 20.794600248336792,
+   "tflops": 128.09311803015044,
+   "rounds_us": [
+    20.794167121251423,
+    20.795849959055584,
+    20.794600248336792
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 20.82419991493225,
+   "tflops": 127.91104555666507,
+   "rounds_us": [
+    20.828384160995483,
+    20.82253297170003,
+    20.82419991493225
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 12.290757111828736,
+   "tflops": 216.71937373463214,
+   "rounds_us": [
+    12.290757111828736,
+    12.29677778301817,
+    12.290333256577
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|fc1|2058": {
+  "r5_v1": {
+   "us": 52.39918783164383,
+   "tflops": 185.3246727258551,
+   "rounds_us": [
+    52.23008350210542,
+    52.96665405607419,
+    52.39918783164383
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.67416831319646,
+   "tflops": 157.4542892363927,
+   "rounds_us": [
+    61.44605533097141,
+    61.94907491521318,
+    61.67416831319646
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 61.60406659739886,
+   "tflops": 157.6334627300404,
+   "rounds_us": [
+    61.40090587527253,
+    61.63229535716449,
+    61.60406659739886
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 36.07048921806868,
+   "tflops": 269.21903601838505,
+   "rounds_us": [
+    35.97585988599201,
+    36.122908481331756,
+    36.07048921806868
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|fc1|2258": {
+  "r5_v1": {
+   "us": 55.033781623057564,
+   "tflops": 193.60073797901686,
+   "rounds_us": [
+    54.436992848783774,
+    55.068541812505345,
+    55.033781623057564
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.944757505904796,
+   "tflops": 172.00133094369394,
+   "rounds_us": [
+    61.944757505904796,
+    61.811000616975534,
+    62.27418175039365
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 61.88849515693132,
+   "tflops": 172.15769601414715,
+   "rounds_us": [
+    61.92263226176417,
+    61.7222926413366,
+    61.88849515693132
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 37.183912410292514,
+   "tflops": 286.53737719785533,
+   "rounds_us": [
+    37.183912410292514,
+    37.16456213662791,
+    37.21150597860647
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|fc2|2058": {
+  "r5_v1": {
+   "us": 56.50088398955589,
+   "tflops": 171.87098059908303,
+   "rounds_us": [
+    56.39088431070017,
+    56.79799789606139,
+    56.50088398955589
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 60.95077159792878,
+   "tflops": 159.32304188139258,
+   "rounds_us": [
+    60.911926742671994,
+    60.95588151798692,
+    60.95077159792878
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 60.80029509788336,
+   "tflops": 159.7173553247781,
+   "rounds_us": [
+    60.80029509788336,
+    145.7791942034581,
+    60.79320390095082
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 39.81003795041353,
+   "tflops": 243.92999444249784,
+   "rounds_us": [
+    40.16358980153762,
+    39.701841718868494,
+    39.81003795041353
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ },
+ "vitb16|fc2|2258": {
+  "r5_v1": {
+   "us": 58.51921850396681,
+   "tflops": 182.069771408136,
+   "rounds_us": [
+    58.300775335740674,
+    58.64081567572069,
+    58.51921850396681
+   ],
+   "note": "r5_v1 tuned kernel WITH epilogue (RoPE/GELU/gamma+fp32 residual)"
+  },
+  "cublas_bf16": {
+   "us": 61.3311531007752,
+   "tflops": 173.7221656095902,
+   "rounds_us": [
+    61.164850042771924,
+    61.3311531007752,
+    61.425562422404916
+   ],
+   "note": "F.linear bf16/fp32-acc, no bias/epilogue, bf16 out"
+  },
+  "cublas_fp16": {
+   "us": 61.3326908082001,
+   "tflops": 173.7178101205287,
+   "rounds_us": [
+    61.21347116869549,
+    61.3326908082001,
+    61.33596139360768
+   ],
+   "note": "F.linear fp16/fp32-acc, no epilogue"
+  },
+  "cublas_fp16acc": {
+   "us": 39.90639280621998,
+   "tflops": 266.98932142870433,
+   "rounds_us": [
+    39.90639280621998,
+    40.030221968015354,
+    39.90179896957351
+   ],
+   "note": "F.linear fp16 with allow_fp16_accumulation=True, no epilogue"
+  }
+ }
+}

@@ -1,0 +1,307 @@
+#
+# Copyright (c) Lightly AG and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
+from __future__ import annotations
+
+from typing import ClassVar, Literal
+
+from pydantic import Field
+from torchmetrics import Metric as TorchmetricsMetric
+
+from lightly_train._metrics.classification.metric_args import ClassificationMetricArgs
+
+
+class MultilabelAccuracyArgs(ClassificationMetricArgs):
+    """Accuracy metric for multilabel classification."""
+
+    threshold: float = 0.5
+    average: set[Literal["micro", "macro", "weighted"]] = Field(
+        default_factory=lambda: {"micro"},  # type: ignore[arg-type]
+        strict=False,
+    )
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelAccuracy as TorchmetricsMultilabelAccuracy,
+        )
+
+        if classwise:
+            return {
+                "accuracy": TorchmetricsMultilabelAccuracy(
+                    num_labels=num_classes,
+                    threshold=self.threshold,
+                    average="none",
+                )
+            }
+        return {
+            f"accuracy_{avg}": TorchmetricsMultilabelAccuracy(
+                num_labels=num_classes,
+                threshold=self.threshold,
+                average=avg,
+            )
+            for avg in self.average
+        }
+
+    def supports_classwise(self) -> bool:
+        return True
+
+    def get_metric_names(self) -> list[str]:
+        return ["accuracy"]
+
+
+class MultilabelF1Args(ClassificationMetricArgs):
+    """F1 score for multilabel classification."""
+
+    threshold: float = 0.5
+    average: set[Literal["micro", "macro", "weighted"]] = Field(
+        default_factory=lambda: {"macro"},  # type: ignore[arg-type]
+        strict=False,
+    )
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelF1Score as TorchmetricsMultilabelF1Score,
+        )
+
+        if classwise:
+            return {
+                "f1": TorchmetricsMultilabelF1Score(
+                    num_labels=num_classes,
+                    threshold=self.threshold,
+                    average="none",
+                )
+            }
+        return {
+            f"f1_{avg}": TorchmetricsMultilabelF1Score(
+                num_labels=num_classes,
+                threshold=self.threshold,
+                average=avg,
+            )
+            for avg in self.average
+        }
+
+    def supports_classwise(self) -> bool:
+        return True
+
+    def get_metric_names(self) -> list[str]:
+        return ["f1"]
+
+
+class MultilabelPrecisionArgs(ClassificationMetricArgs):
+    """Precision metric for multilabel classification."""
+
+    threshold: float = 0.5
+    average: set[Literal["micro", "macro", "weighted"]] = Field(
+        default_factory=lambda: {"macro"},  # type: ignore[arg-type]
+        strict=False,
+    )
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelPrecision as TorchmetricsMultilabelPrecision,
+        )
+
+        if classwise:
+            return {
+                "precision": TorchmetricsMultilabelPrecision(
+                    num_labels=num_classes,
+                    threshold=self.threshold,
+                    average="none",
+                )
+            }
+        return {
+            f"precision_{avg}": TorchmetricsMultilabelPrecision(
+                num_labels=num_classes,
+                threshold=self.threshold,
+                average=avg,
+            )
+            for avg in self.average
+        }
+
+    def supports_classwise(self) -> bool:
+        return True
+
+    def get_metric_names(self) -> list[str]:
+        return ["precision"]
+
+
+class MultilabelRecallArgs(ClassificationMetricArgs):
+    """Recall metric for multilabel classification."""
+
+    threshold: float = 0.5
+    average: set[Literal["micro", "macro", "weighted"]] = Field(
+        default_factory=lambda: {"macro"},  # type: ignore[arg-type]
+        strict=False,
+    )
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelRecall as TorchmetricsMultilabelRecall,
+        )
+
+        if classwise:
+            return {
+                "recall": TorchmetricsMultilabelRecall(
+                    num_labels=num_classes,
+                    threshold=self.threshold,
+                    average="none",
+                )
+            }
+        return {
+            f"recall_{avg}": TorchmetricsMultilabelRecall(
+                num_labels=num_classes,
+                threshold=self.threshold,
+                average=avg,
+            )
+            for avg in self.average
+        }
+
+    def supports_classwise(self) -> bool:
+        return True
+
+    def get_metric_names(self) -> list[str]:
+        return ["recall"]
+
+
+class MultilabelAUROCArgs(ClassificationMetricArgs):
+    """AUROC metric for multilabel classification."""
+
+    average: set[Literal["micro", "macro", "weighted"]] = Field(
+        default_factory=lambda: {"macro"},  # type: ignore[arg-type]
+        strict=False,
+    )
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelAUROC as TorchmetricsMultilabelAUROC,
+        )
+
+        if classwise:
+            return {
+                "auroc": TorchmetricsMultilabelAUROC(
+                    num_labels=num_classes, average="none"
+                )
+            }
+        return {
+            f"auroc_{avg}": TorchmetricsMultilabelAUROC(
+                num_labels=num_classes, average=avg
+            )
+            for avg in self.average
+        }
+
+    def supports_classwise(self) -> bool:
+        return True
+
+    def get_metric_names(self) -> list[str]:
+        return ["auroc"]
+
+
+class MultilabelAveragePrecisionArgs(ClassificationMetricArgs):
+    """Average Precision metric for multilabel classification."""
+
+    average: set[Literal["micro", "macro", "weighted"]] = Field(
+        default_factory=lambda: {"macro"},  # type: ignore[arg-type]
+        strict=False,
+    )
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelAveragePrecision as TorchmetricsMultilabelAveragePrecision,
+        )
+
+        if classwise:
+            return {
+                "avg_precision": TorchmetricsMultilabelAveragePrecision(
+                    num_labels=num_classes, average="none"
+                )
+            }
+        return {
+            f"avg_precision_{avg}": TorchmetricsMultilabelAveragePrecision(
+                num_labels=num_classes, average=avg
+            )
+            for avg in self.average
+        }
+
+    def supports_classwise(self) -> bool:
+        return True
+
+    def get_metric_names(self) -> list[str]:
+        return ["avg_precision"]
+
+
+class MultilabelHammingDistanceArgs(ClassificationMetricArgs):
+    """Hamming Distance metric for multilabel classification."""
+
+    watch_mode: ClassVar[Literal["min", "max"]] = "min"
+
+    threshold: float = 0.5
+
+    def get_torchmetrics_instances(
+        self,
+        *,
+        classwise: bool,
+        num_classes: int,
+    ) -> dict[str, TorchmetricsMetric]:
+        # Type ignore for old torchmetrics versions
+        from torchmetrics.classification import (  # type: ignore[attr-defined]
+            MultilabelHammingDistance as TorchmetricsMultilabelHammingDistance,
+        )
+
+        # Hamming distance doesn't support classwise or averaging
+        if classwise:
+            return {}
+
+        metrics: dict[str, TorchmetricsMetric] = {}
+        metrics["hamming_distance"] = TorchmetricsMultilabelHammingDistance(
+            num_labels=num_classes,
+            threshold=self.threshold,
+        )
+
+        return metrics
+
+    def supports_classwise(self) -> bool:
+        return False
+
+    def get_metric_names(self) -> list[str]:
+        return ["hamming_distance"]
