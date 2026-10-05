@@ -1,0 +1,1 @@
+"""Shared training optimization infrastructure."""
